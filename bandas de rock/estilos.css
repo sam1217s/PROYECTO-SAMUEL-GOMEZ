@@ -1,0 +1,66 @@
+body{
+    background-color: rgb(59, 59, 81);
+    font-family: Arial;
+    font-size: 20px;
+}
+.contenedor {
+    height: 800px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
+    margin: 40px;
+
+}
+
+.contenedor-conciertos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+}
+.card {
+    background-size: cover;
+    border-radius: 10px;
+}
+.textos{
+    color:white;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+h3,p{
+    padding: 10px;
+}
+.banner{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px;
+    background-size: cover;
+    border-radius: 10px;
+    text-align: center;
+}
+ul{
+    padding: 0px;
+}
+
+li{
+    padding: 15px;
+    text-align: center;
+    list-style-type: none;
+    font-size: 22px;
+    font-family: Arial;
+
+}
+
+.boton{
+    background-color: yellow;
+    border-radius: 8px;
+    height: 40px;
+    font-size: 15px;
+    font-weight: bold;
+}
+*{
+    margin: 0px;
+}
