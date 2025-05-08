@@ -639,6 +639,9 @@ footer {
         padding: 0px;
         padding-left: 5%;
     }
+    .submenu{
+    margin-bottom: 120px;
+}
 
     .filters {
         display: grid;
