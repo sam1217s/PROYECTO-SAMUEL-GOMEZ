@@ -1,64 +1,218 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Proyecto Samuel Gomez</title>
+    <title>Portafolio - Samuel Gómez</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
-    <div class="page">
-        <div >
-            <h1>MIS PROYECTOS</h1>
-        </div>
-        <div class="container">
-            <div class="proyecto1">
-                <h2>¿QUIEN SOY?</h2>
-                <img src="/img/1.jpg" alt="">
-                <button>
-                    <a href="/QUIEN SOY/index.html" target="_blank">VER PROYECTO</a>
-                </button>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 col-lg-2 d-md-block sidebar collapse bg-dark">
+                <div class="position-sticky pt-3">
+                    <div class="text-center mb-4">
+                        <img src="./img/samuel_gomez.png" alt="Samuel Gómez" class="rounded-circle mb-2"
+                            style="width: 100px; height: 100px; object-fit: cover;">
+                        <h5>Samuel Gómez</h5>
+                        <p class="text-muted">Estudiante de ADS</p>
+                    </div>
+
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#about">
+                                <i class="fas fa-user"></i> ¿Quién soy?
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#projects">
+                                <i class="fas fa-folder"></i> Proyectos realizados
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="mt-4 p-3">
+                        <h6>Contacto</h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="fas fa-envelope me-2"></i><a href="mailto:1705alejogomez@gmail.com" class="text-light text-decoration-none">1705alejogomez@gmail.com</a>
+                            </li>
+                            <li class="mb-2">
+                                <i class="fab fa-github me-2"></i>
+                                <a href="https://github.com/tuusuario" target="_blank" class="text-light text-decoration-none">https://github.com/sam1217s</a>
+                            </li>
+                            <li class="mb-2">
+                                <i class="fab fa-linkedin me-2"></i>
+                                <a href="https://linkedin.com/in/tuperfil" target="_blank" class="text-light text-decoration-none">https://www.linkedin.com/in/samuel-gomez-gomez-195562306/</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="proyecto2">
-                <h2>BANDAS DE ROCK</h2>
-                <img src="/img/2.jpg" alt="">
-                <button>
-                    <a href="/bandas de rock/index.html" target="_blank">VER PROYECTO</a>
-                </button>
-            </div>
-            <div class="proyecto3">
-                <h2>MI PERFIL</h2>
-                <img src="/img/3.jpg" alt="">
-                <button>
-                    <a href="/MI PERFIL/index.html" target="_blank">VER PROYECTO</a>
-                </button>
-            </div >
-            <div class="proyecto4">
-                <h2>VIDEO DESPLEGAR RENDER</h2>
-                <img src="/img/4.jpg" alt="">
-                <button>
-                    <a href="https://youtu.be/msJDXHGS7AU" target="_blank">VER PROYECTO</a>
-                </button>
-            </div>
-            <div class="proyecto5">
-                <h2>PAGINA JOHANSON</h2>
-                <img src="/img/5.jpg" alt="">
-                <button>
-                    <a href="/pagina_johanson/index.html" target="_blank">VER PROYECTO</a>
-                </button>
-            </div>
-            <div class="proyecto5">
-                <h2>PAGINA ZAPATOS</h2>
-                <img src="/img/zapatos.jpg" alt="">
-                <button>
-                    <a href="/pagina zapatos/index.html" target="_blank">VER PROYECTO</a>
-                </button>
-            </div>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+                <section id="about" class="py-5">
+                    <div class="row align-items-center">
+                        <div class="col-lg-4 text-center mb-4 mb-lg-0">
+                            <img src="./img/samuel_gomez.png" alt="Samuel Gómez"
+                                class="img-fluid rounded-circle profile-img">
+                        </div>
+                        <div class="col-lg-8">
+                            <h2 class="section-title">Sobre Mi</h2>
+                            <p class="lead"><strong>Samuel Gómez</strong> es estudiante de Análisis y Desarrollo de
+                                Software.</p>
+                            <p>Apasionado por la tecnología y la programación, se encuentra en constante formación para
+                                perfeccionar sus habilidades en el desarrollo de soluciones innovadoras. Le motiva la
+                                resolución de problemas mediante el código y la optimización de sistemas para hacerlos
+                                más eficientes y funcionales.</p>
+                            <p>Está siempre en búsqueda de nuevos conocimientos y herramientas que impulsen su
+                                crecimiento profesional dentro del ámbito del desarrollo de software.</p>
+
+                            <div class="mt-4">
+                                <h4>Habilidades técnicas</h4>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge bg-primary">HTML/CSS</span>
+                                    <span class="badge bg-primary">JavaScript</span>
+                                    <span class="badge bg-primary">Bootstrap</span>
+                                    <span class="badge bg-primary">Java</span>
+                                    <span class="badge bg-primary">Python</span>
+                                    <span class="badge bg-primary">SQL</span>
+                                    <span class="badge bg-primary">Git</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+                <section id="projects" class="py-5" style="display: none;">
+                    <div class="text-center mb-5">
+                        <h1 class="section-title">MIS PROYECTOS</h1>
+                    </div>
+
+                    <div class="projects-container">
+                        <!-- Proyecto 1 -->
+                        <div class="card">
+                             <img src="/img/1.jpg" alt="" class="card-img-top project-img"
+                                alt="¿QUIEN SOY?">
+                            <div class="card-body">
+                                <h5 class="card-title">¿QUIEN SOY?</h5>
+                                <p class="card-text">Proyecto personal que muestra información sobre mí.</p>
+                            </div>
+                            <div class="card-footer bg-transparent">
+                                <a href="./QUIEN SOY/index.html" target="_blank" class="btn btn-primary">VER PROYECTO</a>
+                            </div>
+                        </div>
+
+                        <!-- Proyecto 2 -->
+                        <div class="card">
+                            <img src="/img/2.jpg" alt="" class="card-img-top project-img"
+                                alt="BANDAS DE ROCK">
+                            <div class="card-body">
+                                <h5 class="card-title">BANDAS DE ROCK</h5>
+                                <p class="card-text">Página web sobre bandas de rock favoritas.</p>
+                            </div>
+                            <div class="card-footer bg-transparent">
+                                <a href="/bandas de rock/index.html" target="_blank" class="btn btn-primary">VER
+                                    PROYECTO</a>
+                            </div>
+                        </div>
+
+                        <!-- Proyecto 3 -->
+                        <div class="card">
+                             <img src="/img/3.jpg" alt="" class="card-img-top project-img"
+                                alt="MI PERFIL">
+                            <div class="card-body">
+                                <h5 class="card-title">MI PERFIL</h5>
+                                <p class="card-text">Página de perfil profesional.</p>
+                            </div>
+                            <div class="card-footer bg-transparent">
+                                <a href="/MI PERFIL/index.html" target="_blank" class="btn btn-primary">VER PROYECTO</a>
+                            </div>
+                        </div>
+
+                        <!-- Proyecto 4 -->
+                        <div class="card">
+                            <img src="/img/4.jpg" alt="" class="card-img-top project-img"
+                                alt="VIDEO DESPLEGAR RENDER">
+                            <div class="card-body">
+                                <h5 class="card-title">VIDEO DESPLEGAR RENDER</h5>
+                                <p class="card-text">Video demostrativo de un proyecto.</p>
+                            </div>
+                            <div class="card-footer bg-transparent">
+                                <a href="https://youtu.be/msJDXHGS7AU" target="_blank" class="btn btn-primary">VER
+                                    PROYECTO</a>
+                            </div>
+                        </div>
+
+                        <!-- Proyecto 5 -->
+                        <div class="card">
+                             <img src="/img/5.jpg" alt="" class="card-img-top project-img"
+                                alt="PAGINA JOHANSON">
+                            <div class="card-body">
+                                <h5 class="card-title">PAGINA JOHANSON</h5>
+                                <p class="card-text">Página web para Johanson.</p>
+                            </div>
+                            <div class="card-footer bg-transparent">
+                                <a href="/pagina_johanson/index.html" target="_blank" class="btn btn-primary">VER
+                                    PROYECTO</a>
+                            </div>
+                        </div>
+
+                        <!-- Proyecto 6 -->
+                        <div class="card">
+                             <img src="/img/zapatos.jpg" alt="" class="card-img-top project-img"
+                                alt="PAGINA ZAPATOS">
+                            <div class="card-body">
+                                <h5 class="card-title">PAGINA ZAPATOS</h5>
+                                <p class="card-text">Página web sobre zapatos.</p>
+                            </div>
+                            <div class="card-footer bg-transparent">
+                                <a href="/pagina zapatos/index.html" target="_blank" class="btn btn-primary">VER
+                                    PROYECTO</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
         </div>
     </div>
-</body>
 
+    <!-- Bootstrap JS y dependencias -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simple JavaScript para manejar la navegación
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    // Ocultar todas las secciones
+                    document.querySelectorAll('section').forEach(section => {
+                        section.style.display = 'none';
+                    });
+
+                    // Mostrar la sección correspondiente
+                    const target = this.getAttribute('href');
+                    document.querySelector(target).style.display = 'block';
+
+                    // Actualizar el active en el menú
+                    navLinks.forEach(item => item.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Mostrar la sección "about" por defecto
+            document.querySelector('#about').style.display = 'block';
+        });
+    </script>
+</body>
 
 </html>
