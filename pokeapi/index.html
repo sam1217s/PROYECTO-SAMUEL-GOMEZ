@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex 3D</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+</head>
+
+<body>
+    <!-- Logo Pokémon -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png"
+        alt="Pokémon Logo" class="pokemon-logo">
+    <!-- Video de fondo -->
+    <video autoplay muted loop class="video-background">
+        <source src="./archivos/Pokémon Opening 1 Latino HD 1080p.mp4" type="video/mp4">
+    </video>
+
+    <div class="cards-container">
+        <!-- Primera tarjeta -->
+        <div class="container" id="container-1">
+            <div class="card front">
+                <div class="section-car">
+                    <div class="pokemon-header">
+                        <h1 class="pokemon-name" id="nombre-pokemon-1"></h1>
+                        <span class="pokemon-number" id="numero-pokemon-1"></span>
+                    </div>
+                    <img class="pokemon-image" id="pok-1" src="" alt="Pokémon">
+                    <div class="pokemon-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Altura</div>
+                            <div class="detail-value" id="valor-altura-1"></div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Peso</div>
+                            <div class="detail-value" id="valor-peso-1"></div>
+                        </div>
+                    </div>
+                    <div class="section-title">Tipo</div>
+                </div>
+                <div class="pokemon-types" id="seccion-tipo-1"></div>
+            </div>
+
+            <div class="card back">
+                <div class="section-title">Estadísticas</div>
+                <div class="stats-container" id="seccion-estadisticas-1"></div>
+
+                <div class="section-title">Debilidades</div>
+                <div class="weaknesses-container" id="seccion-debilidades-1"></div>
+            </div>
+        </div>
+        <div class="button-pelear">
+            <!-- Botón Pelear -->
+            <button id="pelear-btn" class="pelear-btn">¡Pelear!</button>
+        </div>
+
+        <!-- Segunda tarjeta -->
+        <div class="container" id="container-2">
+            <div class="card front">
+                <div class="section-car">
+                    <div class="pokemon-header">
+                        <h1 class="pokemon-name" id="nombre-pokemon-2"></h1>
+                        <span class="pokemon-number" id="numero-pokemon-2"></span>
+                    </div>
+                    <img class="pokemon-image" id="pok-2" src="" alt="Pokémon">
+                    <div class="pokemon-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Altura</div>
+                            <div class="detail-value" id="valor-altura-2"></div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Peso</div>
+                            <div class="detail-value" id="valor-peso-2"></div>
+                        </div>
+                    </div>
+                    <div class="section-title">Tipo</div>
+                </div>
+                <div class="pokemon-types" id="seccion-tipo-2"></div>
+            </div>
+
+            <div class="card back">
+                <div class="section-title">Estadísticas</div>
+                <div class="stats-container" id="seccion-estadisticas-2"></div>
+
+                <div class="section-title">Debilidades</div>
+                <div class="weaknesses-container" id="seccion-debilidades-2"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal de Batalla -->
+    <div id="battle-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>¡Batalla Pokémon!</h2>
+
+            <div class="battle-arena">
+                <div class="pokemon-battle" id="pokemon-1-battle">
+                    <img id="battle-pokemon-1-img" src="" alt="Pokémon 1">
+                    <div class="pokemon-health">
+                        <div class="health-bar" id="health-bar-1">
+                            <div class="health-fill" id="health-fill-1"></div>
+                        </div>
+                        <span id="health-text-1" class="health-text">100%</span>
+                    </div>
+                    <div class="pokemon-stats" id="pokemon-1-stats"></div>
+                </div>
+
+                <div class="vs">VS</div>
+
+                <div class="pokemon-battle" id="pokemon-2-battle">
+                    <img id="battle-pokemon-2-img" src="" alt="Pokémon 2">
+                    <div class="pokemon-health">
+                        <div class="health-bar" id="health-bar-2">
+                            <div class="health-fill" id="health-fill-2"></div>
+                        </div>
+                        <span id="health-text-2" class="health-text">100%</span>
+                    </div>
+                    <div class="pokemon-stats" id="pokemon-2-stats"></div>
+                </div>
+            </div>
+
+            <div class="battle-log" id="battle-log"></div>
+            <div class="battle-controls">
+                <button id="attack-btn" class="attack-btn">Atacar</button>
+                <button id="new-battle-btn" class="new-battle-btn" style="display: none;">Nueva Pelea</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- GIF de ataque (oculto inicialmente) -->
+    <div id="attack-effect" class="attack-effect" style="display: none; ">
+        <img src="./archivos/aggron_attack_cropped.gif" alt="Ataque Pokémon" style="border-radius: 30%;">
+    </div>
+    <!-- Modal de Ganador -->
+    <div id="winner-modal" class="modal">
+        <div class="modal-content winner-content">
+            <h2>¡GANADOR!</h2>
+            <div class="winner-container">
+                <img id="winner-img" src="" alt="Pokémon Ganador">
+                <h3 id="winner-name"></h3>
+            </div>
+            <div class="battle-controls">
+                <button id="final-new-battle-btn" class="new-battle-btn">Nueva Pelea</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // Variables globales para almacenar los datos de los Pokémon
+        let pokemon1Data = null;
+        let pokemon2Data = null;
+        let pokemon1Health = 100;
+        let pokemon2Health = 100;
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            // Función para cargar datos de un Pokémon en una tarjeta específica
+            async function loadPokemonData(cardNumber) {
+                // Obtener Pokémon aleatorio
+                const randomPokemon = Math.floor(Math.random() * 151) + 1;
+                let res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${randomPokemon}`);
+                console.log(res.data);
+
+
+                // Mostrar datos básicos
+                document.getElementById(`nombre-pokemon-${cardNumber}`).textContent = res.data.name;
+                document.getElementById(`pok-${cardNumber}`).src = res.data.sprites.other['official-artwork'].front_default || res.data.sprites.front_default;
+                document.getElementById(`numero-pokemon-${cardNumber}`).textContent = `#${res.data.id}`;
+                document.getElementById(`valor-altura-${cardNumber}`).textContent = `${(res.data.height / 10)} m`;
+                document.getElementById(`valor-peso-${cardNumber}`).textContent = `${(res.data.weight)} kg`;
+
+                // Configurar colores según tipos
+                const tipoPrincipal = res.data.types[0].type.name;
+                document.getElementById(`container-${cardNumber}`).style.setProperty('--type-color-1', `var(--color-${tipoPrincipal})`);
+
+                if (res.data.types.length > 1) {
+                    const tipoSecundario = res.data.types[1].type.name;
+                    document.getElementById(`container-${cardNumber}`).style.setProperty('--type-color-2', `var(--color-${tipoSecundario})`);
+                }
+
+                // Limpiar secciones antes de agregar nuevos elementos
+                document.getElementById(`seccion-tipo-${cardNumber}`).innerHTML = '';
+                document.getElementById(`seccion-estadisticas-${cardNumber}`).innerHTML = '';
+                document.getElementById(`seccion-debilidades-${cardNumber}`).innerHTML = '';
+
+                // Mostrar tipos
+                res.data.types.forEach((item, i) => {
+                    const typeElement = document.createElement('div');
+                    typeElement.className = `type-badge animate-fade`;
+                    typeElement.style.animationDelay = `${i * 0.1}s`;
+                    typeElement.textContent = item.type.name.toUpperCase();
+                    typeElement.style.backgroundColor = `var(--color-${item.type.name})`;
+                    document.getElementById(`seccion-tipo-${cardNumber}`).appendChild(typeElement);
+                });
+
+                // Mostrar estadísticas
+                res.data.stats.forEach((stat, i) => {
+                    const statItem = document.createElement('div');
+                    statItem.className = `stat-item animate-fade`;
+                    statItem.style.animationDelay = `${i * 0.1}s`;
+
+                    const statName = document.createElement('div');
+                    statName.className = 'stat-name';
+                    statName.textContent = stat.stat.name.replace('-', ' ');
+
+                    const statValue = document.createElement('div');
+                    statValue.className = 'stat-value';
+                    statValue.textContent = stat.base_stat;
+
+                    const statBar = document.createElement('div');
+                    statBar.className = 'stat-bar';
+
+                    const statFill = document.createElement('div');
+                    statFill.className = 'stat-fill';
+
+                    setTimeout(() => {
+                        statFill.style.width = `${Math.min(100, (stat.base_stat / 255) * 100)}%`;
+                    }, 500 + (i * 100));
+
+                    statBar.appendChild(statFill);
+                    statItem.append(statName, statValue, statBar);
+                    document.getElementById(`seccion-estadisticas-${cardNumber}`).appendChild(statItem);
+                });
+
+                // Obtener y mostrar debilidades
+                const listadebilidades = [];
+                for (let debil of res.data.types) {
+                    const respuesta = await axios.get(debil.type.url);
+                    listadebilidades.push(respuesta);
+                }
+
+                const debilidades = new Set();
+                listadebilidades.forEach(debil => {
+                    debil.data.damage_relations.double_damage_from.forEach(dano1 => debilidades.add(dano1.name));
+                    debil.data.damage_relations.half_damage_from.forEach(dano2 => debilidades.delete(dano2.name));
+                    debil.data.damage_relations.no_damage_from.forEach(danonull => debilidades.delete(danonull.name));
+                });
+
+                Array.from(debilidades).forEach((debil, i) => {
+                    const weaknessElement = document.createElement('div');
+                    weaknessElement.className = `weakness-badge animate-fade`;
+                    weaknessElement.style.animationDelay = `${i * 0.1}s`;
+                    weaknessElement.textContent = debil.toUpperCase();
+                    weaknessElement.style.setProperty('--weakness-color', `var(--color-${debil})`);
+                    document.getElementById(`seccion-debilidades-${cardNumber}`).appendChild(weaknessElement);
+                });
+
+                return res.data;
+            }
+
+            // Cargar datos para ambas tarjetas
+            pokemon1Data = await loadPokemonData(1);
+            pokemon2Data = await loadPokemonData(2);
+
+            // Agregar event listeners para el click en las tarjetas
+            document.querySelectorAll('.container').forEach(container => {
+                container.addEventListener('click', function () {
+                    if (this.style.transform === 'rotateY(180deg)') {
+                        this.style.transform = 'rotateY(0deg)';
+                    } else {
+                        this.style.transform = 'rotateY(180deg)';
+                    }
+                });
+            });
+
+            // Botón Pelear
+            const pelearBtn = document.getElementById('pelear-btn');
+            const modal = document.getElementById('battle-modal');
+            const closeModal = document.querySelector('.close-modal');
+            const attackBtn = document.getElementById('attack-btn');
+            const newBattleBtn = document.getElementById('new-battle-btn');
+
+            pelearBtn.addEventListener('click', () => {
+                // Verificar que tenemos datos de Pokémon
+                if (pokemon1Data && pokemon2Data) {
+                    setupBattle();
+                    modal.style.display = 'block';
+                } else {
+                    alert('¡Primero carga los Pokémon!');
+                }
+            });
+
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+                resetBattle();
+            });
+
+            attackBtn.addEventListener('click', async () => {
+                await executeAttack();
+            });
+
+            newBattleBtn.addEventListener('click', () => {
+                location.reload();
+            });
+
+            // Cerrar modal al hacer click fuera de él
+            window.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    resetBattle();
+                }
+            });
+        });
+
+        function setupBattle() {
+            // Configurar la vista de batalla
+            document.getElementById('battle-pokemon-1-img').src =
+                pokemon1Data.sprites.other['showdown'].back_default;
+            document.getElementById('battle-pokemon-2-img').src =
+                pokemon2Data.sprites.other['showdown'].front_default;
+
+            // Mostrar estadísticas básicas
+            document.getElementById('pokemon-1-stats').innerHTML = `
+                <h3>${pokemon1Data.name.toUpperCase()}</h3>
+                <p>HP: ${pokemon1Data.stats[0].base_stat}</p>
+                <p>Ataque: ${pokemon1Data.stats[1].base_stat}</p>
+            `;
+
+            document.getElementById('pokemon-2-stats').innerHTML = `
+                <h3>${pokemon2Data.name.toUpperCase()}</h3>
+                <p>HP: ${pokemon2Data.stats[0].base_stat}</p>
+                <p>Ataque: ${pokemon2Data.stats[1].base_stat}</p>
+            `;
+
+            // Resetear salud
+            pokemon1Health = 100;
+            pokemon2Health = 100;
+            updateHealthBars();
+
+            // Habilitar botón de ataque
+            document.getElementById('attack-btn').style.display = 'inline-block';
+            document.getElementById('new-battle-btn').style.display = 'none';
+
+            // Limpiar log de batalla
+            document.getElementById('battle-log').innerHTML =
+                `<p>¡Comienza la batalla entre ${pokemon1Data.name} y ${pokemon2Data.name}!</p>`;
+        }
+
+        async function executeAttack() {
+            // Deshabilitar botón durante el ataque
+            document.getElementById('attack-btn').disabled = true;
+
+            // Pokémon 1 ataca a Pokémon 2
+            await showAttackAnimation('battle-pokemon-1-img', 'battle-pokemon-2-img');
+            const attack1 = calculateDamage(pokemon1Data, pokemon2Data);
+            pokemon2Health = Math.max(0, pokemon2Health - attack1.damage);
+
+            // Añadir al log
+            addToBattleLog(`${pokemon1Data.name} usa ${attack1.move} y causa ${attack1.damage}% de daño!`);
+            updateHealthBars();
+
+            // Verificar si Pokémon 2 fue derrotado
+            if (pokemon2Health <= 0) {
+                addToBattleLog(`¡${pokemon2Data.name} fue derrotado!`);
+                addToBattleLog(`¡${pokemon1Data.name} es el ganador!`);
+                await new Promise(resolve => setTimeout(resolve, 1000)); // Pequeña pausa dramática
+                endBattle(pokemon1Data);
+                return;
+            }
+
+            // Pequeña pausa entre ataques
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            // Pokémon 2 ataca a Pokémon 1
+            await showAttackAnimation('battle-pokemon-2-img', 'battle-pokemon-1-img');
+            const attack2 = calculateDamage(pokemon2Data, pokemon1Data);
+            pokemon1Health = Math.max(0, pokemon1Health - attack2.damage);
+
+            // Añadir al log
+            addToBattleLog(`${pokemon2Data.name} usa ${attack2.move} y causa ${attack2.damage}% de daño!`);
+            updateHealthBars();
+
+            // Verificar si Pokémon 1 fue derrotado
+            if (pokemon1Health <= 0) {
+                addToBattleLog(`¡${pokemon1Data.name} fue derrotado!`);
+                addToBattleLog(`¡${pokemon2Data.name} es el ganador!`);
+                await new Promise(resolve => setTimeout(resolve, 1000)); // Pequeña pausa dramática
+                endBattle(pokemon2Data);
+                return;
+            }
+
+            // Rehabilitar botón de ataque
+            document.getElementById('attack-btn').disabled = false;
+        }
+
+        async function showAttackAnimation(attackerId, defenderId) {
+            const attackEffect = document.getElementById('attack-effect');
+            const attacker = document.getElementById(attackerId);
+            const defender = document.getElementById(defenderId);
+
+            // Posicionar el GIF de ataque sobre el defensor
+            const defenderRect = defender.getBoundingClientRect();
+            attackEffect.style.left = `${defenderRect.left}px`;
+            attackEffect.style.top = `${defenderRect.top}px`;
+            attackEffect.style.width = `${defenderRect.width}px`;
+            attackEffect.style.height = `${defenderRect.height}px`;
+
+            // Mostrar efecto de ataque
+            attackEffect.style.display = 'block';
+
+            // Animación de ataque (mover atacante hacia adelante)
+            attacker.style.transform = 'translateX(20px)';
+            await new Promise(resolve => setTimeout(resolve, 200));
+            attacker.style.transform = 'translateX(0)';
+
+            // Ocultar efecto después de 500ms
+            await new Promise(resolve => setTimeout(resolve, 500));
+            attackEffect.style.display = 'none';
+        }
+        function endBattle(winnerData) {
+            // Ocultar botón de ataque en el modal de batalla
+            document.getElementById('attack-btn').style.display = 'none';
+            document.getElementById('new-battle-btn').style.display = 'inline-block';
+
+            // Mostrar modal de ganador
+            const winnerModal = document.getElementById('winner-modal');
+            document.getElementById('winner-img').src =
+                winnerData.sprites.other['official-artwork'].front_default || winnerData.sprites.front_default;
+            document.getElementById('winner-name').textContent = winnerData.name.toUpperCase();
+
+            // Aplicar color de fondo según el tipo del ganador
+            const winnerType = winnerData.types[0].type.name;
+            const winnerContent = document.querySelector('.winner-content');
+            winnerContent.style.background = `linear-gradient(135deg, var(--color-${winnerType}), #f5f5f5)`;
+            winnerContent.style.border = `5px solid var(--color-${winnerType})`;
+
+            // Ocultar modal de batalla y mostrar el de ganador
+            document.getElementById('battle-modal').style.display = 'none';
+            winnerModal.style.display = 'block';
+
+            // Agregar confeti o efecto de celebración
+            const winnerContainer = document.querySelector('.winner-container');
+            winnerContainer.classList.add('celebrate');
+
+            // Configurar el botón de nueva pelea
+            document.getElementById('final-new-battle-btn').addEventListener('click', () => {
+                location.reload();
+            });
+        }
+        function updateHealthBars() {
+            document.getElementById('health-fill-1').style.width = `${pokemon1Health}%`;
+            document.getElementById('health-text-1').textContent = `${pokemon1Health}%`;
+            document.getElementById('health-fill-2').style.width = `${pokemon2Health}%`;
+            document.getElementById('health-text-2').textContent = `${pokemon2Health}%`;
+
+            // Cambiar color de la barra de salud según el porcentaje
+            updateHealthBarColor('health-fill-1', pokemon1Health);
+            updateHealthBarColor('health-fill-2', pokemon2Health);
+        }
+
+        function updateHealthBarColor(barId, health) {
+            const bar = document.getElementById(barId);
+            if (health > 60) {
+                bar.style.backgroundColor = '#4CAF50'; // Verde
+            } else if (health > 30) {
+                bar.style.backgroundColor = '#FFC107'; // Amarillo
+            } else {
+                bar.style.backgroundColor = '#F44336'; // Rojo
+            }
+        }
+
+        function addToBattleLog(message) {
+            const log = document.getElementById('battle-log');
+            log.innerHTML += `<p>${message}</p>`;
+            log.scrollTop = log.scrollHeight;
+        }
+
+        function resetBattle() {
+            pokemon1Health = 100;
+            pokemon2Health = 100;
+            document.getElementById('attack-btn').disabled = false;
+        }
+        function calculateDamage(attacker, defender) {
+            // Seleccionar un movimiento aleatorio del atacante
+            const randomMove = Math.floor(Math.random() * attacker.moves.length);
+            const moveName = attacker.moves[randomMove].move.name.replace('-', ' ');
+
+            // Calcular daño basado en el ataque del Pokémon y la defensa del oponente
+            const attackStat = attacker.stats[1].base_stat; // Ataque
+            const defenseStat = defender.stats[2].base_stat; // Defensa
+
+            // Daño base (simplificado)
+            let damage = Math.floor((attackStat / defenseStat) * 15) + 5;
+
+            // Asegurarse de que el daño no sea demasiado alto o bajo
+            damage = Math.max(5, Math.min(30, damage));
+
+            return {
+                move: moveName,
+                damage: damage
+            };
+        }
+    </script>
+</body>
+
+</html>
