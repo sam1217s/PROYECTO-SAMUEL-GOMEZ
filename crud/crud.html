@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 50px; width: 70%;">
+        <h1>Formulario de Registro</h1>
+        <input type="text" name="" id="nombre" placeholder="ingrese su Nombre" required>
+        <input type="text" name="" id="apellido" placeholder="ingrese su Apellido">
+        <input type="number" name="" id="documento" placeholder="ingrese su Documento">
+        <input type="text" name="" id="correo" placeholder="ingrese su Correo">
+        <button onclick="guardar()">guardar</button>
+
+    </div>
+    <div>
+        <table>
+            <h1>tabla funcion pintar larga</h1>
+            <thead>
+                <tr>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Documento</th>
+                    <th>Correo</th>
+                </tr>
+            </thead>
+
+            <tbody id="registros">
+
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <table>
+            <h1>tabla funcion pintar inner.thml</h1>
+            <thead>
+                <tr>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Documento</th>
+                    <th>Correo</th>
+                </tr>
+            </thead>
+
+            <tbody id="registrosinner">
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <script>
+        let dataArray = [];
+        function guardar() {
+            if (document.getElementById("nombre").value === "") {
+                alert("Por favor,ingrese su nombre.");
+            } else if (document.getElementById("apellido").value === "")
+                alert("Por favor,ingrese su apellido.");
+            else if (document.getElementById("documento").value === "")
+                alert("Por favor,ingrese su documento.");
+            else if (document.getElementById("correo").value === "")
+                alert("Por favor,ingrese su correo.");
+            else {
+                let datos = {
+                    nombre: document.getElementById("nombre").value,
+                    apellido: document.getElementById("apellido").value,
+                    documento: document.getElementById("documento").value,
+                    correo: document.getElementById("correo").value
+                }
+                dataArray.unshift(datos);
+                console.log(dataArray);
+                pintar()
+                pintarcorto()
+            }
+        }
+        function pintar() {
+            document.getElementById("registros").textContent = ""
+            dataArray.forEach((item, i) => {
+                let tr = document.createElement("tr")
+                let tdnombre = document.createElement("td")
+                tdnombre.textContent = item.nombre
+                let tdapellido = document.createElement("td")
+                tdapellido.textContent = item.apellido
+                let tddocumento = document.createElement("td")
+                tddocumento.textContent = item.documento
+                let tdcorreo = document.createElement("td")
+                tdcorreo.textContent = item.correo
+                tr.appendChild(tdnombre)
+                tr.appendChild(tdapellido)
+                tr.appendChild(tddocumento)
+                tr.appendChild(tdcorreo)
+
+                document.getElementById("registros").appendChild(tr)
+            })
+        }
+        function pintarcorto() {
+            document.getElementById("registrosinner").innerHTML = "";
+
+            let datos = "";
+            dataArray.forEach((item) => {
+                datos += `
+            <tr>
+                <td>${item.nombre}</td>
+                <td>${item.apellido}</td>
+                <td>${item.documento}</td>
+                <td>${item.correo}</td>
+            </tr>
+        `;
+            });
+
+            document.getElementById("registrosinner").innerHTML = datos;
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>
