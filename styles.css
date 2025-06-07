@@ -94,19 +94,96 @@
        bottom: 0;
        width: 100%;
    }
+   /* Estilos para el botón de descripción */
+.btn-descripcion {
+    color: white;
+}
 
-   @media (max-width: 768px) {
-       .sidebar {
-           min-height: auto;
-           width: 100%;
-           position: relative;
-       }
+.btn-descripcion:hover {
+    color: white;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
 
-       .main-content {
-           margin-left: 0;
-       }
+/* Ajustes para los botones en el footer de la tarjeta */
+.card-footer .btn {
+    flex: 1;
+    margin: 0 5px;
+    white-space: nowrap;
+}
 
-       .projects-container {
-           grid-template-columns: 1fr;
-       }
-   }
+/* Estilos para el modal */
+.modal-content {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    border-bottom: 1px solid #e9ecef;
+    background-color: #f8f9fa;
+    border-radius: 10px 10px 0 0;
+}
+
+.modal-title {
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.modal-body {
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.modal-footer {
+    border-top: 1px solid #e9ecef;
+    background-color: #f8f9fa;
+    border-radius: 0 0 10px 10px;
+}
+.modal-lg {
+    max-width: 800px;
+}
+
+.project-details {
+    padding: 15px;
+}
+
+.detail-title {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.detail-content {
+    margin-left: 15px;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.tech-detail {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.modal-header {
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.modal-footer {
+    border-top: 2px solid var(--primary-color);
+}
+
+/* Estilos para las listas en el modal */
+.modal-body ul {
+    padding-left: 20px;
+}
+
+.modal-body li {
+    margin-bottom: 5px;
+}
+
+
+
+   
