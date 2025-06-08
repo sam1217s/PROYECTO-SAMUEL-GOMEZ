@@ -13,285 +13,331 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3 col-lg-2 d-md-block sidebar collapse bg-dark">
-                <div class="position-sticky pt-3">
-                    <div class="text-center mb-4">
-                        <img src="./img/samuel_gomez.png" alt="Samuel Gómez" class="rounded-circle mb-2"
-                            style="width: 100px; height: 100px; object-fit: cover;">
-                        <h5>Samuel Gómez</h5>
-                        <p class="text-muted">Estudiante de ADS</p>
+    <!-- Botón Hamburguesa -->
+    <button class="hamburger-btn">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Overlay para móviles -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="position-sticky pt-3">
+            <div class="text-center mb-4">
+                <img src="./img/samuel_gomez.png" alt="Samuel Gómez" class="rounded-circle sidebar-profile-img">
+                <h5>Samuel Gómez</h5>
+                <p class="text-muted">Estudiante de ADSO</p>
+            </div>
+
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#about">
+                        <i class="fas fa-user"></i>
+                        <span class="nav-link-text">Sobre Mi</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#projects">
+                        <i class="fas fa-folder"></i>
+                        <span class="nav-link-text">Proyectos realizados</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">
+                        <i class="fas fa-envelope"></i>
+                        <span class="nav-link-text">Contacto</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <section id="about" class="py-5 px-md-4">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-center mb-4 mb-lg-0">
+                        <img src="./img/samuel_gomez.png" alt="Samuel Gómez" class="rounded-circle about-profile-img">
+                    </div>
+                    <div class="col-lg-8">
+                        <h2 class="section-title">Sobre Mi</h2>
+                        <p class="lead"><strong>Samuel Gómez</strong> es estudiante de Análisis y Desarrollo de
+                            Software.</p>
+                        <p>
+                            Desarrollador Full Stack con experiencia en múltiples tecnologías del frontend y backend.
+                            Cuento con sólidos conocimientos en HTML/CSS, JavaScript, y frameworks modernos como
+                            Vue, Bootstrap, Materialize y Semantic UI para construir interfaces responsivas y
+                            accesibles.
+                            En el backend, manejo Node.js, Python, SQL y bases de datos como MongoDB.
+                            Tengo experiencia en el desarrollo móvil con Flutter y el lenguaje Dart, lo que me
+                            permite crear aplicaciones multiplataforma.
+                            Además, poseo dominio en control de versiones con Git y GitHub, herramientas clave para
+                            el trabajo colaborativo y la integración continua.
+                        </p>
+                        <br>
+                        <p>Apasionado por la tecnología y la programación, se encuentra en constante formación para
+                            perfeccionar sus habilidades en el desarrollo de soluciones innovadoras. Le motiva la
+                            resolución de problemas mediante el código y la optimización de sistemas para hacerlos
+                            más eficientes y funcionales.</p>
+                        <p>Está siempre en búsqueda de nuevos conocimientos y herramientas que impulsen su
+                            crecimiento profesional dentro del ámbito del desarrollo de software.</p>
+
+                        <div class="mt-4">
+                            <h4>Habilidades técnicas</h4>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge bg-primary">JavaScript</span>
+                                <span class="badge bg-primary">Python</span>
+                                <span class="badge bg-primary">Node.js</span>
+                                <span class="badge bg-primary">Vue</span>
+                                <span class="badge bg-primary">Flutter</span>
+                                <span class="badge bg-primary">MongoDB</span>
+                                <span class="badge bg-primary">Git</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-5 px-md-4" style="display: none;">
+            <div class="container-fluid">
+                <div class="text-center mb-5">
+                    <h1 class="section-title">MIS PROYECTOS</h1>
+                </div>
+
+                <div class="projects-container">
+                    <!-- Proyecto 1 - ¿QUIEN SOY? -->
+                    <div class="card">
+                        <img src="./img/1.jpg" class="card-img-top project-img" alt="¿QUIEN SOY?">
+                        <div class="card-body">
+                            <h5 class="card-title">¿QUIEN SOY?</h5>
+                            <p class="card-text">Proyecto personal que muestra información sobre mí.</p>
+                        </div>
+                        <div class="card-footer bg-transparent d-flex justify-content-between">
+                            <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
+                                data-bs-target="#proyectoModal" data-title="¿QUIEN SOY?"
+                                data-description="Este proyecto consiste en el desarrollo de una página web personal que muestra información sobre mí, mis habilidades y experiencia. Implementado con tecnologías frontend básicas para crear un perfil interactivo."
+                                data-objetivo="Crear una presentación personal profesional que sirva como portafolio digital y punto de contacto para oportunidades laborales o colaboraciones."
+                                data-tecnologias='["Lenguaje: HTML, CSS, JavaScript", "Framework: No aplica", "Base de datos: No aplica", "Control de versiones: Git/GitHub"]'
+                                data-resultados='["Página web personal completamente funcional", "Diseño limpio y profesional", "Secciones organizadas: sobre mí, habilidades, proyectos", "Optimizado para dispositivos móviles"]'
+                                data-link="./QUIEN-SOY/index.html">
+                                <i class="fas fa-info-circle me-1"></i> Descripción
+                            </button>
+                            <a href="./QUIEN-SOY/index.html" target="_blank" class="btn btn-primary">VER PROYECTO</a>
+                        </div>
                     </div>
 
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#about">
-                                <i class="fas fa-user"></i> Sobre Mi
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#projects">
-                                <i class="fas fa-folder"></i> Proyectos realizados
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="mt-4 p-3">
-                        <h6>Contacto</h6>
-                        <ul class="list-unstyled">
-                            <li class="mb-2">
-                                <i class="fas fa-envelope me-2"></i><a href="mailto:1705alejogomez@gmail.com"
-                                    class="text-light text-decoration-none">1705alejogomez@gmail.com</a>
+                    <!-- Proyecto 2 - BANDAS DE ROCK -->
+                    <div class="card">
+                        <img src="./img/2.jpg" class="card-img-top project-img" alt="BANDAS DE ROCK">
+                        <div class="card-body">
+                            <h5 class="card-title">BANDAS DE ROCK</h5>
+                            <p class="card-text">Página web sobre bandas de rock favoritas.</p>
+                        </div>
+                        <div class="card-footer bg-transparent d-flex justify-content-between">
+                            <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
+                                data-bs-target="#proyectoModal" data-title="BANDAS DE ROCK"
+                                data-description="Este proyecto consiste en el desarrollo de una aplicación web enfocada en mostrar información sobre bandas de rock famosas. Implementado con HTML, CSS y JavaScript con diseño responsivo usando Bootstrap."
+                                data-objetivo="Crear un catálogo interactivo de bandas de rock que permita a los usuarios descubrir información sobre sus artistas favoritos, incluyendo historia, discografía y canciones destacadas."
+                                data-tecnologias='["Lenguaje: HTML, CSS, JavaScript", "Framework: Bootstrap 5", "Base de datos: No aplica (estático)", "Control de versiones: Git/GitHub"]'
+                                data-resultados='["Sitio web completamente funcional con información detallada", "Diseño responsivo para móviles y desktop", "Interfaz intuitiva con navegación sencilla", "Galería de imágenes de bandas"]'
+                                data-link="./bandas-de-rock/index.html">
+                                <i class="fas fa-info-circle me-1"></i> Descripción
+                            </button>
+                            <a href="./bandas-de-rock/index.html" target="_blank" class="btn btn-primary">VER
+                                PROYECTO</a>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 3 - MI PERFIL -->
+                    <div class="card">
+                        <img src="./img/3.jpg" class="card-img-top project-img" alt="MI PERFIL">
+                        <div class="card-body">
+                            <h5 class="card-title">MI PERFIL</h5>
+                            <p class="card-text">Página de perfil profesional.</p>
+                        </div>
+                        <div class="card-footer bg-transparent d-flex justify-content-between">
+                            <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
+                                data-bs-target="#proyectoModal" data-title="MI PERFIL"
+                                data-description="Este proyecto consiste en una página de perfil profesional avanzada que muestra mis habilidades, experiencia y proyectos. Desarrollada con tecnologías modernas de frontend para crear una presentación impactante."
+                                data-objetivo="Desarrollar un perfil profesional online completo que destaque mis habilidades técnicas, experiencia laboral y proyectos realizados, sirviendo como currículum interactivo."
+                                data-tecnologias='["Lenguaje: HTML, CSS, JavaScript", "Framework: Bootstrap 5", "Base de datos: No aplica", "Control de versiones: Git/GitHub"]'
+                                data-resultados='["Perfil profesional completo y responsive", "Diseño moderno y atractivo", "Secciones bien organizadas", "Optimización para SEO básico"]'
+                                data-link="./MI-PERFIL/index.html">
+                                <i class="fas fa-info-circle me-1"></i> Descripción
+                            </button>
+                            <a href="./MI-PERFIL/index.html" target="_blank" class="btn btn-primary">VER PROYECTO</a>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 4 - VIDEO DESPLEGAR RENDER -->
+                    <div class="card">
+                        <img src="./img/4.jpg" class="card-img-top project-img" alt="VIDEO DESPLEGAR RENDER">
+                        <div class="card-body">
+                            <h5 class="card-title">VIDEO DESPLEGAR RENDER</h5>
+                            <p class="card-text">Video demostrativo de un proyecto.</p>
+                        </div>
+                        <div class="card-footer bg-transparent d-flex justify-content-between">
+                            <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
+                                data-bs-target="#proyectoModal" data-title="VIDEO DESPLEGAR RENDER"
+                                data-description="Este proyecto consiste en un video tutorial que muestra el proceso completo de despliegue de una aplicación web en el servicio en la nube Render. Incluye todos los pasos desde la configuración hasta el lanzamiento."
+                                data-objetivo="Crear una guía visual completa que explique el proceso de deployment en Render, ayudando a otros desarrolladores a implementar sus aplicaciones en este servicio cloud."
+                                data-tecnologias='["Plataforma: Render", "Tecnologías mostradas: Node.js, Git", "Herramientas: Visual Studio Code", "Control de versiones: Git/GitHub"]'
+                                data-resultados='["Video tutorial completo y detallado", "Explicación clara de cada paso", "Cobertura de problemas comunes y soluciones", "Guía accesible para principiantes"]'
+                                data-link="https://youtu.be/msJDXHGS7AU">
+                                <i class="fas fa-info-circle me-1"></i> Descripción
+                            </button>
+                            <a href="https://youtu.be/msJDXHGS7AU" target="_blank" class="btn btn-primary">VER
+                                PROYECTO</a>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 5 - PAGINA JOHANSON -->
+                    <div class="card">
+                        <img src="./img/5.jpg" class="card-img-top project-img" alt="PAGINA JOHANSON">
+                        <div class="card-body">
+                            <h5 class="card-title">PAGINA JOHANSON</h5>
+                            <p class="card-text">Página web para Johanson.</p>
+                        </div>
+                        <div class="card-footer bg-transparent d-flex justify-content-between">
+                            <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
+                                data-bs-target="#proyectoModal" data-title="PAGINA JOHANSON"
+                                data-description="Este proyecto consiste en el desarrollo de un sitio web corporativo para Johanson, mostrando sus servicios, productos e información de contacto. Implementado con tecnologías frontend modernas."
+                                data-objetivo="Crear una presencia online profesional para Johanson que comunique efectivamente sus servicios y valore su marca, atrayendo potenciales clientes."
+                                data-tecnologias='["Lenguaje: HTML, CSS, JavaScript", "Framework: Bootstrap 5", "Base de datos: No aplica", "Control de versiones: Git/GitHub"]'
+                                data-resultados='["Sitio web corporativo completo", "Diseño alineado con identidad de marca", "Páginas: Inicio, Servicios, Contacto", "Formulario de contacto funcional"]'
+                                data-link="./pagina-johanson/index.html">
+                                <i class="fas fa-info-circle me-1"></i> Descripción
+                            </button>
+                            <a href="./pagina-johanson/index.html" target="_blank" class="btn btn-primary">VER
+                                PROYECTO</a>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 6 - PAGINA ZAPATOS -->
+                    <div class="card">
+                        <img src="./img/zapatos.jpg" class="card-img-top project-img" alt="PAGINA ZAPATOS">
+                        <div class="card-body">
+                            <h5 class="card-title">PAGINA ZAPATOS</h5>
+                            <p class="card-text">Página web sobre zapatos.</p>
+                        </div>
+                        <div class="card-footer bg-transparent d-flex justify-content-between">
+                            <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
+                                data-bs-target="#proyectoModal" data-title="PAGINA ZAPATOS"
+                                data-description="Este proyecto consiste en una tienda online de zapatos con catálogo de productos y funcionalidades básicas de e-commerce. Desarrollado como demostración de habilidades en comercio electrónico."
+                                data-objetivo="Implementar un prototipo funcional de tienda online de zapatos que muestre productos, permita filtrarlos por categorías y simule un proceso de compra."
+                                data-tecnologias='["Lenguaje: HTML, CSS, JavaScript", "Framework: Bootstrap 5", "Base de datos: No aplica (simulada)", "Control de versiones: Git/GitHub"]'
+                                data-resultados='["Catálogo de productos organizado", "Sistema de filtrado por categorías", "Diseño atractivo y profesional", "Simulador de carrito de compras"]'
+                                data-link="./pagina-zapatos/index.html">
+                                <i class="fas fa-info-circle me-1"></i> Descripción
+                            </button>
+                            <a href="./pagina-zapatos/index.html" target="_blank" class="btn btn-primary">VER
+                                PROYECTO</a>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 7 - POKE API -->
+                    <div class="card">
+                        <img src="./img/pokeappi.png" class="card-img-top project-img" alt="POKE API">
+                        <div class="card-body">
+                            <h5 class="card-title">POKE API</h5>
+                            <p class="card-text">Poke Card battle simulation.</p>
+                        </div>
+                        <div class="card-footer bg-transparent d-flex justify-content-between">
+                            <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
+                                data-bs-target="#proyectoModal" data-title="POKE API"
+                                data-description="Este proyecto consiste en un simulador de batallas Pokémon que consume la PokeAPI pública para mostrar información y características de diferentes Pokémon. Implementa un sistema de combate por turnos."
+                                data-objetivo="Desarrollar una aplicación interactiva que demuestre el consumo de APIs RESTful y la manipulación de datos JSON, creando una experiencia de juego simple pero funcional."
+                                data-tecnologias='["Lenguaje: JavaScript", "API: PokeAPI", "Framework: Bootstrap 5", "Control de versiones: Git/GitHub"]'
+                                data-resultados='["Sistema de combate Pokémon funcional", "Consumo eficiente de API REST", "Interfaz de usuario intuitiva", "Gestión de estados del juego"]'
+                                data-link="./pokeapi/index.html">
+                                <i class="fas fa-info-circle me-1"></i> Descripción
+                            </button>
+                            <a href="./pokeapi/index.html" target="_blank" class="btn btn-primary">VER PROYECTO</a>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 8 - CRUD -->
+                    <div class="card">
+                        <img src="./img/crud.png" class="card-img-top project-img" alt="CRUD">
+                        <div class="card-body">
+                            <h5 class="card-title">CRUD</h5>
+                            <p class="card-text">Registro Mediante Formulario.</p>
+                        </div>
+                        <div class="card-footer bg-transparent d-flex justify-content-between">
+                            <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
+                                data-bs-target="#proyectoModal" data-title="CRUD"
+                                data-description="Este proyecto consiste en un sistema CRUD (Create, Read, Update, Delete) completo que permite gestionar registros mediante un formulario. Los datos se persisten en el localStorage del navegador."
+                                data-objetivo="Implementar un sistema de gestión de registros completo que demuestre el manejo de operaciones básicas de persistencia de datos en el frontend."
+                                data-tecnologias='["Lenguaje: JavaScript", "Almacenamiento: localStorage", "Framework: Bootstrap 5", "Control de versiones: Git/GitHub"]'
+                                data-resultados='["Operaciones CRUD completamente funcionales", "Validación de formularios", "Persistencia de datos en el navegador", "Interfaz de usuario clara y funcional"]'
+                                data-link="./crud/index.html">
+                                <i class="fas fa-info-circle me-1"></i> Descripción
+                            </button>
+                            <a href="./crud/index.html" target="_blank" class="btn btn-primary">VER PROYECTO</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-5 px-md-4" style="display: none;">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="section-title">Contacto</h2>
+                        <ul class="contact-info">
+                            <li>
+                                <a href="mailto:1705alejogomez@gmail.com">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>1705alejogomez@gmail.com</span>
+                                </a>
                             </li>
-                            <li class="mb-2">
-                                <i class="fab fa-whatsapp me-2"></i>
-                                <a href="https://wa.me/573001695629" target="_blank"
-                                    class="text-light text-decoration-none">WhatsApp</a>
+                            <li>
+                                <a href="https://wa.me/573001695629" target="_blank">
+                                    <i class="fab fa-whatsapp"></i>
+                                    <span>WhatsApp</span>
+                                </a>
                             </li>
-                            <li class="mb-2">
-                                <i class="fab fa-github me-2"></i>
-                                <a href="https://github.com/sam1217s" target="_blank"
-                                    class="text-light text-decoration-none">Github</a>
+                            <li>
+                                <a href="https://github.com/sam1217s" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                    <span>Github</span>
+                                </a>
                             </li>
-                            <li class="mb-2">
-                                <i class="fab fa-linkedin me-2"></i>
-                                <a href="https://www.linkedin.com/in/samuel-gomez-gomez-195562306/" target="_blank"
-                                    class="text-light text-decoration-none">LinkedIn</a>
+                            <li>
+                                <a href="https://www.linkedin.com/in/samuel-gomez-gomez-195562306/" target="_blank">
+                                    <i class="fab fa-linkedin"></i>
+                                    <span>LinkedIn</span>
+                                </a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
+        </section>
+        <section id="projects" class="py-5 px-md-4" style="display: none;">
+            <!-- Contenido de proyectos... -->
+        </section>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
-                <section id="about" class="py-5">
-                    <div class="row align-items-center">
-                        <div class="col-lg-4 text-center mb-4 mb-lg-0">
-                            <img src="./img/samuel_gomez.png" alt="Samuel Gómez"
-                                class="img-fluid rounded-circle profile-img">
-                        </div>
-                        <div class="col-lg-8">
-                            <h2 class="section-title">Sobre Mi</h2>
-                            <p class="lead"><strong>Samuel Gómez</strong> estudiante de Análisis y Desarrollo de
-                                Software.</p>
-                            <p>
-                              Desarrollador Full Stack con experiencia en múltiples tecnologías del frontend y backend. Posee sólidos conocimientos en HTML/CSS, JavaScript y frameworks modernos como Vue, Bootstrap, Materialize y Semantic UI para construir interfaces responsivas y accesibles. En el backend, maneja tecnologías como Node.js, Python, SQL y bases de datos como MongoDB. También cuenta con experiencia en desarrollo móvil utilizando Flutter y el lenguaje Dart, lo que le permite crear aplicaciones multiplataforma. Además, domina el control de versiones con Git y GitHub, herramientas clave para el trabajo colaborativo y la integración continua.
-                            </p>
-                            <p>Le apasiona la tecnología y la programación, y se encuentra en constante formación para perfeccionar sus habilidades en el desarrollo de soluciones innovadoras. Le motiva la resolución de problemas mediante el código y la optimización de sistemas para hacerlos más eficientes y funcionales.</p>
-                            <p>Siempre está en búsqueda de nuevos conocimientos y herramientas que impulsen su crecimiento profesional dentro del ámbito del desarrollo de software.</p>
+        <section id="contact" class="py-5 px-md-4" style="display: none;">
+            <!-- Contenido de contacto... -->
+        </section>
 
-                            <div class="mt-4">
-                                <h4>Habilidades técnicas</h4>
-                                <div class="d-flex flex-wrap gap-2">
-                                    <span class="badge bg-primary">JavaScript</span>
-                                    <span class="badge bg-primary">Python</span>
-                                    <span class="badge bg-primary">Node.js</span>
-                                    <span class="badge bg-primary">Vue</span>
-                                    <span class="badge bg-primary">Flutter</span>
-                                    <span class="badge bg-primary">MongoDB</span>
-                                    <span class="badge bg-primary">Git</span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </section>
-                <section id="projects" class="py-5" style="display: none;">
-                    <div class="text-center mb-5">
-                        <h1 class="section-title">MIS PROYECTOS</h1>
-                    </div>
-
-                    <div class="projects-container">
-                        <!-- Proyecto 1 - ¿QUIEN SOY? -->
-                        <div class="card">
-                            <img src="/img/1.jpg" alt="" class="card-img-top project-img" alt="¿QUIEN SOY?">
-                            <div class="card-body">
-                                <h5 class="card-title">¿QUIEN SOY?</h5>
-                                <p class="card-text">Proyecto personal que muestra información sobre mí.</p>
-                            </div>
-                            <div class="card-footer bg-transparent d-flex justify-content-between">
-                                <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
-                                    data-bs-target="#proyectoModal" data-title="¿QUIEN SOY?"
-                                    data-description="Este proyecto consiste en el desarrollo de una página web personal que muestra información sobre mí, mis habilidades y experiencia. Implementado con tecnologías frontend básicas para crear un perfil interactivo."
-                                    data-objetivo="Crear una presentación personal profesional que sirva como portafolio digital y punto de contacto para oportunidades laborales o colaboraciones."
-                                    data-tecnologias='["Lenguaje: HTML y CSS", "Framework: No aplica", "Base de datos: No aplica", "Control de versiones: Git/GitHub"]'
-                                    data-resultados='["Página web personal completamente funcional", "Diseño limpio y profesional", "Secciones organizadas: sobre mí, habilidades, proyectos", "Optimizado para dispositivos móviles"]'
-                                    data-link="./QUIEN SOY/index.html">
-                                    <i class="fas fa-info-circle me-1"></i> Descripción
-                                </button>
-                                <a href="./QUIEN SOY/index.html" target="_blank" class="btn btn-primary">VER
-                                    PROYECTO</a>
-                            </div>
-                        </div>
-
-                        <!-- Proyecto 2 - BANDAS DE ROCK -->
-                        <div class="card">
-                            <img src="/img/2.jpg" alt="" class="card-img-top project-img" alt="BANDAS DE ROCK">
-                            <div class="card-body">
-                                <h5 class="card-title">BANDAS DE ROCK</h5>
-                                <p class="card-text">Página web sobre bandas de rock favoritas.</p>
-                            </div>
-                            <div class="card-footer bg-transparent d-flex justify-content-between">
-                                <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
-                                    data-bs-target="#proyectoModal" data-title="BANDAS DE ROCK"
-                                    data-description="Este proyecto consiste en el desarrollo de una aplicación web enfocada en mostrar información sobre bandas de rock famosas. Implementado con HTML, CSS y JavaScript con diseño responsivo usando Bootstrap."
-                                    data-objetivo="Crear un catálogo interactivo de bandas de rock que permita a los usuarios descubrir información sobre sus artistas favoritos, incluyendo historia, discografía y canciones destacadas."
-                                    data-tecnologias='["Lenguaje: HTML y CSS", "Framework: Bootstrap 5", "Base de datos: No aplica (estático)", "Control de versiones: Git/GitHub"]'
-                                    data-resultados='["Sitio web completamente funcional con información detallada", "Diseño responsivo para móviles y desktop", "Interfaz intuitiva con navegación sencilla", "Galería de imágenes de bandas"]'
-                                    data-link="/bandas de rock/index.html">
-                                    <i class="fas fa-info-circle me-1"></i> Descripción
-                                </button>
-                                <a href="/bandas de rock/index.html" target="_blank" class="btn btn-primary">VER
-                                    PROYECTO</a>
-                            </div>
-                        </div>
-
-                        <!-- Proyecto 3 - MI PERFIL -->
-                        <div class="card">
-                            <img src="/img/3.jpg" alt="" class="card-img-top project-img" alt="MI PERFIL">
-                            <div class="card-body">
-                                <h5 class="card-title">MI PERFIL</h5>
-                                <p class="card-text">Página de perfil profesional.</p>
-                            </div>
-                            <div class="card-footer bg-transparent d-flex justify-content-between">
-                                <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
-                                    data-bs-target="#proyectoModal" data-title="MI PERFIL"
-                                    data-description="Este proyecto consiste en una página de perfil profesional avanzada que muestra mis habilidades, experiencia y proyectos. Desarrollada con tecnologías modernas de frontend para crear una presentación impactante."
-                                    data-objetivo="Desarrollar un perfil profesional online completo que destaque mis habilidades técnicas, experiencia laboral y proyectos realizados, sirviendo como currículum interactivo."
-                                    data-tecnologias='["Lenguaje: HTML y CSS", "Framework: No aplica", "Base de datos: No aplica", "Control de versiones: Git/GitHub"]'
-                                    data-resultados='["Perfil profesional completo y responsive", "Diseño moderno y atractivo", "Secciones bien organizadas", "Optimización para SEO básico"]'
-                                    data-link="/MI PERFIL/index.html">
-                                    <i class="fas fa-info-circle me-1"></i> Descripción
-                                </button>
-                                <a href="/MI PERFIL/index.html" target="_blank" class="btn btn-primary">VER PROYECTO</a>
-                            </div>
-                        </div>
-
-                        <!-- Proyecto 4 - VIDEO DESPLEGAR RENDER -->
-                        <div class="card">
-                            <img src="/img/4.jpg" alt="" class="card-img-top project-img" alt="VIDEO DESPLEGAR RENDER">
-                            <div class="card-body">
-                                <h5 class="card-title">VIDEO DESPLEGAR RENDER</h5>
-                                <p class="card-text">Video demostrativo de un proyecto.</p>
-                            </div>
-                            <div class="card-footer bg-transparent d-flex justify-content-between">
-                                <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
-                                    data-bs-target="#proyectoModal" data-title="VIDEO DESPLEGAR RENDER"
-                                    data-description="Este proyecto consiste en un video creado por samuel gomez, un video tutorial que muestra el proceso completo de despliegue de una aplicación web en el servicio en la nube Render. Incluye todos los pasos desde la configuración hasta el lanzamiento."
-                                    data-objetivo="Crear una guía visual completa que explique el proceso de deployment en Render, ayudando a otros desarrolladores a implementar sus aplicaciones en este servicio cloud."
-                                    data-tecnologias='["Plataforma: Render", "Tecnologías mostradas: Node.js, Git", "Herramientas: Visual Studio Code", "Control de versiones: Git/GitHub"]'
-                                    data-resultados='["Video tutorial completo y detallado", "Explicación clara de cada paso", "Cobertura de problemas comunes y soluciones", "Guía accesible para principiantes"]'
-                                    data-link="https://youtu.be/msJDXHGS7AU">
-                                    <i class="fas fa-info-circle me-1"></i> Descripción
-                                </button>
-                                <a href="https://youtu.be/msJDXHGS7AU" target="_blank" class="btn btn-primary">VER
-                                    PROYECTO</a>
-                            </div>
-                        </div>
-
-                        <!-- Proyecto 5 - PAGINA JOHANSON -->
-                        <div class="card">
-                            <img src="/img/5.jpg" alt="" class="card-img-top project-img" alt="PAGINA JOHANSON">
-                            <div class="card-body">
-                                <h5 class="card-title">PAGINA JOHANSON</h5>
-                                <p class="card-text">Página web para Johanson.</p>
-                            </div>
-                            <div class="card-footer bg-transparent d-flex justify-content-between">
-                                <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
-                                    data-bs-target="#proyectoModal" data-title="PAGINA JOHANSON"
-                                    data-description="Este proyecto consiste en el desarrollo de un sitio web corporativo para Johanson, mostrando sus servicios, productos e información de contacto. Implementado con tecnologías frontend modernas."
-                                    data-objetivo="Crear una presencia online profesional para Johanson que comunique efectivamente sus servicios y valore su marca, atrayendo potenciales clientes."
-                                    data-tecnologias='["Lenguaje: HTML y CSS", "Framework: No aplica", "Base de datos: No aplica", "Control de versiones: Git/GitHub"]'
-                                    data-resultados='["Sitio web corporativo completo", "Diseño alineado con identidad de marca", "Páginas: Inicio, Servicios, Contacto", "Formulario de contacto funcional"]'
-                                    data-link="/pagina_johanson/index.html">
-                                    <i class="fas fa-info-circle me-1"></i> Descripción
-                                </button>
-                                <a href="/pagina_johanson/index.html" target="_blank" class="btn btn-primary">VER
-                                    PROYECTO</a>
-                            </div>
-                        </div>
-
-                        <!-- Proyecto 6 - PAGINA ZAPATOS -->
-                        <div class="card">
-                            <img src="/img/zapatos.jpg" alt="" class="card-img-top project-img" alt="PAGINA ZAPATOS">
-                            <div class="card-body">
-                                <h5 class="card-title">PAGINA ZAPATOS</h5>
-                                <p class="card-text">Página web sobre zapatos.</p>
-                            </div>
-                            <div class="card-footer bg-transparent d-flex justify-content-between">
-                                <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
-                                    data-bs-target="#proyectoModal" data-title="PAGINA ZAPATOS"
-                                    data-description="Este proyecto consiste en una tienda online de zapatos con catálogo de productos y funcionalidades básicas de e-commerce. Desarrollado como demostración de habilidades en comercio electrónico."
-                                    data-objetivo="Implementar un prototipo funcional de tienda online de zapatos que muestre productos, permita filtrarlos por categorías y simule un proceso de compra."
-                                    data-tecnologias='["Lenguaje: HTML y CSS", "Framework: No aplica", "Base de datos: No aplica (simulada)", "Control de versiones: Git/GitHub"]'
-                                    data-resultados='["Catálogo de productos organizado", "Sistema de filtrado por categorías", "Diseño atractivo y profesional", "Simulador de carrito de compras"]'
-                                    data-link="/pagina zapatos/index.html">
-                                    <i class="fas fa-info-circle me-1"></i> Descripción
-                                </button>
-                                <a href="/pagina zapatos/index.html" target="_blank" class="btn btn-primary">VER
-                                    PROYECTO</a>
-                            </div>
-                        </div>
-
-                        <!-- Proyecto 7 - POKE API -->
-                        <div class="card">
-                            <img src="./img/pokeappi.png" alt="" class="card-img-top project-img" alt="POKE API">
-                            <div class="card-body">
-                                <h5 class="card-title">POKE API</h5>
-                                <p class="card-text">Poke Card battle simulation.</p>
-                            </div>
-                            <div class="card-footer bg-transparent d-flex justify-content-between">
-                                <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
-                                    data-bs-target="#proyectoModal" data-title="POKE API"
-                                    data-description="Este proyecto consiste en un simulador de batallas Pokémon que consume la PokeAPI pública para mostrar información y características de diferentes Pokémon. Implementa un sistema de combate por turnos."
-                                    data-objetivo="Desarrollar una aplicación interactiva que demuestre el consumo de APIs RESTful y la manipulación de datos JSON, creando una experiencia de juego simple pero funcional."
-                                    data-tecnologias='["Lenguaje: HTML, CSS y JavaScript", "API: PokeAPI", "Framework: Bootstrap 5", "Control de versiones: Git/GitHub"]'
-                                    data-resultados='["Sistema de combate Pokémon funcional", "Consumo eficiente de API REST", "Interfaz de usuario intuitiva", "Gestión de estados del juego"]'
-                                    data-link="./pokeapi/index.html">
-                                    <i class="fas fa-info-circle me-1"></i> Descripción
-                                </button>
-                                <a href="./pokeapi/index.html" target="_blank" class="btn btn-primary">VER PROYECTO</a>
-                            </div>
-                        </div>
-
-                        <!-- Proyecto 8 - CRUD -->
-                        <div class="card">
-                            <img src="./img/crud.png" alt="" class="card-img-top project-img" alt="CRUD">
-                            <div class="card-body">
-                                <h5 class="card-title">CRUD</h5>
-                                <p class="card-text">Registro Mediante Formulario.</p>
-                            </div>
-                            <div class="card-footer bg-transparent d-flex justify-content-between">
-                                <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
-                                    data-bs-target="#proyectoModal" data-title="CRUD"
-                                    data-description="Este proyecto consiste en un sistema CRUD (Create, Read, Update, Delete) completo que permite gestionar registros mediante un formulario. Los datos se persisten en el localStorage del navegador."
-                                    data-objetivo="Implementar un sistema de gestión de registros completo que demuestre el manejo de operaciones básicas de persistencia de datos en el frontend."
-                                    data-tecnologias='["Lenguaje: HTML, CSS y JavaScript", "Almacenamiento: localStorage", "Framework: Bootstrap 5", "Control de versiones: Git/GitHub"]'
-                                    data-resultados='["Operaciones CRUD completamente funcionales", "Validación de formularios", "Persistencia de datos en el navegador", "Interfaz de usuario clara y funcional"]'
-                                    data-link="./crud/index.html">
-                                    <i class="fas fa-info-circle me-1"></i> Descripción
-                                </button>
-                                <a href="./crud/index.html" target="_blank" class="btn btn-primary">VER PROYECTO</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <footer class="bg-dark text-white py-3 mt-5">
-                        <div class="container text-center">
-                            <p class="mb-0">Proyecto personal | Solo para fines educativos, no comerciales.</p>
-                        </div>
-                    </footer>
-                </section>
-            </main>
-        </div>
-    </div>
+        <footer class="bg-dark text-white py-3 mt-5">
+            <div class="container text-center">
+                <p class="mb-0">Proyecto personal | Solo para fines educativos, no comerciales.</p>
+            </div>
+        </footer>
+    </main>
 
     <!-- Modal para descripción de proyectos -->
     <div class="modal fade" id="proyectoModal" tabindex="-1" aria-labelledby="proyectoModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-dark text-white">
-                    <h5 class="modal-title  text-white" id="proyectoModalLabel">Detalles del Proyecto</h5>
+                    <h5 class="modal-title text-white" id="proyectoModalLabel">Detalles del Proyecto</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
@@ -339,13 +385,48 @@
     <!-- Bootstrap JS y dependencias -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Simple JavaScript para manejar la navegación
         document.addEventListener('DOMContentLoaded', function () {
+            const sidebar = document.querySelector('.sidebar');
+            const mainContent = document.querySelector('.main-content');
+            const hamburgerBtn = document.querySelector('.hamburger-btn');
+            const overlay = document.querySelector('.sidebar-overlay');
             const navLinks = document.querySelectorAll('.nav-link');
 
+            // Función para alternar el sidebar en móviles
+            function toggleMobileSidebar() {
+                sidebar.classList.toggle('show');
+                overlay.classList.toggle('active');
+                document.body.classList.toggle('no-scroll');
+            }
+
+            // Función para alternar entre collapsed/expanded en desktop
+            function toggleCollapse() {
+                sidebar.classList.toggle('collapsed');
+                mainContent.classList.toggle('expanded');
+
+                // Guardar estado en localStorage
+                const isCollapsed = sidebar.classList.contains('collapsed');
+                localStorage.setItem('sidebarCollapsed', isCollapsed);
+            }
+
+            // Cargar estado del sidebar
+            if (localStorage.getItem('sidebarCollapsed') === 'true') {
+                sidebar.classList.add('collapsed');
+                mainContent.classList.add('expanded');
+            }
+
+            // Evento para el botón hamburguesa
+            hamburgerBtn.addEventListener('click', toggleMobileSidebar);
+
+            // Evento para el overlay
+            overlay.addEventListener('click', toggleMobileSidebar);
+
+            // Eventos para los enlaces del menú
             navLinks.forEach(link => {
                 link.addEventListener('click', function (e) {
                     e.preventDefault();
+
+                    const target = this.getAttribute('href');
 
                     // Ocultar todas las secciones
                     document.querySelectorAll('section').forEach(section => {
@@ -353,56 +434,47 @@
                     });
 
                     // Mostrar la sección correspondiente
-                    const target = this.getAttribute('href');
                     document.querySelector(target).style.display = 'block';
 
                     // Actualizar el active en el menú
                     navLinks.forEach(item => item.classList.remove('active'));
                     this.classList.add('active');
+
+                    // Colapsar el sidebar después de seleccionar (solo en desktop)
+                    if (window.innerWidth > 991.98) {
+                        toggleCollapse();
+                    } else {
+                        toggleMobileSidebar();
+                    }
                 });
             });
 
-            // Mostrar la sección "about" por defecto
-            document.querySelector('#about').style.display = 'block';
-
-            // Configurar el modal de descripción
+            // Configuración del modal de proyectos
             const proyectoModal = document.getElementById('proyectoModal');
             if (proyectoModal) {
                 proyectoModal.addEventListener('show.bs.modal', function (event) {
                     const button = event.relatedTarget;
-                    const title = button.getAttribute('data-title');
-                    const description = button.getAttribute('data-description');
-                    const objetivo = button.getAttribute('data-objetivo');
+                    const modal = this;
+                    modal.querySelector('#modalProjectName').textContent = button.getAttribute('data-title');
+                    modal.querySelector('#modalDescripcion').textContent = button.getAttribute('data-description');
+                    modal.querySelector('#modalObjetivo').textContent = button.getAttribute('data-objetivo');
+                    modal.querySelector('#modalLink').setAttribute('href', button.getAttribute('data-link'));
+
                     const tecnologias = JSON.parse(button.getAttribute('data-tecnologias'));
                     const resultados = JSON.parse(button.getAttribute('data-resultados'));
-                    const link = button.getAttribute('data-link');
 
-                    const modalTitle = proyectoModal.querySelector('.modal-title');
-                    const modalProjectName = proyectoModal.querySelector('#modalProjectName');
-                    const modalDescripcion = proyectoModal.querySelector('#modalDescripcion');
-                    const modalObjetivo = proyectoModal.querySelector('#modalObjetivo');
-                    const modalTecnologias = proyectoModal.querySelector('#modalTecnologias');
-                    const modalResultados = proyectoModal.querySelector('#modalResultados');
-                    const modalLink = proyectoModal.querySelector('#modalLink');
+                    const modalTecnologias = modal.querySelector('#modalTecnologias');
+                    const modalResultados = modal.querySelector('#modalResultados');
 
-                    modalTitle.textContent = 'Detalles del Proyecto';
-                    modalProjectName.textContent = title;
-                    modalDescripcion.textContent = description;
-                    modalObjetivo.textContent = objetivo;
-                    modalLink.setAttribute('href', link);
-
-                    // Limpiar listas anteriores
                     modalTecnologias.innerHTML = '';
                     modalResultados.innerHTML = '';
 
-                    // Agregar tecnologías
                     tecnologias.forEach(tech => {
                         const li = document.createElement('li');
                         li.innerHTML = tech;
                         modalTecnologias.appendChild(li);
                     });
 
-                    // Agregar resultados
                     resultados.forEach(result => {
                         const li = document.createElement('li');
                         li.textContent = result;
@@ -410,6 +482,18 @@
                     });
                 });
             }
+
+            // Mostrar la sección "about" por defecto
+            document.querySelector('#about').style.display = 'block';
+
+            // Manejar cambios de tamaño de pantalla
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 991.98) {
+                    sidebar.classList.remove('show');
+                    overlay.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                }
+            });
         });
     </script>
 </body>
