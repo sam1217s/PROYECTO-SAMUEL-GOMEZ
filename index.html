@@ -281,7 +281,7 @@
                 </div>
             </div>
         </section>
-
+        <!-- sesion contacto -->
         <section id="contact" class="py-5 px-md-4" style="display: none;">
             <div class="container-fluid">
                 <div class="row justify-content-center">
@@ -316,13 +316,6 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <section id="projects" class="py-5 px-md-4" style="display: none;">
-            <!-- Contenido de proyectos... -->
-        </section>
-
-        <section id="contact" class="py-5 px-md-4" style="display: none;">
-            <!-- Contenido de contacto... -->
         </section>
 
         <footer class="bg-dark text-white py-3 mt-5">
@@ -374,7 +367,7 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         <i class="fas fa-times me-1"></i> Cerrar
                     </button>
-                    <a id="modalLink" href="#" target="_blank" class="btn btn-primary">
+                    <a id="modalLink" href="" target="_blank" class="btn btn-primary">
                         <i class="fas fa-external-link-alt me-1"></i> Ver Proyecto
                     </a>
                 </div>
@@ -455,6 +448,14 @@
                 proyectoModal.addEventListener('show.bs.modal', function (event) {
                     const button = event.relatedTarget;
                     const modal = this;
+                    // Obtener el enlace del botón
+                    const projectLink = button.getAttribute('data-link');
+
+                    // Actualizar el enlace en el modal
+                    const modalLink = modal.getElementById('modalLink');
+                    if (modalLink) {
+                        modalLink.setAttribute('href', projectLink);
+                    }
                     modal.querySelector('#modalProjectName').textContent = button.getAttribute('data-title');
                     modal.querySelector('#modalDescripcion').textContent = button.getAttribute('data-description');
                     modal.querySelector('#modalObjetivo').textContent = button.getAttribute('data-objetivo');
