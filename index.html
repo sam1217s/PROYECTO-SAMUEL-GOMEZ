@@ -367,7 +367,7 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         <i class="fas fa-times me-1"></i> Cerrar
                     </button>
-                    <a id="modalLink" href="" target="_blank" class="btn btn-primary">
+                    <a id="modalLink" href="#" target="_blank" class="btn btn-primary">
                         <i class="fas fa-external-link-alt me-1"></i> Ver Proyecto
                     </a>
                 </div>
@@ -448,18 +448,24 @@
                 proyectoModal.addEventListener('show.bs.modal', function (event) {
                     const button = event.relatedTarget;
                     const modal = this;
-                    // Obtener el enlace del botón
-                    const projectLink = button.getAttribute('data-link');
+                    
+                    // Obtener el enlace del botón "VER PROYECTO" del card correspondiente
+                    const card = button.closest('.card');
+                    const verProyectoBtn = card.querySelector('.btn-primary');
+                    const projectLink = verProyectoBtn ? verProyectoBtn.getAttribute('href') : button.getAttribute('data-link');
 
-                    // Actualizar el enlace en el modal
-                    const modalLink = modal.getElementById('modalLink');
-                    if (modalLink) {
-                        modalLink.setAttribute('href', projectLink);
-                    }
+                    // Actualizar el contenido del modal
                     modal.querySelector('#modalProjectName').textContent = button.getAttribute('data-title');
                     modal.querySelector('#modalDescripcion').textContent = button.getAttribute('data-description');
                     modal.querySelector('#modalObjetivo').textContent = button.getAttribute('data-objetivo');
-                    modal.querySelector('#modalLink').setAttribute('href', button.getAttribute('data-link'));
+                    
+                    // Actualizar el enlace del botón "Ver Proyecto" en el modal
+                    const modalLink = modal.querySelector('#modalLink');
+                    if (modalLink) {
+                        modalLink.href = projectLink;
+                        // También copiamos el target y cualquier otro atributo del botón original
+                        modalLink.setAttribute('target', verProyectoBtn ? verProyectoBtn.getAttribute('target') : '_blank');
+                    }
 
                     const tecnologias = JSON.parse(button.getAttribute('data-tecnologias'));
                     const resultados = JSON.parse(button.getAttribute('data-resultados'));
@@ -494,6 +500,26 @@
                     overlay.classList.remove('active');
                     document.body.classList.remove('no-scroll');
                 }
+            });
+
+            // Manejo de errores para enlaces rotos (opcional)
+            document.querySelectorAll('#modalLink').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Solo verificar para rutas locales (no URLs externas)
+                    if (!this.href.startsWith('http') || this.href.includes(window.location.host)) {
+                        fetch(this.href, { method: 'HEAD' })
+                            .then(response => {
+                                if (!response.ok) {
+                                    e.preventDefault();
+                                    alert('El proyecto no está disponible en este momento.');
+                                }
+                            })
+                            .catch(() => {
+                                e.preventDefault();
+                                alert('Error al cargar el proyecto.');
+                            });
+                    }
+                });
             });
         });
     </script>
