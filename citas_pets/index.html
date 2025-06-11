@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador de Citas Veterinarias</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .cita-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid;
+            height: 100%;
+        }
+
+        .cita-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .abierta {
+            border-left-color: #4e73df;
+        }
+
+        .terminada {
+            border-left-color: #1cc88a;
+        }
+
+        .anulada {
+            border-left-color: #e74a3b;
+        }
+
+        .estado-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .badge-abierta {
+            background-color: rgba(78, 115, 223, 0.1);
+            color: #4e73df;
+        }
+
+        .badge-terminada {
+            background-color: rgba(28, 200, 138, 0.1);
+            color: #1cc88a;
+        }
+
+        .badge-anulada {
+            background-color: rgba(231, 74, 59, 0.1);
+            color: #e74a3b;
+        }
+
+        .contador-caracteres {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+
+        #lista-citas {
+            min-height: 300px;
+        }
+
+        .img-mascota {
+            max-height: 150px;
+            width: auto;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 0 auto;
+            display: block;
+            border: 2px solid #eee;
+            transition: transform 0.3s ease;
+        }
+
+        .img-mascota:hover {
+            transform: scale(1.05);
+        }
+
+        .card:hover .img-mascota {
+            border-color: #4e73df;
+        }
+
+        .bg-light {
+            --bs-bg-opacity: 1;
+            background-color: #adb5bd !important;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+    <div class="container py-4">
+        <h1 class="text-center mb-4"><i class="fas fa-paw me-2"></i>Administrador de Citas Veterinarias</h1>
+
+        <div class="row mb-4 g-3">
+            <div class="col-md-6">
+                <input type="text" id="buscar" class="form-control" placeholder="Buscar por mascota o dueño...">
+            </div>
+            <div class="col-md-4">
+                <select id="filtroEstado" class="form-select">
+                    <option value="todas">Todas las citas</option>
+                    <option value="Abierta">Abierta</option>
+                    <option value="Terminada">Terminada</option>
+                    <option value="Anulada">Anulada</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalCita">
+                    <i class="fas fa-plus me-2"></i>AGREGAR CITA
+                </button>
+            </div>
+        </div>
+
+        <div id="lista-citas" class="row g-4">
+            <!-- Las citas se cargarán aquí -->
+        </div>
+
+    </div>
+
+    <!-- Modal para agregar/editar citas -->
+    <div class="modal fade" id="modalCita" tabindex="-1" aria-labelledby="modalCitaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalCitaLabel">AGREGAR CITA</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formCita" novalidate>
+                        <input type="hidden" id="citaId">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="nombreMascota" class="form-label">Nombre de la mascota*</label>
+                                <input type="text" class="form-control" id="nombreMascota" required>
+                                <div class="invalid-feedback">Por favor ingresa el nombre de la mascota.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="nombrePropietario" class="form-label">Nombre del propietario*</label>
+                                <input type="text" class="form-control" id="nombrePropietario" required>
+                                <div class="invalid-feedback">Por favor ingresa el nombre del propietario.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="telefono" class="form-label">Teléfono*</label>
+                                <input type="tel" class="form-control" id="telefono" required>
+                                <div class="invalid-feedback">Por favor ingresa un número de teléfono válido.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="tipoMascota" class="form-label">Tipo de mascota*</label>
+                                <select class="form-select" id="tipoMascota" required>
+                                    <option value="" selected disabled>Selecciona un tipo</option>
+                                    <option value="Perro">Perro</option>
+                                    <option value="Gato">Gato</option>
+                                    <option value="Conejo">Conejo</option>
+                                    <option value="Ave">Ave</option>
+                                    <option value="Reptil">Reptil</option>
+                                    <option value="Roedor">Roedor</option>
+                                    <option value="Pez">Pez</option>
+                                    <option value="Tortuga">Tortuga</option>
+                                    <option value="Hurón">Hurón</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                                <div class="invalid-feedback">Por favor selecciona un tipo de mascota.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="fecha" class="form-label">Fecha de la cita*</label>
+                                <input type="date" class="form-control" id="fecha" required>
+                                <div class="invalid-feedback">Por favor selecciona una fecha válida.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="hora" class="form-label">Hora de la cita*</label>
+                                <select class="form-select" id="hora" required>
+                                    <option value="" selected disabled>Selecciona una hora</option>
+                                    <!-- Las opciones de hora se generarán dinámicamente -->
+                                </select>
+                                <div class="invalid-feedback">Por favor selecciona una hora válida.</div>
+                            </div>
+                            <div class="col-12">
+                                <label for="sintomas" class="form-label">Síntomas*</label>
+                                <textarea class="form-control" id="sintomas" rows="3" maxlength="400"
+                                    required></textarea>
+                                <div class="invalid-feedback">Por favor describe los síntomas (máx. 400 caracteres).
+                                </div>
+                                <div class="contador-caracteres"><span id="contadorCaracteres">0</span>/400 caracteres
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="estado" class="form-label">Estado*</label>
+                                <select class="form-select" id="estado" required>
+                                    <option value="Abierta" selected>Abierta</option>
+                                    <option value="Terminada">Terminada</option>
+                                    <option value="Anulada">Anulada</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" id="btnGuardar" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para confirmar eliminación -->
+    <div class="modal fade" id="modalConfirmarEliminar" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmar Eliminación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Estás seguro que deseas eliminar esta cita? Esta acción no se puede deshacer.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" id="confirmarEliminar" class="btn btn-danger">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle con Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Variables globales
+        let citas = JSON.parse(localStorage.getItem('citasVeterinarias')) || [];
+        let citaAEliminar = null;
+
+        // Imágenes de mascotas predefinidas
+        const imagenesMascotas = {
+            'Perro': 'https://i.gifer.com/origin/4f/4f5d1807ba2d22d9de3f1abb925cab9c_w200.gif',
+            'Gato': 'https://i.pinimg.com/originals/03/fb/29/03fb298c0fcdc275bcfbc5a8cb5d4b3f.gif',
+            'Conejo': 'https://pa1.aminoapps.com/6190/341a2134df3571cd94a2522d0c89a324f3fe3eff_hq.gif',
+            'Ave': 'https://i.pinimg.com/originals/34/a6/d0/34a6d07a9c34ca68ac57a47558c9595d.gif',
+            'Reptil': 'https://media4.giphy.com/media/v1.Y2lkPTZjMDliOTUybHNydW12MDV5NHg4dHM5ZnBzdnpyYXlmb2FjdXN0dDlibjgydndpNyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/9Pi3zBrQIOM4971kuc/source.gif',
+            'Roedor': 'https://assets-v2.lottiefiles.com/a/b564a6ba-1151-11ee-9464-97b897f1d886/askWNyMVJi.gif',
+            'Pez': 'https://cdn.pixabay.com/animation/2022/08/02/19/43/19-43-44-141_512.gif',
+            'Tortuga': 'https://media.tenor.com/Ocbnn2GxVDgAAAAM/turtle-cute.gif',
+            'Hurón': 'https://i.pinimg.com/originals/9e/8e/a6/9e8ea622ddb5ad552618ded9de565f30.gif',
+            'Otro': ''
+        };
+
+        // Función para obtener imagen de mascota
+        function obtenerImagenMascota(tipoMascota) {
+            return imagenesMascotas[tipoMascota] || imagenesMascotas['Otro'];
+        }
+
+        // Generar opciones de hora (8:00-12:00 y 14:00-18:00 en intervalos de 30 minutos)
+        function generarOpcionesHoras() {
+            const selectHora = document.getElementById('hora');
+            selectHora.innerHTML = '<option value="" selected disabled>Selecciona una hora</option>';
+
+            // Crear horas de la mañana
+            for (let h = 8; h < 12; h++) {
+                for (let m = 0; m < 60; m += 30) {
+                    const hora = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
+                    const option = document.createElement('option');
+                    option.value = hora;
+                    option.textContent = hora + "AM";
+                    selectHora.appendChild(option);
+                }
+            }
+
+            // Crear horas de la tarde 
+            for (let h = 2; h < 6; h++) {
+                for (let m = 0; m < 60; m += 30) {
+                    const hora = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`; 
+                    const option = document.createElement('option');
+                    option.value = hora;
+                    option.textContent = hora + "PM";
+                    selectHora.appendChild(option);
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            citas = citas.map(cita => {
+                if (!cita.codigo_cita) {
+                    cita.codigo_cita = generarCodigoCita();
+                }
+                return cita;
+            });
+            guardarEnLocalStorage();
+            configurarEventos();
+
+            // Establecer fecha mínima (mañana)
+            const hoy = new Date();
+            hoy.setDate(hoy.getDate() + 1);
+            document.getElementById('fecha').min = hoy.toISOString().split('T')[0];
+
+            // Generar opciones de horas
+            generarOpcionesHoras();
+
+            // Mostrar citas al cargar
+            pintarCitas();
+        });
+
+        // Configurar todos los event listeners
+        function configurarEventos() {
+            // Contador de caracteres para síntomas
+            document.getElementById('sintomas').addEventListener('input', function () {
+                document.getElementById('contadorCaracteres').textContent = this.value.length;
+            });
+
+            // Botón guardar cita
+            document.getElementById('btnGuardar').addEventListener('click', guardarCita);
+
+            // Botón confirmar eliminación
+            document.getElementById('confirmarEliminar').addEventListener('click', eliminarCitaConfirmada);
+
+            // Buscador
+            document.getElementById('buscar').addEventListener('input', pintarCitas);
+
+            // Filtro de estado
+            document.getElementById('filtroEstado').addEventListener('change', pintarCitas);
+
+            // Resetear modal al cerrar
+            const modalCita = document.getElementById('modalCita');
+            modalCita.addEventListener('hidden.bs.modal', function () {
+                document.getElementById('formCita').reset();
+                document.getElementById('formCita').classList.remove('was-validated');
+                document.getElementById('contadorCaracteres').textContent = '0';
+                document.getElementById('modalCitaLabel').textContent = 'AGREGAR CITA';
+                document.getElementById('citaId').value = '';
+            });
+
+            // Cuando se selecciona una fecha, verificar disponibilidad
+            document.getElementById('fecha').addEventListener('change', function () {
+                verificarDisponibilidad();
+            });
+        }
+
+        // Verificar disponibilidad de horas para la fecha seleccionada
+        function verificarDisponibilidad() {
+            const fechaSeleccionada = document.getElementById('fecha').value;
+            if (!fechaSeleccionada) return;
+
+            // Obtener todas las citas para esta fecha
+            const citasFecha = citas.filter(cita => cita.fecha === fechaSeleccionada);
+
+            // Obtener horas ocupadas
+            const horasOcupadas = citasFecha.map(cita => cita.hora);
+
+            // Deshabilitar horas ocupadas
+            const selectHora = document.getElementById('hora');
+            const options = selectHora.options;
+
+            for (let i = 0; i < options.length; i++) {
+                if (options[i].value) {
+                    options[i].disabled = horasOcupadas.includes(options[i].value);
+                    if (options[i].disabled) {
+                        options[i].textContent += ' (Ocupado)';
+                    } else {
+                        options[i].textContent = options[i].value; // Remover texto "(Ocupado)" si estaba
+                    }
+                }
+            }
+        }
+
+        // Guardar cita (nueva o editada)
+        function guardarCita() {
+            const form = document.getElementById('formCita');
+
+            // Validar formulario
+            if (!form.checkValidity()) {
+                form.classList.add('was-validated');
+                return;
+            }
+
+            // Validaciones adicionales
+            if (!validarTelefono() || !validarFecha()) {
+                return;
+            }
+
+            const citaId = document.getElementById('citaId').value;
+            const esEdicion = citaId !== '';
+
+            // Obtener cita existente si es edición
+            const citaExistente = esEdicion ? citas.find(c => c.id === parseInt(citaId)) : null;
+
+            const cita = {
+                id: esEdicion ? parseInt(citaId) : generarId(),
+                codigo_cita: esEdicion ?
+                    (citaExistente?.codigo_cita || generarCodigoCita()) :
+                    generarCodigoCita(),
+                nombreMascota: document.getElementById('nombreMascota').value.trim(),
+                nombrePropietario: document.getElementById('nombrePropietario').value.trim(),
+                telefono: document.getElementById('telefono').value.trim(),
+                tipoMascota: document.getElementById('tipoMascota').value,
+                fecha: document.getElementById('fecha').value,
+                hora: document.getElementById('hora').value,
+                sintomas: document.getElementById('sintomas').value.trim(),
+                estado: document.getElementById('estado').value,
+                timestamp: new Date(`${document.getElementById('fecha').value}T${document.getElementById('hora').value}`).getTime()
+            };
+
+            if (esEdicion) {
+                // Actualizar cita existente
+                const index = citas.findIndex(c => c.id === parseInt(citaId));
+                citas[index] = cita;
+            } else {
+                // Agregar nueva cita (al principio del array)
+                citas.unshift(cita);
+            }
+
+            // Ordenar citas por fecha y hora (más reciente primero)
+            citas.sort((a, b) => b.timestamp - a.timestamp);
+
+            // Guardar y actualizar
+            guardarEnLocalStorage();
+            pintarCitas();
+
+            // Cerrar modal
+            const modal = bootstrap.Modal.getInstance(document.getElementById('modalCita'));
+            modal.hide();
+        }
+
+        // Función para generar código de cita único
+        function generarCodigoCita() {
+            return Date.now() + Math.floor(Math.random() / 9999);
+        }
+
+        // Validar teléfono (solo números)
+        function validarTelefono() {
+            const telefono = document.getElementById('telefono');
+            if (!/^\d+$/.test(telefono.value)) {
+                telefono.setCustomValidity('El teléfono debe contener solo números');
+                telefono.classList.add('is-invalid');
+                return false;
+            } else {
+                telefono.setCustomValidity('');
+                telefono.classList.remove('is-invalid');
+                return true;
+            }
+        }
+
+        // Validar fecha (futura)
+        function validarFecha() {
+            const fecha = document.getElementById('fecha');
+            const fechaSeleccionada = new Date(fecha.value);
+            const hoy = new Date();
+            hoy.setHours(0, 0, 0, 0);
+
+            if (fechaSeleccionada <= hoy) {
+                fecha.setCustomValidity('La fecha debe ser mayor a la actual');
+                fecha.classList.add('is-invalid');
+                return false;
+            } else {
+                fecha.setCustomValidity('');
+                fecha.classList.remove('is-invalid');
+                return true;
+            }
+        }
+
+        // Generar ID único
+        function generarId() {
+            return citas.length > 0 ? Math.max(...citas.map(c => c.id)) + 1 : 1;
+        }
+
+        // Guardar en localStorage
+        function guardarEnLocalStorage() {
+            localStorage.setItem('citasVeterinarias', JSON.stringify(citas));
+        }
+
+        // Pintar todas las citas ordenadas por fecha y hora
+        function pintarCitas() {
+            const buscar = document.getElementById('buscar').value.toLowerCase();
+            const filtro = document.getElementById('filtroEstado').value;
+            const listaCitas = document.getElementById('lista-citas');
+
+            listaCitas.innerHTML = '';
+
+            let citasFiltradas = citas.filter(cita => {
+                const coincideBusqueda =
+                    cita.nombreMascota.toLowerCase().includes(buscar) ||
+                    cita.nombrePropietario.toLowerCase().includes(buscar);
+                const coincideFiltro = filtro === 'todas' || cita.estado === filtro;
+                return coincideBusqueda && coincideFiltro;
+            });
+
+            // Ordenar por fecha (más reciente primero)
+            citasFiltradas.sort((a, b) => a.timestamp - b.timestamp);
+
+            if (citasFiltradas.length === 0) {
+                const div = document.createElement('div');
+                div.className = 'col-12 text-center py-5';
+
+                const icon = document.createElement('i');
+                icon.className = 'fas fa-paw fa-3x mb-3 text-muted';
+
+                const h4 = document.createElement('h4');
+                h4.className = 'text-muted';
+                h4.textContent = 'No hay citas para mostrar';
+
+                const p = document.createElement('p');
+                p.className = 'text-muted';
+                p.textContent = 'Agrega una nueva cita haciendo clic en el botón "AGREGAR CITA"';
+
+                div.appendChild(icon);
+                div.appendChild(h4);
+                div.appendChild(p);
+                listaCitas.appendChild(div);
+                return;
+            }
+
+            // Pintar cada cita
+            for (const cita of citasFiltradas) {
+                const col = document.createElement('div');
+                col.className = 'col-md-6 col-lg-3';
+
+                const card = document.createElement('div');
+                card.className = `card cita-card mb-4 ${cita.estado.toLowerCase()}`;
+
+                const cardBody = document.createElement('div');
+                cardBody.className = 'card-body';
+
+                // Obtener imagen para esta mascota
+                const imgUrl = obtenerImagenMascota(cita.tipoMascota);
+
+                // Construir HTML de la tarjeta
+                cardBody.innerHTML = '';
+
+                const topRow = document.createElement('div');
+                topRow.className = 'd-flex justify-content-between align-items-start mb-3';
+
+                const estadoSpan = document.createElement('span');
+                estadoSpan.className = `estado-badge badge-${cita.estado.toLowerCase()}`;
+                estadoSpan.textContent = cita.estado;
+
+                const idSmall = document.createElement('small');
+                idSmall.className = 'text-muted';
+                idSmall.textContent = `#${cita.id}`;
+
+                topRow.appendChild(estadoSpan);
+                topRow.appendChild(idSmall);
+                cardBody.appendChild(topRow);
+
+                // Código de cita
+                const codigoP = document.createElement('p');
+                codigoP.className = 'card-text mb-1';
+
+                const codigoSmall = document.createElement('small');
+                codigoSmall.className = 'text-muted';
+                codigoSmall.textContent = `código_cita: ${cita.codigo_cita}`;
+
+                codigoP.appendChild(codigoSmall);
+                cardBody.appendChild(codigoP);
+
+                // Nombre de mascota
+                const nombreH5 = document.createElement('h5');
+                nombreH5.className = 'card-title';
+                nombreH5.textContent = cita.nombreMascota;
+                cardBody.appendChild(nombreH5);
+
+                // Tipo de mascota
+                const tipoH6 = document.createElement('h6');
+                tipoH6.className = 'card-subtitle mb-2 text-muted';
+                tipoH6.textContent = cita.tipoMascota;
+                cardBody.appendChild(tipoH6);
+
+                // Imagen
+                const imgDiv = document.createElement('div');
+                imgDiv.className = 'text-center mb-3';
+
+                const img = document.createElement('img');
+                img.src = imgUrl;
+                img.alt = cita.tipoMascota;
+                img.className = 'img-fluid rounded img-mascota';
+
+                imgDiv.appendChild(img);
+                cardBody.appendChild(imgDiv);
+
+                // Propietario
+                const propietarioP = document.createElement('p');
+                propietarioP.className = 'card-text mb-1';
+                propietarioP.innerHTML = `<strong>Propietario:</strong> ${cita.nombrePropietario}`;
+                cardBody.appendChild(propietarioP);
+
+                // Teléfono
+                const telefonoP = document.createElement('p');
+                telefonoP.className = 'card-text mb-1';
+                telefonoP.innerHTML = `<strong>Teléfono:</strong> ${cita.telefono}`;
+                cardBody.appendChild(telefonoP);
+
+                // Fecha
+                const fechaP = document.createElement('p');
+                fechaP.className = 'card-text mb-1';
+                fechaP.innerHTML = `<strong>Fecha:</strong> ${new Date(cita.fecha).toLocaleDateString('es-ES')}`;
+                cardBody.appendChild(fechaP);
+
+                // hora
+                const [horaStr, minutoStr] = cita.hora.split(':');
+                let horas = parseInt(horaStr);
+                const minutos = minutoStr;
+                const periodo = horas < 12 ? 'AM' : 'PM';
+
+                if (horas === 0) {
+                    horas = 12;
+                } else if (horas > 12) {
+                    horas -= 12;
+                }
+
+                const horaFormateada = `${horas}:${minutos} ${periodo}`;
+
+                // Mostrar en la tarjeta
+                const horaP = document.createElement('p');
+                horaP.className = 'card-text mb-1';
+                horaP.innerHTML = `<strong>Hora:</strong> ${horaFormateada}`;
+                cardBody.appendChild(horaP);
+
+
+                // Síntomas
+                const sintomasP = document.createElement('p');
+                sintomasP.className = 'card-text mb-3';
+                const sintomasCortos = cita.sintomas.length > 50 ? cita.sintomas.substring(0, 50) + '...' : cita.sintomas;
+                sintomasP.innerHTML = `<strong>Síntomas:</strong> ${sintomasCortos}`;
+                cardBody.appendChild(sintomasP);
+
+                // Botones
+                const btnDiv = document.createElement('div');
+                btnDiv.className = 'd-flex justify-content-end gap-2 mt-3';
+
+                // Botón Editar
+                const editarBtn = document.createElement('button');
+                editarBtn.className = 'btn btn-sm btn-outline-primary editar-btn';
+                editarBtn.setAttribute('data-id', cita.id);
+                editarBtn.innerHTML = '<i class="fas fa-edit me-1"></i>Editar';
+
+                // Botón Eliminar
+                const eliminarBtn = document.createElement('button');
+                eliminarBtn.className = 'btn btn-sm btn-outline-danger eliminar-btn';
+                eliminarBtn.setAttribute('data-id', cita.id);
+                eliminarBtn.innerHTML = '<i class="fas fa-trash me-1"></i>Eliminar';
+
+                btnDiv.appendChild(editarBtn);
+                btnDiv.appendChild(eliminarBtn);
+                cardBody.appendChild(btnDiv);
+
+
+                card.appendChild(cardBody);
+                col.appendChild(card);
+                listaCitas.appendChild(col);
+            }
+
+            // Agregar event listeners a los botones
+            document.querySelectorAll('.editar-btn').forEach(btn => {
+                btn.addEventListener('click', () => editarCita(parseInt(btn.dataset.id)));
+            });
+
+            document.querySelectorAll('.eliminar-btn').forEach(btn => {
+                btn.addEventListener('click', () => solicitarEliminarCita(parseInt(btn.dataset.id)));
+            });
+        }
+
+        // Editar cita
+        function editarCita(id) {
+            const cita = citas.find(c => c.id === id);
+
+            document.getElementById('modalCitaLabel').textContent = 'EDITAR CITA';
+            document.getElementById('citaId').value = cita.id;
+            document.getElementById('nombreMascota').value = cita.nombreMascota;
+            document.getElementById('nombrePropietario').value = cita.nombrePropietario;
+            document.getElementById('telefono').value = cita.telefono;
+            document.getElementById('tipoMascota').value = cita.tipoMascota;
+            document.getElementById('fecha').value = cita.fecha;
+            document.getElementById('hora').value = cita.hora;
+            document.getElementById('sintomas').value = cita.sintomas;
+            document.getElementById('estado').value = cita.estado;
+            document.getElementById('contadorCaracteres').textContent = cita.sintomas.length;
+
+            // Generar opciones de hora y seleccionar la actual
+            generarOpcionesHoras();
+            document.getElementById('hora').value = cita.hora;
+
+            const modal = new bootstrap.Modal(document.getElementById('modalCita'));
+            modal.show();
+        }
+
+        // Solicitar confirmación para eliminar
+        function solicitarEliminarCita(id) {
+            citaAEliminar = id;
+            const modal = new bootstrap.Modal(document.getElementById('modalConfirmarEliminar'));
+            modal.show();
+        }
+
+        // Eliminar cita confirmada
+        function eliminarCitaConfirmada() {
+            citas = citas.filter(c => c.id !== citaAEliminar);
+            guardarEnLocalStorage();
+            pintarCitas();
+
+            const modal = bootstrap.Modal.getInstance(document.getElementById('modalConfirmarEliminar'));
+            modal.hide();
+        }
+    </script>
+</body>
+
+</html>
