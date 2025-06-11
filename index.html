@@ -278,6 +278,27 @@
                             <a href="./crud/index.html" target="_blank" class="btn btn-primary">VER PROYECTO</a>
                         </div>
                     </div>
+                    <!-- Proyecto 9 - ADMINISTRADOR DE CITAS VETERINARIAS -->
+                    <div class="card">
+                        <img src="./img/citas_pets.jpg"
+                            class="card-img-top project-img" alt="Administrador de Citas Veterinarias">
+                        <div class="card-body">
+                            <h5 class="card-title">ADMINISTRADOR DE CITAS VETERINARIAS</h5>
+                            <p class="card-text">Sistema de gestión de citas para clínica veterinaria.</p>
+                        </div>
+                        <div class="card-footer bg-transparent d-flex justify-content-between">
+                            <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
+                                data-bs-target="#proyectoModal" data-title="ADMINISTRADOR DE CITAS VETERINARIAS"
+                                data-description="Este proyecto es un sistema completo de gestión de citas para una clínica veterinaria. Permite agregar, editar, eliminar y filtrar citas, con control de disponibilidad de horarios. Incluye validación de formularios, persistencia de datos en localStorage y una interfaz intuitiva con imágenes de diferentes tipos de mascotas."
+                                data-objetivo="Desarrollar una aplicación CRUD completa que demuestre habilidades en JavaScript, manipulación del DOM, manejo de formularios, validación de datos y almacenamiento local. El sistema debe ser funcional y fácil de usar para el personal veterinario."
+                                data-tecnologias='["Lenguaje: JavaScript", "UI: Bootstrap 5", "Iconos: Font Awesome", "Almacenamiento: localStorage"]'
+                                data-resultados='["Sistema CRUD completo", "Filtrado y búsqueda avanzada", "Validación de formularios robusta", "Interfaz de usuario responsive", "Persistencia de datos en localStorage"]'
+                                data-link="./veterinaria/index.html">
+                                <i class="fas fa-info-circle me-1"></i> Descripción
+                            </button>
+                            <a href="./citas_pets/index.html" target="_blank" class="btn btn-primary">VER PROYECTO</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -448,7 +469,7 @@
                 proyectoModal.addEventListener('show.bs.modal', function (event) {
                     const button = event.relatedTarget;
                     const modal = this;
-                    
+
                     // Obtener el enlace del botón "VER PROYECTO" del card correspondiente
                     const card = button.closest('.card');
                     const verProyectoBtn = card.querySelector('.btn-primary');
@@ -458,7 +479,7 @@
                     modal.querySelector('#modalProjectName').textContent = button.getAttribute('data-title');
                     modal.querySelector('#modalDescripcion').textContent = button.getAttribute('data-description');
                     modal.querySelector('#modalObjetivo').textContent = button.getAttribute('data-objetivo');
-                    
+
                     // Actualizar el enlace del botón "Ver Proyecto" en el modal
                     const modalLink = modal.querySelector('#modalLink');
                     if (modalLink) {
@@ -504,7 +525,7 @@
 
             // Manejo de errores para enlaces rotos (opcional)
             document.querySelectorAll('#modalLink').forEach(link => {
-                link.addEventListener('click', function(e) {
+                link.addEventListener('click', function (e) {
                     // Solo verificar para rutas locales (no URLs externas)
                     if (!this.href.startsWith('http') || this.href.includes(window.location.host)) {
                         fetch(this.href, { method: 'HEAD' })
