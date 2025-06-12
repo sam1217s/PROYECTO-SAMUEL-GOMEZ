@@ -271,18 +271,15 @@ body {
 .animate-fade {
     animation: fadeIn 0.5s ease forwards;
 }
-
-/* ... (mantén todo el CSS existente) ... */
-
-/* Agrega esto al final del archivo */
 .cards-container {
+   
     display: flex;
     gap: 40px;
     flex-wrap: wrap;
     justify-content: center;
     padding: 20px;
     padding-top: 40px;
-    /* Espacio para el logo */
+ 
 }
 
 .container {
@@ -344,6 +341,7 @@ body {
 
 /* Estilos para el modal de batalla */
 .modal {
+    overflow: scroll;
     display: none;
     position: fixed;
     z-index: 1000;
@@ -355,6 +353,7 @@ body {
 }
 
 .modal-content {
+     overflow: scroll;
     background-color: #fefefe;
     margin: 5% auto;
     padding: 20px;
