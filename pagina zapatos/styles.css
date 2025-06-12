@@ -160,6 +160,7 @@ header {
 
 .categorias {
     width: 250px;
+    height: 500px;
     background: white;
     padding: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -296,7 +297,7 @@ footer {
     gap: 10px;
 }
 
-/* Responsive Adjustments */
+/* Responsive */
 @media (max-width: 1024px) {
     .submenu {
         flex-direction: column;
@@ -390,7 +391,7 @@ footer {
     }
 }
 
-/* Color classes for product backgrounds */
+/* Color classes backgrounds */
 .bg-green {
     background-color: rgb(111, 219, 111);
 }
