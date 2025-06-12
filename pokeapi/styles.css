@@ -353,7 +353,6 @@ body {
 }
 
 .modal-content {
-     overflow: scroll;
     background-color: #fefefe;
     margin: 5% auto;
     padding: 20px;
