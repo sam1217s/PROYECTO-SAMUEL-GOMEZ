@@ -1,423 +1,372 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Men's Shoes</title>
-    <link rel="stylesheet" href="/pagina zapatos/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    <link rel="stylesheet" href="./styles.css">
 </head>
-
 <body>
     <header>
-        <div class="constructor">
-            <i id="iconheader" class="fa-solid fa-bars"></i>
-            <button class="hedboton"> Constructor </button>
+        <div class="header-section">
+            <div class="constructor">
+                <i id="iconheader" class="fa-solid fa-bars"></i>
+                <button class="hedboton">Constructor</button>
+            </div>
         </div>
-
-        <div>
-            <button class="hedboton">Woman </button>
-            <button class="hedboton">Men </button>
-            <button class="hedboton">Children </button>
+        
+        <div class="header-section">
+            <button class="hedboton">Woman</button>
+            <button class="hedboton">Men</button>
+            <button class="hedboton">Children</button>
         </div>
-        <div>
+        
+        <div class="header-section">
             <div class="colmuna4-2">
                 <i id="iconheader" class="fa fa-search"></i>
-                <button class="hedboton"> Search </button>
+                <button class="hedboton">Search</button>
             </div>
         </div>
-        <div class="columna4">
+        
+        <div class="header-section">
             <div class="colmuna4-2">
                 <i id="iconheader" class="fa-solid fa-cart-shopping"></i>
-                <button class="hedboton"> Account </button>
+                <button class="hedboton">Account</button>
             </div>
-
+            
             <div class="colmuna4-3">
                 <i id="iconheader" class="fa-solid fa-cart-shopping"></i>
                 <button class="hedboton">Bag</button>
             </div>
-
-
-
         </div>
     </header>
-    <div class="principal">
-        <div class="hero">
-            <h1>Men's Shoes</h1>
-        </div>
-
+    
+    <div class="hero">
+        <h1>Men's Shoes</h1>
         <div class="shop">
             <button>Shop Now</button>
         </div>
-
-
-        <div class="menu">
-            <div class="filters">
-                <div class="filter-mens">
-                    <h2>Mens Shoes & Sneakers</h2>
+    </div>
+    
+    <div class="main-container">
+        <div class="filters">
+            <div class="filter-mens">
+                <h2>Mens Shoes & Sneakers</h2>
+            </div>
+            <div class="filter-options">
+                <button>Newest</button>
+                <button>Highest Rated</button>
+                <button>Low Price to High</button>
+                <button>High Price to Low</button>
+            </div>
+            <div class="filter-options2">
+                <div class="yourmail">
+                    <i id="mailboton" class="fa-solid fa-envelope"></i>
+                    <button>Your Mail</button>
                 </div>
-                <div class="filter-options">
-                    <button>Newest</button>
-                    <button>Highest Rated</button>
-                    <button>Low Price to High</button>
-                    <button>High Price to Low</button>
-                </div>
-                <div class="filter-options2">
-                    <div class="yourmail">
-                        <i id="mailboton" class="fa-solid fa-envelope"></i>
-                        <button>Your Mail</button>
-                    </div>
-                    <div class="flecha">
-                        <i id="mailboton" class="fa-solid fa-arrow-right"></i>
-                    </div>
-
+                <div class="flecha">
+                    <i id="mailboton" class="fa-solid fa-arrow-right"></i>
                 </div>
             </div>
-            <div class="submenu">
-                <div class="categorias">
-                    <div class="categoria1">
-                        <div class="titulocategoria">
-                            <h2>Categories</h2>
-                            <i class="fa-solid fa-sort-up"></i>
-                        </div>
-
-
-                        <div class="subcategoria">
-                            <div><button>LifesStyles</button></div>
-                            <div>
-                                <hr class="linea">
-                            </div>
-                            <div>
-                                <p>367</p>
-                            </div>
-                        </div>
-                        <div class="subcategoria">
-                            <div><button>Running</button></div>
-                            <div>
-                                <hr class="linea">
-                            </div>
-                            <div>
-                                <p>76</p>
-                            </div>
-                        </div>
-                        <div class="subcategoria">
-                            <div><button>Basketball</button></div>
-                            <div>
-                                <hr class="linea">
-                            </div>
-                            <div>
-                                <p>65</p>
-                            </div>
-                        </div>
-                        <div class="subcategoria">
-                            <div><button>Football</button></div>
-                            <div>
-                                <hr class="linea">
-                            </div>
-                            <div>
-                                <p>21</p>
-                            </div>
-                        </div>
-                        <div class="subcategoria">
-                            <div><button>Soccer</button></div>
-                            <div>
-                                <hr class="linea">
-                            </div>
-                            <div>
-                                <p>12</p>
-                            </div>
-                        </div>
-                        <div class="subcategoriafinal">
-                            <div><button>Training and Gym</button></div>
-                            <div>
-                                <hr class="linea">
-                            </div>
-                            <div>
-                                <p>54</p>
-                            </div>
-                        </div>
+        </div>
+        
+        <div class="submenu">
+            <div class="hamburger-menu" id="hamburgerMenu">
+                <i class="fa-solid fa-bars"></i>
+                <span>Categories</span>
+            </div>
+            
+            <div class="overlay" id="overlay"></div>
+            
+            <div class="categorias" id="categoriesMenu">
+                <!-- Categories -->
+                <div class="categoria">
+                    <div class="titulocategoria">
+                        <h2>Categories</h2>
+                        <i class="fa-solid fa-sort-up"></i>
                     </div>
-                    <div class="categoria2">
-                        <div class="titulocategoria">
-                            <h2>Price</h2>
-                            <i class="fa-solid fa-sort-up"></i>
-                        </div>
-                        <div class="precios">
-                            <label class="seleccion">
-                                <input type="radio" name="name" class="radio-button">
-                                Under $50
-                            </label>
-                            <label class="seleccion">
-                                <input type="radio" name="name" class="radio-button">
-                                $50 to $100
-                            </label>
-                            <label class="seleccion">
-                                <input type="radio" name="name" class="radio-button">
-                                100 to $150
-                            </label>
-                            <label class="seleccion">
-                                <input type="radio" name="name" class="radio-button">
-                                150 to $200
-                            </label>
-                            <label class="seleccion">
-                                <input type="radio" name="name" class="radio-button">
-                                200 to $300
-                            </label>
-                            <label class="seleccion">
-                                <input type="radio" name="name" class="radio-button">
-                                over $250
-                            </label>
-                        </div>
-                    </div>
-                    <div class="categoria3">
-                        <div class="titulocategoria">
-                            <h2>Colors</h2>
-                            <i class="fa-solid fa-sort-up"></i>
-                        </div>
-                        <div class="colores">
-                            <button class="boton-1"></button>
-                            <button class="boton-2"></button>
-                            <button class="boton-3"></button>
-                            <button class="boton-4"></button>
-                            <button class="boton-5"></button>
-                            <button class="boton-6"></button>
-                            <button class="boton-7"></button>
-                            <button class="boton-8"></button>
-                            <button class="boton-9"></button>
-                            <button class="boton-10"></button>
-                            <button class="boton-11"></button>
-                            <button class="boton-12"></button>
-                        </div>
-                    </div>
-                    <div class="categoria4">
-                        <div class="titulocategoria">
-                            <h2>Size</h2>
-                            <i class="fa-solid fa-sort-up"></i>
-                        </div>
-                        <div class="sizes">
-                            <button class="boton">4</button>
-                            <button class="boton">4.5</button>
-                            <button class="boton">5</button>
-                            <button class="boton">5.5</button>
-                            <button class="boton">6</button>
-                            <button class="boton">6.5</button>
-                            <button class="boton">7</button>
-                            <button class="boton">7.5</button>
-                            <button class="boton">8</button>
-                            <button class="boton">8.5</button>
-                            <button class="boton">9</button>
-                            <button class="boton">9.5</button>
-                            <button class="boton">10</button>
-                            <button class="boton">10.5</button>
-                            <button class="boton">11</button>
-                            <button class="boton">11.5</button>
-                            <button class="boton">12</button>
-                            <button class="boton">12.5</button>
-                            <button class="boton">13</button>
-                            <button class="boton">13.5</button>
-                            <button class="boton">14</button>
-                            <button class="boton">14.5</button>
-                            <button class="boton">15</button>
-                            <button class="boton">15.5</button>
-                            <button class="boton">16</button>
-                            <button class="boton">16.5</button>
-                            <button class="boton">17</button>
-                            <button class="boton">3.5Y</button>
-                            <button class="boton">4Y</button>
-                            <button class="boton">5Y</button>
-                            <button class="boton">6Y</button>
-                            <button class="boton">6.5Y</button>
-                            <button class="boton">7Y</button>
-                            <button class="boton">7.5Y</button>
-                            <button class="boton"></button>
-
-                        </div>
-                    </div>
+                    <select name="categories" id="categories-select">
+                        <option value="lifestyles">Lifestyles (367)</option>
+                        <option value="running">Running (76)</option>
+                        <option value="basketball">Basketball (65)</option>
+                        <option value="football">Football (21)</option>
+                        <option value="soccer">Soccer (12)</option>
+                        <option value="training-gym">Training and Gym (54)</option>
+                    </select>
                 </div>
-                <div class="products">
-                    <div class="product">
-                        <div class="imgshoe">
-                            <img class="img1" src="/pagina zapatos/img/nike270.png" alt="Nike Air Max 270">
-                        </div>
-                        <div class="icono">
-                            <button><i class="fa-solid fa-cart-shopping"></i> </button>
-                        </div>
-                        <div class="descripcion">
-                            <h3>Nike Air Max 270</h3>
-                            <div class="shoemen">
-                                <p>Mens Shoe</p>
-                                <p>$180</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product">
-                        <div class="imgshoe1">
-                            <img class="img1" src="/pagina zapatos/img/nikeairmax.png" alt="Nike Air Max">
-                        </div>
-                        <div class="icono">
-                            <button><i class="fa-solid fa-cart-shopping"></i> </button>
-                        </div>
-                        <div class="descripcion">
-                            <h3>Nike Air Max</h3>
-                            <div class="shoemen">
-                                <p>Mens Shoe</p>
-                                <p>$170</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product">
-                        <div class="imgshoe2">
-                            <img class="img1" src="/pagina zapatos/img/nikeairmaxsystm.png" alt="Nike Air Max 270">
-                        </div>
-                        <div class="icono">
-                            <button><i class="fa-solid fa-cart-shopping"></i> </button>
-                        </div>
-                        <div class="descripcion">
-                            <h3>Nike Air Max System</h3>
-                            <div class="shoemen">
-                                <p>Mens Shoe</p>
-                                <p>$200</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product">
-                        <div class="imgshoe3">
-                            <img src="/pagina zapatos/img/nikebasketball.png" alt="Nike Air Max 270">
-                        </div>
-                        <div class="icono">
-                            <button><i class="fa-solid fa-cart-shopping"></i> </button>
-                        </div>
-                        <div class="descripcion">
-                            <h3>Nike Basketball</h3>
-                            <div class="shoemen">
-                                <p>Mens Shoe</p>
-                                <p>$250</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product">
-                        <div class="imgshoe4">
-                            <img src="/pagina zapatos/img/nikedd9293.png" alt="Nike Air Max 270">
-                        </div>
-                        <div class="icono">
-                            <button><i class="fa-solid fa-cart-shopping"></i> </button>
-                        </div>
-                        <div class="descripcion">
-                            <h3>Nike D9293</h3>
-                            <div class="shoemen">
-                                <p>Mens Shoe</p>
-                                <p>$150</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product">
-                        <div class="imgshoe5">
-                            <img src="/pagina zapatos/img/nikegiannis.png" alt="Nike Air Max 270">
-                        </div>
-                        <div class="icono">
-                            <button><i class="fa-solid fa-cart-shopping"></i> </button>
-                        </div>
-                        <div class="descripcion">
-                            <h3>Nike Giannis</h3>
-                            <div class="shoemen">
-                                <p>Mens Shoe</p>
-                                <p>$175</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product">
-                        <div class="imgshoe6">
-                            <img src="/pagina zapatos/img/nikerevolution.png" alt="Nike Air Max 270">
-                        </div>
-                        <div class="icono">
-                            <button><i class="fa-solid fa-cart-shopping"></i> </button>
-                        </div>
-                        <div class="descripcion">
-                            <h3>Nike Revolution</h3>
-                            <div class="shoemen">
-                                <p>Mens Shoe</p>
-                                <p>$220</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product">
-                        <div class="imgshoe7">
-                            <img src="/pagina zapatos/img/nikesbmalo.png" alt="Nike Air Max 270">
-                        </div>
-                        <div class="icono">
-                            <button><i class="fa-solid fa-cart-shopping"></i> </button>
-                        </div>
-                        <div class="descripcion">
-                            <h3>Nike Court Vision</h3>
-                            <div class="shoemen">
-                                <p>Mens Shoe</p>
-                                <p>$150</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product">
-                        <div class="imgshoe8">
-                            <img src="/pagina zapatos/img/nikevapormax.png" alt="Nike Air Max 270">
-                        </div>
-                        <div class="icono">
-                            <button><i class="fa-solid fa-cart-shopping"></i> </button>
-                        </div>
-                        <div class="descripcion">
-                            <h3>Nike Vapor Max Utility</h3>
-                            <div class="shoemen">
-                                <p>Mens Shoe</p>
-                                <p>$140</p>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-
                 
+                <!-- Price -->
+                <div class="categoria">
+                    <div class="titulocategoria">
+                        <h2>Price</h2>
+                        <i class="fa-solid fa-sort-up"></i>
+                    </div>
+                    <select name="price" id="price-select">
+                        <option value="under-50">Under $50</option>
+                        <option value="50-100">$50 to $100</option>
+                        <option value="100-150">$100 to $150</option>
+                        <option value="150-200">$150 to $200</option>
+                        <option value="200-300">$200 to $300</option>
+                        <option value="over-250">Over $250</option>
+                    </select>
+                </div>
+                
+                <!-- Colors -->
+                <div class="categoria">
+                    <div class="titulocategoria">
+                        <h2>Colors</h2>
+                        <i class="fa-solid fa-sort-up"></i>
+                    </div>
+                    <select name="colors" id="colors-select">
+                        <option value="black">Black</option>
+                        <option value="white">White</option>
+                        <option value="gray">Gray</option>
+                        <option value="blue">Blue</option>
+                        <option value="red">Red</option>
+                        <option value="green">Green</option>
+                        <option value="yellow">Yellow</option>
+                        <option value="orange">Orange</option>
+                        <option value="purple">Purple</option>
+                        <option value="pink">Pink</option>
+                        <option value="brown">Brown</option>
+                        <option value="beige">Beige</option>
+                    </select>
+                </div>
+                
+                <!-- Size -->
+                <div class="categoria">
+                    <div class="titulocategoria">
+                        <h2>Size</h2>
+                        <i class="fa-solid fa-sort-up"></i>
+                    </div>
+                    <select name="sizes" id="size-select">
+                        <option value="4">4</option>
+                        <option value="4.5">4.5</option>
+                        <option value="5">5</option>
+                        <option value="5.5">5.5</option>
+                        <option value="6">6</option>
+                        <option value="6.5">6.5</option>
+                        <option value="7">7</option>
+                        <option value="7.5">7.5</option>
+                        <option value="8">8</option>
+                        <option value="8.5">8.5</option>
+                        <option value="9">9</option>
+                        <option value="9.5">9.5</option>
+                        <option value="10">10</option>
+                        <option value="10.5">10.5</option>
+                        <option value="11">11</option>
+                        <option value="11.5">11.5</option>
+                        <option value="12">12</option>
+                        <option value="12.5">12.5</option>
+                        <option value="13">13</option>
+                        <option value="13.5">13.5</option>
+                        <option value="14">14</option>
+                        <option value="14.5">14.5</option>
+                        <option value="15">15</option>
+                        <option value="15.5">15.5</option>
+                        <option value="16">16</option>
+                        <option value="16.5">16.5</option>
+                        <option value="17">17</option>
+                        <option value="3.5Y">3.5Y</option>
+                        <option value="4Y">4Y</option>
+                        <option value="5Y">5Y</option>
+                        <option value="6Y">6Y</option>
+                        <option value="6.5Y">6.5Y</option>
+                        <option value="7Y">7Y</option>
+                        <option value="7.5Y">7.5Y</option>
+                    </select>
+                </div>
+            <div>
+                <div class="categoria">
+                    <button type="button" class="buscar-boton" id="buscarBoton">Buscar</button>
+                </div>
             </div>
-            <footer>
-                <div class="foote">
-                    <div class="sesion1">
-
-                        <div>
-                            <h3>Home</h3>
-                            <h3>About</h3>
+           
+            </div>
+            
+            <div class="products">
+                <!-- Product 1 -->
+                <div class="product">
+                    <div class="img-container bg-green">
+                        <img src="/pagina zapatos/img/nike270.png" alt="Nike Air Max 270">
+                    </div>
+                    <div class="icono">
+                        <button><i class="fa-solid fa-cart-shopping"></i></button>
+                    </div>
+                    <div class="descripcion">
+                        <h3>Nike Air Max 270</h3>
+                        <div class="shoemen">
+                            <p>Mens Shoe</p>
+                            <p>$180</p>
                         </div>
-                        <div>
-                            <h3>Servicies</h3>
-                            <h3>Baners</h3>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product">
+                    <div class="img-container bg-orange">
+                        <img src="/pagina zapatos/img/nikeairmax.png" alt="Nike Air Max">
+                    </div>
+                    <div class="icono">
+                        <button><i class="fa-solid fa-cart-shopping"></i></button>
+                    </div>
+                    <div class="descripcion">
+                        <h3>Nike Air Max</h3>
+                        <div class="shoemen">
+                            <p>Mens Shoe</p>
+                            <p>$170</p>
                         </div>
-
-
                     </div>
                 </div>
-                <div class="sesion2">
-                    <div>
-                        <h3>Customer Service</h3>
-                        <h3>Contact Us</h3>
-                        <h3>Store Policies</h3>
+                
+                <!-- Product 3 -->
+                <div class="product">
+                    <div class="img-container bg-red">
+                        <img src="/pagina zapatos/img/nikeairmaxsystm.png" alt="Nike Air Max System">
                     </div>
-                    <div>
-                        <h3>Shipping Rules</h3>
-                        <h3>Returns and Exchanges</h3>
+                    <div class="icono">
+                        <button><i class="fa-solid fa-cart-shopping"></i></button>
                     </div>
-                </div>
-                <div class="sesion3">
-
-                    <div>
-                        <h2>Constructor</h2>
-                    </div>
-                    <div>
-                        <p>12 Water UL Vecomer, DC</p>
-                        <p>USA 123 Unitad States</p>
+                    <div class="descripcion">
+                        <h3>Nike Air Max System</h3>
+                        <div class="shoemen">
+                            <p>Mens Shoe</p>
+                            <p>$200</p>
+                        </div>
                     </div>
                 </div>
-        </footer>
-     <div class="termsandconditions">
+                
+                <!-- Product 4 -->
+                <div class="product">
+                    <div class="img-container bg-blue">
+                        <img src="/pagina zapatos/img/nikebasketball.png" alt="Nike Basketball">
+                    </div>
+                    <div class="icono">
+                        <button><i class="fa-solid fa-cart-shopping"></i></button>
+                    </div>
+                    <div class="descripcion">
+                        <h3>Nike Basketball</h3>
+                        <div class="shoemen">
+                            <p>Mens Shoe</p>
+                            <p>$250</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product">
+                    <div class="img-container bg-lightgreen">
+                        <img src="/pagina zapatos/img/nikedd9293.png" alt="Nike D9293">
+                    </div>
+                    <div class="icono">
+                        <button><i class="fa-solid fa-cart-shopping"></i></button>
+                    </div>
+                    <div class="descripcion">
+                        <h3>Nike D9293</h3>
+                        <div class="shoemen">
+                            <p>Mens Shoe</p>
+                            <p>$150</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product">
+                    <div class="img-container bg-pink">
+                        <img src="/pagina zapatos/img/nikegiannis.png" alt="Nike Giannis">
+                    </div>
+                    <div class="icono">
+                        <button><i class="fa-solid fa-cart-shopping"></i></button>
+                    </div>
+                    <div class="descripcion">
+                        <h3>Nike Giannis</h3>
+                        <div class="shoemen">
+                            <p>Mens Shoe</p>
+                            <p>$175</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 7 -->
+                <div class="product">
+                    <div class="img-container bg-lightblue">
+                        <img src="/pagina zapatos/img/nikerevolution.png" alt="Nike Revolution">
+                    </div>
+                    <div class="icono">
+                        <button><i class="fa-solid fa-cart-shopping"></i></button>
+                    </div>
+                    <div class="descripcion">
+                        <h3>Nike Revolution</h3>
+                        <div class="shoemen">
+                            <p>Mens Shoe</p>
+                            <p>$220</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 8 -->
+                <div class="product">
+                    <div class="img-container bg-darkgreen">
+                        <img src="/pagina zapatos/img/nikesbmalo.png" alt="Nike Court Vision">
+                    </div>
+                    <div class="icono">
+                        <button><i class="fa-solid fa-cart-shopping"></i></button>
+                    </div>
+                    <div class="descripcion">
+                        <h3>Nike Court Vision</h3>
+                        <div class="shoemen">
+                            <p>Mens Shoe</p>
+                            <p>$150</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 9 -->
+                <div class="product">
+                    <div class="img-container bg-darkorange">
+                        <img src="/pagina zapatos/img/nikevapormax.png" alt="Nike Vapor Max Utility">
+                    </div>
+                    <div class="icono">
+                        <button><i class="fa-solid fa-cart-shopping"></i></button>
+                    </div>
+                    <div class="descripcion">
+                        <h3>Nike Vapor Max Utility</h3>
+                        <div class="shoemen">
+                            <p>Mens Shoe</p>
+                            <p>$140</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Home</h3>
+                <h3>About</h3>
+                <h3>Services</h3>
+                <h3>Baners</h3>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <h3>Contact Us</h3>
+                <h3>Store Policies</h3>
+                <h3>Shipping Rules</h3>
+                <h3>Returns and Exchanges</h3>
+            </div>
+            
+            <div class="footer-section">
+                <h2>Constructor</h2>
+                <p>12 Water UL Vecomer, DC</p>
+                <p>USA 123 Unitad States</p>
+            </div>
+        </div>
+        
+        <div class="termsandconditions">
             <div>
                 <h3>Copyright © 2023 Constructor</h3>
                 <h3>All Rights Reserved</h3>
@@ -431,9 +380,23 @@
                 <i id="mailboton" class="fa-solid fa-arrow-right"></i>
             </div>
         </div>
-    </div>
+    </footer>
 
-    </div>
+    <script>
+        // Mobile menu functionality
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const categoriesMenu = document.getElementById('categoriesMenu');
+        const overlay = document.getElementById('overlay');
+        
+        hamburgerMenu.addEventListener('click', () => {
+            categoriesMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+        
+        overlay.addEventListener('click', () => {
+            categoriesMenu.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+    </script>
 </body>
-
 </html>
