@@ -10,7 +10,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./styles.css">
-    
+
 </head>
 
 <body>
@@ -59,15 +59,23 @@
                 <div class="container-fluid">
                     <div class="row align-items-center">
                         <div class="col-lg-4 text-center mb-4 mb-lg-0">
-                            <img src="./img/samuel_gomez.png" alt="Samuel Gómez" class="rounded-circle about-profile-img">
+                            <img src="./img/samuel_gomez.png" alt="Samuel Gómez"
+                                class="rounded-circle about-profile-img">
                         </div>
                         <div class="col-lg-8">
                             <h2 class="section-title">Sobre Mi</h2>
-                            <p class="lead"><strong>Samuel Gómez</strong> - Estudiante de Análisis y Desarrollo de Software</p>
-                            <p>Desarrollador Full Stack con experiencia en múltiples tecnologías del frontend y backend. Cuento con sólidos conocimientos en HTML/CSS, JavaScript, y frameworks modernos como Vue, Bootstrap, Materialize y Semantic UI para construir interfaces responsivas y accesibles.</p>
-                            <p>En el backend, manejo Node.js, Python, SQL y bases de datos como MongoDB. Tengo experiencia en el desarrollo móvil con Flutter y el lenguaje Dart, lo que me permite crear aplicaciones multiplataforma.</p>
-                            <p>Además, poseo dominio en control de versiones con Git y GitHub, herramientas clave para el trabajo colaborativo y la integración continua.</p>
-                            
+                            <p class="lead"><strong>Samuel Gómez</strong> - Estudiante de Análisis y Desarrollo de
+                                Software</p>
+                            <p>Desarrollador Full Stack con experiencia en múltiples tecnologías del frontend y backend.
+                                Cuento con sólidos conocimientos en HTML/CSS, JavaScript, y frameworks modernos como
+                                Vue, Bootstrap, Materialize y Semantic UI para construir interfaces responsivas y
+                                accesibles.</p>
+                            <p>En el backend, manejo Node.js, Python, SQL y bases de datos como MongoDB. Tengo
+                                experiencia en el desarrollo móvil con Flutter y el lenguaje Dart, lo que me permite
+                                crear aplicaciones multiplataforma.</p>
+                            <p>Además, poseo dominio en control de versiones con Git y GitHub, herramientas clave para
+                                el trabajo colaborativo y la integración continua.</p>
+
                             <div class="mt-4">
                                 <h4>Habilidades técnicas</h4>
                                 <div class="d-flex flex-wrap gap-2">
@@ -93,8 +101,10 @@
                         <div class="search-container">
                             <div class="input-group mb-3">
                                 <span class="input-group-text"><i class="fas fa-search"></i></span>
-                                <input type="text" id="search-projects" class="form-control" placeholder="Buscar proyectos...">
-                                <button class="btn btn-outline-secondary" type="button" id="clear-search">Limpiar</button>
+                                <input type="text" id="search-projects" class="form-control"
+                                    placeholder="Buscar proyectos...">
+                                <button class="btn btn-outline-secondary" type="button"
+                                    id="clear-search">Limpiar</button>
                             </div>
                         </div>
                     </div>
@@ -157,7 +167,8 @@
             <div class="modal-content">
                 <div class="modal-header bg-dark text-white">
                     <h5 class="modal-title">Detalles del Proyecto</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="project-details">
@@ -191,7 +202,7 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <script>
         // Datos de proyectos
         const proyectos = [
@@ -232,7 +243,7 @@
                 resultados: ["Sistema de combate Pokémon funcional", "Consumo eficiente de API REST", "Interfaz de usuario intuitiva"],
                 link: "./pokeapi/index.html"
             },
-            
+
             {
                 id: 4,
                 titulo: "PAGINA ZAPATOS",
@@ -249,7 +260,7 @@
                 id: 5,
                 titulo: "PAGINA JOHANSON",
                 descripcion: "Página web para Johanson.",
-                fecha: "2025-105-15",
+                fecha: "2025-05-15",
                 imagen: "./img/johanson.avif",
                 descripcionModal: "Este proyecto consiste en el desarrollo de un sitio web corporativo para Johanson, mostrando sus servicios, productos e información de contacto.",
                 objetivo: "Crear una presencia online profesional para Johanson que comunique efectivamente sus servicios y valore su marca.",
@@ -304,6 +315,18 @@
                 tecnologias: ["Lenguaje: HTML, CSS, JavaScript", "Framework: No aplica", "Base de datos: No aplica"],
                 resultados: ["Página web personal completamente funcional", "Diseño limpio y profesional", "Secciones organizadas: sobre mí, habilidades, proyectos"],
                 link: "./QUIEN SOY/index.html"
+            },
+            {
+                id: 10,
+                titulo: "TALONARIO",
+                descripcion: "Proyecto de rifa para gestionar sorteos y participantes.",
+                fecha: "2025-07-12",
+                imagen: "./img/talonario.jpg",
+                descripcionModal: "Este proyecto permite crear y gestionar rifas, incluyendo la generación de números aleatorios y el registro de participantes.",
+                objetivo: "Automatizar el proceso de rifas para eventos o sorteos.",
+                tecnologias: ["Lenguaje: HTML, CSS, JavaScript", "Framework: Vue", "Base de datos: LocalStorage"],
+                resultados: ["Interfaz intuitiva para crear y editar rifas","permite descargar la rifa ", "Generación automática de números"],
+                link: ""
             }
         ];
 
@@ -351,39 +374,39 @@
         }
 
         // Inicialización
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             renderizarProyectos();
-            
+
             const sidebar = document.querySelector('.sidebar');
             const hamburgerBtn = document.querySelector('.hamburger-btn');
             const navLinks = document.querySelectorAll('.nav-link');
             const searchInput = document.getElementById('search-projects');
             const clearSearch = document.getElementById('clear-search');
-            
+
             // Botón hamburguesa
-            hamburgerBtn.addEventListener('click', function() {
+            hamburgerBtn.addEventListener('click', function () {
                 this.classList.toggle('active');
                 sidebar.classList.toggle('show');
             });
-            
+
             // Navegación
             navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
+                link.addEventListener('click', function (e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
-                    
+
                     // Oculta todas las secciones
                     document.querySelectorAll('section').forEach(section => {
                         section.style.display = 'none';
                     });
-                    
+
                     // Muestra la sección seleccionada
                     document.querySelector(targetId).style.display = 'block';
-                    
+
                     // Actualiza el menú activo
                     navLinks.forEach(item => item.classList.remove('active'));
                     this.classList.add('active');
-                    
+
                     // Cierra el sidebar en móviles
                     if (window.innerWidth <= 991.98) {
                         sidebar.classList.remove('show');
@@ -391,9 +414,9 @@
                     }
                 });
             });
-            
+
             // Buscador de proyectos
-            searchInput.addEventListener('input', function(e) {
+            searchInput.addEventListener('input', function (e) {
                 const busqueda = e.target.value.toLowerCase();
                 const proyectosFiltrados = proyectos.filter(proyecto =>
                     proyecto.titulo.toLowerCase().includes(busqueda) ||
@@ -401,24 +424,24 @@
                 );
                 renderizarProyectos(proyectosFiltrados);
             });
-            
+
             // Limpiar búsqueda
-            clearSearch.addEventListener('click', function() {
+            clearSearch.addEventListener('click', function () {
                 searchInput.value = '';
                 renderizarProyectos();
             });
-            
+
             // Configuración del modal
             const proyectoModal = document.getElementById('proyectoModal');
             if (proyectoModal) {
-                proyectoModal.addEventListener('show.bs.modal', function(event) {
+                proyectoModal.addEventListener('show.bs.modal', function (event) {
                     const button = event.relatedTarget;
-                    
+
                     // Actualizar contenido del modal
                     document.getElementById('modalProjectName').textContent = button.getAttribute('data-title');
                     document.getElementById('modalDescripcion').textContent = button.getAttribute('data-description');
                     document.getElementById('modalObjetivo').textContent = button.getAttribute('data-objetivo');
-                    
+
                     // Actualizar tecnologías
                     const tecnologias = JSON.parse(button.getAttribute('data-tecnologias'));
                     const tecnologiasList = document.getElementById('modalTecnologias');
@@ -428,7 +451,7 @@
                         li.textContent = tech;
                         tecnologiasList.appendChild(li);
                     });
-                    
+
                     // Actualizar resultados
                     const resultados = JSON.parse(button.getAttribute('data-resultados'));
                     const resultadosList = document.getElementById('modalResultados');
@@ -438,12 +461,12 @@
                         li.textContent = res;
                         resultadosList.appendChild(li);
                     });
-                    
+
                     // Actualizar enlace
                     document.getElementById('modalLink').href = button.getAttribute('data-link');
                 });
             }
-            
+
             // Mostrar sección "about" por defecto
             document.querySelector('#about').style.display = 'block';
         });
