@@ -7,25 +7,23 @@
     <title>Portafolio - Samuel Gómez</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome para íconos -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./styles.css">
+    
 </head>
 
 <body>
-    <!-- Botón Hamburguesa -->
+    <!-- Botón Hamburguesa (solo móviles) -->
     <button class="hamburger-btn">
         <i class="fas fa-bars"></i>
     </button>
-
-    <!-- Overlay para móviles -->
-    <div class="sidebar-overlay"></div>
 
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="position-sticky pt-3">
             <div class="text-center mb-4">
-                <img src="./img/samuel_gomez.png" alt="Samuel Gómez" class="rounded-circle sidebar-profile-img">
+                <img src="./img/samuel_gomez.png" alt="Samuel Gómez" class="rounded-circle sidebar-profile-img mb-3">
                 <h5>Samuel Gómez</h5>
                 <p class="text-muted">Estudiante de ADSO</p>
             </div>
@@ -40,7 +38,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#projects">
                         <i class="fas fa-folder"></i>
-                        <span class="nav-link-text">Proyectos realizados</span>
+                        <span class="nav-link-text">Proyectos</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -53,307 +51,113 @@
         </div>
     </div>
 
+    <!-- Contenido Principal -->
     <main class="main-content">
-        <section id="about" class="py-5 px-md-4">
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 text-center mb-4 mb-lg-0">
-                        <img src="./img/samuel_gomez.png" alt="Samuel Gómez" class="rounded-circle about-profile-img">
-                    </div>
-                    <div class="col-lg-8">
-                        <h2 class="section-title">Sobre Mi</h2>
-                        <p class="lead"><strong>Samuel Gómez</strong> estudiante de Análisis y Desarrollo de
-                            Software.</p>
-                        <p>
-                            Desarrollador Full Stack con experiencia en múltiples tecnologías del frontend y backend.
-                            Cuento con sólidos conocimientos en HTML/CSS, JavaScript, y frameworks modernos como
-                            Vue, Bootstrap, Materialize y Semantic UI para construir interfaces responsivas y
-                            accesibles.
-                            En el backend, manejo Node.js, Python, SQL y bases de datos como MongoDB.
-                            Tengo experiencia en el desarrollo móvil con Flutter y el lenguaje Dart, lo que me
-                            permite crear aplicaciones multiplataforma.
-                            Además, poseo dominio en control de versiones con Git y GitHub, herramientas clave para
-                            el trabajo colaborativo y la integración continua.
-                        </p>
-                        <br>
-                        <p>Apasionado por la tecnología y la programación, se encuentra en constante formación para
-                            perfeccionar sus habilidades en el desarrollo de soluciones innovadoras. Le motiva la
-                            resolución de problemas mediante el código y la optimización de sistemas para hacerlos
-                            más eficientes y funcionales.</p>
-                        <p>Está siempre en búsqueda de nuevos conocimientos y herramientas que impulsen su
-                            crecimiento profesional dentro del ámbito del desarrollo de software.</p>
-
-                        <div class="mt-4">
-                            <h4>Habilidades técnicas</h4>
-                            <div class="d-flex flex-wrap gap-2">
-                                <span class="badge bg-primary">JavaScript</span>
-                                <span class="badge bg-primary">Python</span>
-                                <span class="badge bg-primary">Node.js</span>
-                                <span class="badge bg-primary">Vue</span>
-                                <span class="badge bg-primary">Flutter</span>
-                                <span class="badge bg-primary">MongoDB</span>
-                                <span class="badge bg-primary">Git</span>
+        <div class="section-container">
+            <!-- Sección Sobre Mi -->
+            <section id="about" class="py-5 px-md-4">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-lg-4 text-center mb-4 mb-lg-0">
+                            <img src="./img/samuel_gomez.png" alt="Samuel Gómez" class="rounded-circle about-profile-img">
+                        </div>
+                        <div class="col-lg-8">
+                            <h2 class="section-title">Sobre Mi</h2>
+                            <p class="lead"><strong>Samuel Gómez</strong> - Estudiante de Análisis y Desarrollo de Software</p>
+                            <p>Desarrollador Full Stack con experiencia en múltiples tecnologías del frontend y backend. Cuento con sólidos conocimientos en HTML/CSS, JavaScript, y frameworks modernos como Vue, Bootstrap, Materialize y Semantic UI para construir interfaces responsivas y accesibles.</p>
+                            <p>En el backend, manejo Node.js, Python, SQL y bases de datos como MongoDB. Tengo experiencia en el desarrollo móvil con Flutter y el lenguaje Dart, lo que me permite crear aplicaciones multiplataforma.</p>
+                            <p>Además, poseo dominio en control de versiones con Git y GitHub, herramientas clave para el trabajo colaborativo y la integración continua.</p>
+                            
+                            <div class="mt-4">
+                                <h4>Habilidades técnicas</h4>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge bg-primary">JavaScript</span>
+                                    <span class="badge bg-primary">Python</span>
+                                    <span class="badge bg-primary">Node.js</span>
+                                    <span class="badge bg-primary">Vue</span>
+                                    <span class="badge bg-primary">Flutter</span>
+                                    <span class="badge bg-primary">MongoDB</span>
+                                    <span class="badge bg-primary">Git</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="projects" class="py-5 px-md-4" style="display: none;">
-            <div class="container-fluid">
-                <div class="text-center mb-5">
-                    <h1 class="section-title">MIS PROYECTOS</h1>
+            <!-- Sección Proyectos -->
+            <section id="projects" class="py-5 px-md-4" style="display: none;">
+                <div class="container-fluid">
+                    <div class="text-center mb-5">
+                        <h1 class="section-title">MIS PROYECTOS</h1>
+                        <div class="search-container">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                <input type="text" id="search-projects" class="form-control" placeholder="Buscar proyectos...">
+                                <button class="btn btn-outline-secondary" type="button" id="clear-search">Limpiar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="projects-container row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        <!-- Proyectos se cargarán aquí -->
+                    </div>
                 </div>
+            </section>
 
-                <div class="projects-container">
-                    <!-- Proyecto 1 - ¿QUIEN SOY? -->
-                    <div class="card">
-                        <img src="./img/1perf.jpg" class="card-img-top project-img" alt="¿QUIEN SOY?">
-                        <div class="card-body">
-                            <h5 class="card-title">¿QUIEN SOY?</h5>
-                            <p class="card-text">Proyecto personal que muestra información sobre mí.</p>
-                        </div>
-                        <div class="card-footer bg-transparent d-flex justify-content-between">
-                            <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
-                                data-bs-target="#proyectoModal" data-title="¿QUIEN SOY?"
-                                data-description="Este proyecto consiste en el desarrollo de una página web personal que muestra información sobre mí, mis habilidades y experiencia. Implementado con tecnologías frontend básicas para crear un perfil interactivo."
-                                data-objetivo="Crear una presentación personal profesional que sirva como portafolio digital y punto de contacto para oportunidades laborales o colaboraciones."
-                                data-tecnologias='["Lenguaje: HTML, CSS, JavaScript", "Framework: No aplica", "Base de datos: No aplica", "Control de versiones: Git/GitHub"]'
-                                data-resultados='["Página web personal completamente funcional", "Diseño limpio y profesional", "Secciones organizadas: sobre mí, habilidades, proyectos", "Optimizado para dispositivos móviles"]'
-                                data-link="./QUIEN-SOY/index.html">
-                                <i class="fas fa-info-circle me-1"></i> Descripción
-                            </button>
-                            <a href="./QUIEN SOY/index.html" target="_blank" class="btn btn-primary">VER PROYECTO</a>
-                        </div>
-                    </div>
-
-                    <!-- Proyecto 2 - BANDAS DE ROCK -->
-                    <div class="card">
-                        <img src="./img/rock.jpg" class="card-img-top project-img" alt="BANDAS DE ROCK">
-                        <div class="card-body">
-                            <h5 class="card-title">BANDAS DE ROCK</h5>
-                            <p class="card-text">Página web sobre bandas de rock favoritas.</p>
-                        </div>
-                        <div class="card-footer bg-transparent d-flex justify-content-between">
-                            <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
-                                data-bs-target="#proyectoModal" data-title="BANDAS DE ROCK"
-                                data-description="Este proyecto consiste en el desarrollo de una aplicación web enfocada en mostrar información sobre bandas de rock famosas. Implementado con HTML, CSS y JavaScript con diseño responsivo usando Bootstrap."
-                                data-objetivo="Crear un catálogo interactivo de bandas de rock que permita a los usuarios descubrir información sobre sus artistas favoritos, incluyendo historia, discografía y canciones destacadas."
-                                data-tecnologias='["Lenguaje: HTML, CSS, JavaScript", "Framework: Bootstrap 5", "Base de datos: No aplica (estático)", "Control de versiones: Git/GitHub"]'
-                                data-resultados='["Sitio web completamente funcional con información detallada", "Diseño responsivo para móviles y desktop", "Interfaz intuitiva con navegación sencilla", "Galería de imágenes de bandas"]'
-                                data-link="./bandas-de-rock/index.html">
-                                <i class="fas fa-info-circle me-1"></i> Descripción
-                            </button>
-                            <a href="./bandas de rock/index.html" target="_blank" class="btn btn-primary">VER
-                                PROYECTO</a>
-                        </div>
-                    </div>
-
-                    <!-- Proyecto 3 - MI PERFIL -->
-                    <div class="card">
-                        <img src="./img/miperfil.webp" class="card-img-top project-img" alt="MI PERFIL">
-                        <div class="card-body">
-                            <h5 class="card-title">MI PERFIL</h5>
-                            <p class="card-text">Página de perfil profesional.</p>
-                        </div>
-                        <div class="card-footer bg-transparent d-flex justify-content-between">
-                            <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
-                                data-bs-target="#proyectoModal" data-title="MI PERFIL"
-                                data-description="Este proyecto consiste en una página de perfil profesional avanzada que muestra mis habilidades, experiencia y proyectos. Desarrollada con tecnologías modernas de frontend para crear una presentación impactante."
-                                data-objetivo="Desarrollar un perfil profesional online completo que destaque mis habilidades técnicas, experiencia laboral y proyectos realizados, sirviendo como currículum interactivo."
-                                data-tecnologias='["Lenguaje: HTML, CSS, JavaScript", "Framework: Bootstrap 5", "Base de datos: No aplica", "Control de versiones: Git/GitHub"]'
-                                data-resultados='["Perfil profesional completo y responsive", "Diseño moderno y atractivo", "Secciones bien organizadas", "Optimización para SEO básico"]'
-                                data-link="./MI-PERFIL/index.html">
-                                <i class="fas fa-info-circle me-1"></i> Descripción
-                            </button>
-                            <a href="./MI PERFIL/index.html" target="_blank" class="btn btn-primary">VER PROYECTO</a>
-                        </div>
-                    </div>
-
-                    <!-- Proyecto 4 - VIDEO DESPLEGAR RENDER -->
-                    <div class="card">
-                        <img src="./img/youtube.png" class="card-img-top project-img" alt="VIDEO DESPLEGAR RENDER">
-                        <div class="card-body">
-                            <h5 class="card-title">VIDEO DESPLEGAR RENDER</h5>
-                            <p class="card-text">Video demostrativo de un proyecto.</p>
-                        </div>
-                        <div class="card-footer bg-transparent d-flex justify-content-between">
-                            <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
-                                data-bs-target="#proyectoModal" data-title="VIDEO DESPLEGAR RENDER"
-                                data-description="Este proyecto consiste en un video tutorial que muestra el proceso completo de despliegue de una aplicación web en el servicio en la nube Render. Incluye todos los pasos desde la configuración hasta el lanzamiento."
-                                data-objetivo="Crear una guía visual completa que explique el proceso de deployment en Render, ayudando a otros desarrolladores a implementar sus aplicaciones en este servicio cloud."
-                                data-tecnologias='["Plataforma: Render", "Tecnologías mostradas: Node.js, Git", "Herramientas: Visual Studio Code", "Control de versiones: Git/GitHub"]'
-                                data-resultados='["Video tutorial completo y detallado", "Explicación clara de cada paso", "Cobertura de problemas comunes y soluciones", "Guía accesible para principiantes"]'
-                                data-link="https://youtu.be/msJDXHGS7AU">
-                                <i class="fas fa-info-circle me-1"></i> Descripción
-                            </button>
-                            <a href="https://youtu.be/msJDXHGS7AU" target="_blank" class="btn btn-primary">VER
-                                PROYECTO</a>
-                        </div>
-                    </div>
-
-                    <!-- Proyecto 5 - PAGINA JOHANSON -->
-                    <div class="card">
-                        <img src="./img/johanson.avif" class="card-img-top project-img" alt="PAGINA JOHANSON">
-                        <div class="card-body">
-                            <h5 class="card-title">PAGINA JOHANSON</h5>
-                            <p class="card-text">Página web para Johanson.</p>
-                        </div>
-                        <div class="card-footer bg-transparent d-flex justify-content-between">
-                            <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
-                                data-bs-target="#proyectoModal" data-title="PAGINA JOHANSON"
-                                data-description="Este proyecto consiste en el desarrollo de un sitio web corporativo para Johanson, mostrando sus servicios, productos e información de contacto. Implementado con tecnologías frontend modernas."
-                                data-objetivo="Crear una presencia online profesional para Johanson que comunique efectivamente sus servicios y valore su marca, atrayendo potenciales clientes."
-                                data-tecnologias='["Lenguaje: HTML, CSS, JavaScript", "Framework: Bootstrap 5", "Base de datos: No aplica", "Control de versiones: Git/GitHub"]'
-                                data-resultados='["Sitio web corporativo completo", "Diseño alineado con identidad de marca", "Páginas: Inicio, Servicios, Contacto", "Formulario de contacto funcional"]'
-                                data-link="./pagina-johanson/index.html">
-                                <i class="fas fa-info-circle me-1"></i> Descripción
-                            </button>
-                            <a href="./pagina_johanson/index.html" target="_blank" class="btn btn-primary">VER
-                                PROYECTO</a>
-                        </div>
-                    </div>
-
-                    <!-- Proyecto 6 - PAGINA ZAPATOS -->
-                    <div class="card">
-                        <img src="./img/zapat.jpg" class="card-img-top project-img" alt="PAGINA ZAPATOS">
-                        <div class="card-body">
-                            <h5 class="card-title">PAGINA ZAPATOS</h5>
-                            <p class="card-text">Página web sobre zapatos.</p>
-                        </div>
-                        <div class="card-footer bg-transparent d-flex justify-content-between">
-                            <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
-                                data-bs-target="#proyectoModal" data-title="PAGINA ZAPATOS"
-                                data-description="Este proyecto consiste en una tienda online de zapatos con catálogo de productos y funcionalidades básicas de e-commerce. Desarrollado como demostración de habilidades en comercio electrónico."
-                                data-objetivo="Implementar un prototipo funcional de tienda online de zapatos que muestre productos, permita filtrarlos por categorías y simule un proceso de compra."
-                                data-tecnologias='["Lenguaje: HTML, CSS, JavaScript", "Framework: Bootstrap 5", "Base de datos: No aplica (simulada)", "Control de versiones: Git/GitHub"]'
-                                data-resultados='["Catálogo de productos organizado", "Sistema de filtrado por categorías", "Diseño atractivo y profesional", "Simulador de carrito de compras"]'
-                                data-link="./pagina-zapatos/index.html">
-                                <i class="fas fa-info-circle me-1"></i> Descripción
-                            </button>
-                            <a href="./pagina zapatos/index.html" target="_blank" class="btn btn-primary">VER
-                                PROYECTO</a>
-                        </div>
-                    </div>
-
-                    <!-- Proyecto 7 - POKE API -->
-                    <div class="card">
-                        <img src="./img/pokemon.png" class="card-img-top project-img" alt="POKE API">
-                        <div class="card-body">
-                            <h5 class="card-title">POKE API</h5>
-                            <p class="card-text">Poke Card battle simulation.</p>
-                        </div>
-                        <div class="card-footer bg-transparent d-flex justify-content-between">
-                            <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
-                                data-bs-target="#proyectoModal" data-title="POKE API"
-                                data-description="Este proyecto consiste en un simulador de batallas Pokémon que consume la PokeAPI pública para mostrar información y características de diferentes Pokémon. Implementa un sistema de combate por turnos."
-                                data-objetivo="Desarrollar una aplicación interactiva que demuestre el consumo de APIs RESTful y la manipulación de datos JSON, creando una experiencia de juego simple pero funcional."
-                                data-tecnologias='["Lenguaje: JavaScript", "API: PokeAPI", "Framework: Bootstrap 5", "Control de versiones: Git/GitHub"]'
-                                data-resultados='["Sistema de combate Pokémon funcional", "Consumo eficiente de API REST", "Interfaz de usuario intuitiva", "Gestión de estados del juego"]'
-                                data-link="./pokeapi/index.html">
-                                <i class="fas fa-info-circle me-1"></i> Descripción
-                            </button>
-                            <a href="./pokeapi/index.html" target="_blank" class="btn btn-primary">VER PROYECTO</a>
-                        </div>
-                    </div>
-
-                    <!-- Proyecto 8 - CRUD -->
-                    <div class="card">
-                        <img src="./img/formulario.jpg" class="card-img-top project-img" alt="CRUD">
-                        <div class="card-body">
-                            <h5 class="card-title">CRUD</h5>
-                            <p class="card-text">Registro Mediante Formulario.</p>
-                        </div>
-                        <div class="card-footer bg-transparent d-flex justify-content-between">
-                            <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
-                                data-bs-target="#proyectoModal" data-title="CRUD"
-                                data-description="Este proyecto consiste en un sistema CRUD (Create, Read, Update, Delete) completo que permite gestionar registros mediante un formulario. Los datos se persisten en el localStorage del navegador."
-                                data-objetivo="Implementar un sistema de gestión de registros completo que demuestre el manejo de operaciones básicas de persistencia de datos en el frontend."
-                                data-tecnologias='["Lenguaje: JavaScript", "Almacenamiento: localStorage", "Framework: Bootstrap 5", "Control de versiones: Git/GitHub"]'
-                                data-resultados='["Operaciones CRUD completamente funcionales", "Validación de formularios", "Persistencia de datos en el navegador", "Interfaz de usuario clara y funcional"]'
-                                data-link="./crud/index.html">
-                                <i class="fas fa-info-circle me-1"></i> Descripción
-                            </button>
-                            <a href="./crud/index.html" target="_blank" class="btn btn-primary">VER PROYECTO</a>
-                        </div>
-                    </div>
-                    <!-- Proyecto 9 - ADMINISTRADOR DE CITAS VETERINARIAS -->
-                    <div class="card">
-                        <img src="./img/pets.jpg"
-                            class="card-img-top project-img" alt="Administrador de Citas Veterinarias">
-                        <div class="card-body">
-                            <h5 class="card-title">ADMINISTRADOR DE CITAS VETERINARIAS</h5>
-                            <p class="card-text">Sistema de gestión de citas para clínica veterinaria.</p>
-                        </div>
-                        <div class="card-footer bg-transparent d-flex justify-content-between">
-                            <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
-                                data-bs-target="#proyectoModal" data-title="ADMINISTRADOR DE CITAS VETERINARIAS"
-                                data-description="Este proyecto es un sistema completo de gestión de citas para una clínica veterinaria. Permite agregar, editar, eliminar y filtrar citas, con control de disponibilidad de horarios. Incluye validación de formularios, persistencia de datos en localStorage y una interfaz intuitiva con imágenes de diferentes tipos de mascotas."
-                                data-objetivo="Desarrollar una aplicación CRUD completa que demuestre habilidades en JavaScript, manipulación del DOM, manejo de formularios, validación de datos y almacenamiento local. El sistema debe ser funcional y fácil de usar para el personal veterinario."
-                                data-tecnologias='["Lenguaje: JavaScript", "UI: Bootstrap 5", "Iconos: Font Awesome", "Almacenamiento: localStorage"]'
-                                data-resultados='["Sistema CRUD completo", "Filtrado y búsqueda avanzada", "Validación de formularios robusta", "Interfaz de usuario responsive", "Persistencia de datos en localStorage"]'
-                                data-link="./veterinaria/index.html">
-                                <i class="fas fa-info-circle me-1"></i> Descripción
-                            </button>
-                            <a href="./citas_pets/index.html" target="_blank" class="btn btn-primary">VER PROYECTO</a>
+            <!-- Sección Contacto -->
+            <section id="contact" class="py-5 px-md-4" style="display: none;">
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <h2 class="section-title">Contacto</h2>
+                            <ul class="contact-info">
+                                <li>
+                                    <a href="mailto:1705alejogomez@gmail.com">
+                                        <i class="fas fa-envelope"></i>
+                                        <span>1705alejogomez@gmail.com</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://wa.me/573001695629" target="_blank">
+                                        <i class="fab fa-whatsapp"></i>
+                                        <span>WhatsApp</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/sam1217s" target="_blank">
+                                        <i class="fab fa-github"></i>
+                                        <span>Github</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/in/samuel-gomez-gomez-195562306/" target="_blank">
+                                        <i class="fab fa-linkedin"></i>
+                                        <span>LinkedIn</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <!-- sesion contacto -->
-        <section id="contact" class="py-5 px-md-4" style="display: none;">
-            <div class="container-fluid">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <h2 class="section-title">Contacto</h2>
-                        <ul class="contact-info">
-                            <li>
-                                <a href="mailto:1705alejogomez@gmail.com">
-                                    <i class="fas fa-envelope"></i>
-                                    <span>1705alejogomez@gmail.com</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://wa.me/573001695629" target="_blank">
-                                    <i class="fab fa-whatsapp"></i>
-                                    <span>WhatsApp</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://github.com/sam1217s" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                    <span>Github</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.linkedin.com/in/samuel-gomez-gomez-195562306/" target="_blank">
-                                    <i class="fab fa-linkedin"></i>
-                                    <span>LinkedIn</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
 
-        <footer class="bg-dark text-white py-3 mt-5">
+        <!-- Footer -->
+        <footer class="py-3">
             <div class="container text-center">
                 <p class="mb-0">Proyecto personal | Solo para fines educativos, no comerciales.</p>
             </div>
         </footer>
     </main>
 
-    <!-- Modal para descripción de proyectos -->
-    <div class="modal fade" id="proyectoModal" tabindex="-1" aria-labelledby="proyectoModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
+    <!-- Modal Proyectos -->
+    <div class="modal fade" id="proyectoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-dark text-white">
-                    <h5 class="modal-title text-white" id="proyectoModalLabel">Detalles del Proyecto</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                    <h5 class="modal-title">Detalles del Proyecto</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="project-details">
@@ -361,187 +165,287 @@
                         <p id="modalProjectName" class="detail-content">[Nombre del proyecto]</p>
 
                         <h4 class="detail-title">Descripción General:</h4>
-                        <p id="modalDescripcion" class="detail-content">Este proyecto consiste en el desarrollo de una
-                            aplicación [web / móvil / de escritorio] enfocada en [objetivo principal].</p>
+                        <p id="modalDescripcion" class="detail-content">[Descripción del proyecto]</p>
 
                         <h4 class="detail-title">Objetivo:</h4>
-                        <p id="modalObjetivo" class="detail-content">Crear un sistema funcional, eficiente y fácil de
-                            usar que solucione [problema específico] para [usuarios o público objetivo].</p>
+                        <p id="modalObjetivo" class="detail-content">[Objetivo del proyecto]</p>
 
                         <h4 class="detail-title">Tecnologías:</h4>
                         <ul id="modalTecnologias" class="detail-content">
-                            <li>Lenguaje: <span class="tech-detail">[ej. Python, JavaScript]</span></li>
-                            <li>Framework: <span class="tech-detail">[ej. Flask, React]</span></li>
-                            <li>Base de datos: <span class="tech-detail">[ej. MySQL, MongoDB]</span></li>
-                            <li>Control de versiones: <span class="tech-detail">Git/GitHub</span></li>
+                            <!-- Tecnologías se cargarán aquí -->
                         </ul>
 
-                        <h4 class="detail-title">Resultados Esperados:</h4>
+                        <h4 class="detail-title">Resultados:</h4>
                         <ul id="modalResultados" class="detail-content">
-                            <li>Aplicación funcional con interfaz amigable</li>
-                            <li>Cumplimiento de los requerimientos principales</li>
-                            <li>Documentación técnica básica para mantenimiento</li>
+                            <!-- Resultados se cargarán aquí -->
                         </ul>
                     </div>
                 </div>
-                <div class="modal-footer bg-light">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        <i class="fas fa-times me-1"></i> Cerrar
-                    </button>
-                    <a id="modalLink" href="#" target="_blank" class="btn btn-primary">
-                        <i class="fas fa-external-link-alt me-1"></i> Ver Proyecto
-                    </a>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <a id="modalLink" href="#" class="btn btn-primary" target="_blank">Ver Proyecto</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap JS y dependencias -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        // Datos de proyectos
+        const proyectos = [
+            {
+                id: 1,
+                titulo: "ADMINISTRADOR DE CITAS VETERINARIAS",
+                descripcion: "Sistema de gestión de citas para clínica veterinaria.",
+                fecha: "2024-01-15",
+                imagen: "./img/pets.jpg",
+                descripcionModal: "Este proyecto es un sistema completo de gestión de citas para una clínica veterinaria. Permite agregar, editar, eliminar y filtrar citas, con control de disponibilidad de horarios.",
+                objetivo: "Desarrollar una aplicación CRUD completa que demuestre habilidades en JavaScript, manipulación del DOM, manejo de formularios, validación de datos y almacenamiento local.",
+                tecnologias: ["Lenguaje: JavaScript", "UI: Bootstrap 5", "Iconos: Font Awesome", "Almacenamiento: localStorage"],
+                resultados: ["Sistema CRUD completamente funcional", "Filtrado y búsqueda avanzada", "Validación de formularios robusta", "Interfaz de usuario responsive"],
+                link: "./citas_pets/index.html"
+            },
+            {
+                id: 2,
+                titulo: "CRUD",
+                descripcion: "Registro Mediante Formulario.",
+                fecha: "2023-12-10",
+                imagen: "./img/formulario.jpg",
+                descripcionModal: "Este proyecto consiste en un sistema CRUD (Create, Read, Update, Delete) completo que permite gestionar registros mediante un formulario.",
+                objetivo: "Implementar un sistema de gestión de registros completo que demuestre el manejo de operaciones básicas de persistencia de datos en el frontend.",
+                tecnologias: ["Lenguaje: JavaScript", "Almacenamiento: localStorage", "Framework: Bootstrap 5", "Control de versiones: Git/GitHub"],
+                resultados: ["Operaciones CRUD completamente funcionales", "Validación de formularios", "Persistencia de datos en el navegador"],
+                link: "./crud/index.html"
+            }
+            ,
+            {
+                id: 3,
+                titulo: "POKE API",
+                descripcion: "Poke Card battle simulation.",
+                fecha: "2023-11-25",
+                imagen: "./img/pokemon.png",
+                descripcionModal: "Este proyecto consiste en un simulador de batallas Pokémon que consume la PokeAPI pública para mostrar información y características de diferentes Pokémon.",
+                objetivo: "Desarrollar una aplicación interactiva que demuestre el consumo de APIs RESTful y la manipulación de datos JSON.",
+                tecnologias: ["Lenguaje: JavaScript", "API: PokeAPI", "Framework: Bootstrap 5", "Control de versiones: Git/GitHub"],
+                resultados: ["Sistema de combate Pokémon funcional", "Consumo eficiente de API REST", "Interfaz de usuario intuitiva"],
+                link: "./pokeapi/index.html"
+            },
+            
+            {
+                id: 4,
+                titulo: "PAGINA ZAPATOS",
+                descripcion: "Página web sobre zapatos.",
+                fecha: "2023-11-15",
+                imagen: "./img/zapat.jpg",
+                descripcionModal: "Este proyecto consiste en una tienda online de zapatos con catálogo de productos y funcionalidades básicas de e-commerce.",
+                objetivo: "Implementar un prototipo funcional de tienda online de zapatos que muestre productos y simule un proceso de compra.",
+                tecnologias: ["Lenguaje: HTML, CSS, JavaScript", "Framework: Bootstrap 5", "Base de datos: No aplica (simulada)"],
+                resultados: ["Catálogo de productos organizado", "Diseño atractivo y profesional", "Simulador de carrito de compras"],
+                link: "./pagina zapatos/index.html"
+            },
+            {
+                id: 5,
+                titulo: "PAGINA JOHANSON",
+                descripcion: "Página web para Johanson.",
+                fecha: "2023-10-20",
+                imagen: "./img/johanson.avif",
+                descripcionModal: "Este proyecto consiste en el desarrollo de un sitio web corporativo para Johanson, mostrando sus servicios, productos e información de contacto.",
+                objetivo: "Crear una presencia online profesional para Johanson que comunique efectivamente sus servicios y valore su marca.",
+                tecnologias: ["Lenguaje: HTML, CSS, JavaScript", "Framework: Bootstrap 5", "Base de datos: No aplica"],
+                resultados: ["Sitio web corporativo completo", "Diseño alineado con identidad de marca", "Formulario de contacto funcional"],
+                link: "./pagina_johanson/index.html"
+            },
+            {
+                id: 6,
+                titulo: "VIDEO DESPLEGAR RENDER",
+                descripcion: "Video demostrativo de un proyecto.",
+                fecha: "2023-10-10",
+                imagen: "./img/youtube.png",
+                descripcionModal: "Este proyecto consiste en un video tutorial que muestra el proceso completo de despliegue de una aplicación web en el servicio en la nube Render.",
+                objetivo: "Crear una guía visual completa que explique el proceso de deployment en Render.",
+                tecnologias: ["Plataforma: Render", "Tecnologías mostradas: Node.js, Git", "Herramientas: Visual Studio Code"],
+                resultados: ["Video tutorial completo y detallado", "Explicación clara de cada paso", "Cobertura de problemas comunes y soluciones"],
+                link: "https://youtu.be/msJDXHGS7AU"
+            },
+            {
+                id: 7,
+                titulo: "MI PERFIL",
+                descripcion: "Página de perfil profesional.",
+                fecha: "2023-09-30",
+                imagen: "./img/miperfil.webp",
+                descripcionModal: "Este proyecto consiste en una página de perfil profesional avanzada que muestra mis habilidades, experiencia y proyectos.",
+                objetivo: "Desarrollar un perfil profesional online completo que destaque mis habilidades técnicas y experiencia laboral.",
+                tecnologias: ["Lenguaje: HTML, CSS, JavaScript", "Framework: Bootstrap 5", "Base de datos: No aplica"],
+                resultados: ["Perfil profesional completo y responsive", "Diseño moderno y atractivo", "Optimización para SEO básico"],
+                link: "./MI PERFIL/index.html"
+            },
+            {
+                id: 8,
+                titulo: "BANDAS DE ROCK",
+                descripcion: "Página web sobre bandas de rock favoritas.",
+                fecha: "2023-09-15",
+                imagen: "./img/rock.jpg",
+                descripcionModal: "Este proyecto consiste en el desarrollo de una aplicación web enfocada en mostrar información sobre bandas de rock famosas.",
+                objetivo: "Crear un catálogo interactivo de bandas de rock que permita a los usuarios descubrir información sobre sus artistas favoritos.",
+                tecnologias: ["Lenguaje: HTML, CSS, JavaScript", "Framework: Bootstrap 5", "Base de datos: No aplica (estático)"],
+                resultados: ["Sitio web completamente funcional con información detallada", "Diseño responsivo para móviles y desktop", "Galería de imágenes de bandas"],
+                link: "./bandas de rock/index.html"
+            },
+            {
+                id: 9,
+                titulo: "¿QUIEN SOY?",
+                descripcion: "Proyecto personal que muestra información sobre mí.",
+                fecha: "2023-08-20",
+                imagen: "./img/1perf.jpg",
+                descripcionModal: "Este proyecto consiste en el desarrollo de una página web personal que muestra información sobre mí, mis habilidades y experiencia.",
+                objetivo: "Crear una presentación personal profesional que sirva como portafolio digital y punto de contacto para oportunidades laborales.",
+                tecnologias: ["Lenguaje: HTML, CSS, JavaScript", "Framework: No aplica", "Base de datos: No aplica"],
+                resultados: ["Página web personal completamente funcional", "Diseño limpio y profesional", "Secciones organizadas: sobre mí, habilidades, proyectos"],
+                link: "./QUIEN SOY/index.html"
+            }
+        ];
+
+        // Función para formatear fecha
+        function formatearFecha(fechaStr) {
+            const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(fechaStr).toLocaleDateString('es-ES', opciones);
+        }
+
+        // Función para renderizar proyectos
+        function renderizarProyectos(proyectosMostrar = proyectos) {
+            const container = document.querySelector('.projects-container');
+            container.innerHTML = '';
+
+            // Ordenar por fecha (más reciente primero)
+            const proyectosOrdenados = [...proyectosMostrar].sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
+
+            proyectosOrdenados.forEach(proyecto => {
+                const col = document.createElement('div');
+                col.className = 'col';
+                col.innerHTML = `
+                    <div class="card h-100">
+                        <img src="${proyecto.imagen}" class="card-img-top project-img" alt="${proyecto.titulo}">
+                        <div class="card-body">
+                            <h5 class="card-title">${proyecto.titulo}</h5>
+                            <p class="card-text">${proyecto.descripcion}</p>
+                            <p class="project-date"><i class="far fa-calendar-alt me-1"></i>${formatearFecha(proyecto.fecha)}</p>
+                        </div>
+                        <div class="card-footer bg-transparent d-flex justify-content-between">
+                            <button class="btn btn-info btn-descripcion" data-bs-toggle="modal"
+                                data-bs-target="#proyectoModal" data-title="${proyecto.titulo}"
+                                data-description="${proyecto.descripcionModal}"
+                                data-objetivo="${proyecto.objetivo}"
+                                data-tecnologias='${JSON.stringify(proyecto.tecnologias)}'
+                                data-resultados='${JSON.stringify(proyecto.resultados)}'
+                                data-link="${proyecto.link}">
+                                <i class="fas fa-info-circle me-1"></i> Descripción
+                            </button>
+                            <a href="${proyecto.link}" target="_blank" class="btn btn-primary">VER PROYECTO</a>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(col);
+            });
+        }
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            renderizarProyectos();
+            
             const sidebar = document.querySelector('.sidebar');
-            const mainContent = document.querySelector('.main-content');
             const hamburgerBtn = document.querySelector('.hamburger-btn');
-            const overlay = document.querySelector('.sidebar-overlay');
             const navLinks = document.querySelectorAll('.nav-link');
-
-            // Función para alternar el sidebar en móviles
-            function toggleMobileSidebar() {
+            const searchInput = document.getElementById('search-projects');
+            const clearSearch = document.getElementById('clear-search');
+            
+            // Botón hamburguesa
+            hamburgerBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
                 sidebar.classList.toggle('show');
-                overlay.classList.toggle('active');
-                document.body.classList.toggle('no-scroll');
-            }
-
-            // Función para alternar entre collapsed/expanded en desktop
-            function toggleCollapse() {
-                sidebar.classList.toggle('collapsed');
-                mainContent.classList.toggle('expanded');
-
-                // Guardar estado en localStorage
-                const isCollapsed = sidebar.classList.contains('collapsed');
-                localStorage.setItem('sidebarCollapsed', isCollapsed);
-            }
-
-            // Cargar estado del sidebar
-            if (localStorage.getItem('sidebarCollapsed') === 'true') {
-                sidebar.classList.add('collapsed');
-                mainContent.classList.add('expanded');
-            }
-
-            // Evento para el botón hamburguesa
-            hamburgerBtn.addEventListener('click', toggleMobileSidebar);
-
-            // Evento para el overlay
-            overlay.addEventListener('click', toggleMobileSidebar);
-
-            // Eventos para los enlaces del menú
+            });
+            
+            // Navegación
             navLinks.forEach(link => {
-                link.addEventListener('click', function (e) {
+                link.addEventListener('click', function(e) {
                     e.preventDefault();
-
-                    const target = this.getAttribute('href');
-
-                    // Ocultar todas las secciones
+                    const targetId = this.getAttribute('href');
+                    
+                    // Oculta todas las secciones
                     document.querySelectorAll('section').forEach(section => {
                         section.style.display = 'none';
                     });
-
-                    // Mostrar la sección correspondiente
-                    document.querySelector(target).style.display = 'block';
-
-                    // Actualizar el active en el menú
+                    
+                    // Muestra la sección seleccionada
+                    document.querySelector(targetId).style.display = 'block';
+                    
+                    // Actualiza el menú activo
                     navLinks.forEach(item => item.classList.remove('active'));
                     this.classList.add('active');
-
-                    // Colapsar el sidebar después de seleccionar (solo en desktop)
-                    if (window.innerWidth > 991.98) {
-                        toggleCollapse();
-                    } else {
-                        toggleMobileSidebar();
+                    
+                    // Cierra el sidebar en móviles
+                    if (window.innerWidth <= 991.98) {
+                        sidebar.classList.remove('show');
+                        hamburgerBtn.classList.remove('active');
                     }
                 });
             });
-
-            // Configuración del modal de proyectos
+            
+            // Buscador de proyectos
+            searchInput.addEventListener('input', function(e) {
+                const busqueda = e.target.value.toLowerCase();
+                const proyectosFiltrados = proyectos.filter(proyecto =>
+                    proyecto.titulo.toLowerCase().includes(busqueda) ||
+                    proyecto.descripcion.toLowerCase().includes(busqueda)
+                );
+                renderizarProyectos(proyectosFiltrados);
+            });
+            
+            // Limpiar búsqueda
+            clearSearch.addEventListener('click', function() {
+                searchInput.value = '';
+                renderizarProyectos();
+            });
+            
+            // Configuración del modal
             const proyectoModal = document.getElementById('proyectoModal');
             if (proyectoModal) {
-                proyectoModal.addEventListener('show.bs.modal', function (event) {
+                proyectoModal.addEventListener('show.bs.modal', function(event) {
                     const button = event.relatedTarget;
-                    const modal = this;
-
-                    // Obtener el enlace del botón "VER PROYECTO" del card correspondiente
-                    const card = button.closest('.card');
-                    const verProyectoBtn = card.querySelector('.btn-primary');
-                    const projectLink = verProyectoBtn ? verProyectoBtn.getAttribute('href') : button.getAttribute('data-link');
-
-                    // Actualizar el contenido del modal
-                    modal.querySelector('#modalProjectName').textContent = button.getAttribute('data-title');
-                    modal.querySelector('#modalDescripcion').textContent = button.getAttribute('data-description');
-                    modal.querySelector('#modalObjetivo').textContent = button.getAttribute('data-objetivo');
-
-                    // Actualizar el enlace del botón "Ver Proyecto" en el modal
-                    const modalLink = modal.querySelector('#modalLink');
-                    if (modalLink) {
-                        modalLink.href = projectLink;
-                        // También copiamos el target y cualquier otro atributo del botón original
-                        modalLink.setAttribute('target', verProyectoBtn ? verProyectoBtn.getAttribute('target') : '_blank');
-                    }
-
+                    
+                    // Actualizar contenido del modal
+                    document.getElementById('modalProjectName').textContent = button.getAttribute('data-title');
+                    document.getElementById('modalDescripcion').textContent = button.getAttribute('data-description');
+                    document.getElementById('modalObjetivo').textContent = button.getAttribute('data-objetivo');
+                    
+                    // Actualizar tecnologías
                     const tecnologias = JSON.parse(button.getAttribute('data-tecnologias'));
-                    const resultados = JSON.parse(button.getAttribute('data-resultados'));
-
-                    const modalTecnologias = modal.querySelector('#modalTecnologias');
-                    const modalResultados = modal.querySelector('#modalResultados');
-
-                    modalTecnologias.innerHTML = '';
-                    modalResultados.innerHTML = '';
-
+                    const tecnologiasList = document.getElementById('modalTecnologias');
+                    tecnologiasList.innerHTML = '';
                     tecnologias.forEach(tech => {
                         const li = document.createElement('li');
-                        li.innerHTML = tech;
-                        modalTecnologias.appendChild(li);
+                        li.textContent = tech;
+                        tecnologiasList.appendChild(li);
                     });
-
-                    resultados.forEach(result => {
+                    
+                    // Actualizar resultados
+                    const resultados = JSON.parse(button.getAttribute('data-resultados'));
+                    const resultadosList = document.getElementById('modalResultados');
+                    resultadosList.innerHTML = '';
+                    resultados.forEach(res => {
                         const li = document.createElement('li');
-                        li.textContent = result;
-                        modalResultados.appendChild(li);
+                        li.textContent = res;
+                        resultadosList.appendChild(li);
                     });
+                    
+                    // Actualizar enlace
+                    document.getElementById('modalLink').href = button.getAttribute('data-link');
                 });
             }
-
-            // Mostrar la sección "about" por defecto
+            
+            // Mostrar sección "about" por defecto
             document.querySelector('#about').style.display = 'block';
-
-            // Manejar cambios de tamaño de pantalla
-            window.addEventListener('resize', function () {
-                if (window.innerWidth > 991.98) {
-                    sidebar.classList.remove('show');
-                    overlay.classList.remove('active');
-                    document.body.classList.remove('no-scroll');
-                }
-            });
-
-            // Manejo de errores para enlaces rotos (opcional)
-            document.querySelectorAll('#modalLink').forEach(link => {
-                link.addEventListener('click', function (e) {
-                    // Solo verificar para rutas locales (no URLs externas)
-                    if (!this.href.startsWith('http') || this.href.includes(window.location.host)) {
-                        fetch(this.href, { method: 'HEAD' })
-                            .then(response => {
-                                if (!response.ok) {
-                                    e.preventDefault();
-                                    alert('El proyecto no está disponible en este momento.');
-                                }
-                            })
-                            .catch(() => {
-                                e.preventDefault();
-                                alert('Error al cargar el proyecto.');
-                            });
-                    }
-                });
-            });
         });
     </script>
 </body>
