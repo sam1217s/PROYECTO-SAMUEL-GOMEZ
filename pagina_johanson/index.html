@@ -4,390 +4,609 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/pagina_johanson/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <title>Document</title>
+    <title>Johanson Doe - Professional CV</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    
 </head>
 
 <body>
-    <div class="principal">
-        <div class="div1">
-            <div>
-                <h1>Johanson Doe</h1>
-                <h4 class="subtitulo">Web Designer / Developer</h4>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Johanson Doe</h1>
+                <h4 class="hero-subtitle">Web Designer / Developer</h4>
             </div>
-            <div class="cv">
-                <button><img src="" alt=""><i id="print" class="fas fa-print print-icon" aria-label="Imprimir"></i>
-                    Print Out My CV</button>
-                <p>Do you have any questions? write to me at <a href="">contac@gmail.com</a></p>
-            </div>
-        </div>
-        <div class="div2">
-            <div class="botons">
-                <button class="div2buton"><img src="" alt="">HOME<i class="fas fa-home"></i></i></button>
-                <button class="div2buton"><img src="" alt="">ABOUT<i class="fas fa-user"></i></button>
-                <button class="div2buton"><img src="" alt="">RESUME<i class="fas fa-file-alt"></i></button>
-            </div>
-            <div>
-                <img class="imgperfil" src="/img/perfil.jpg" alt="">
-            </div>
-            <div class="botons">
-                <button class="div2buton"><img src="" alt="">PORFOLIO<i class="fas fa-briefcase"></i></button>
-                <button class="div2buton"><img src="" alt="">BLOG<i class="fas fa-blog"></i></button>
-                <button class="div2buton"><img src="" alt="">CONTACT<i class="fas fa-envelope"></i></button>
-            </div>
-        </div>
-        <div class="div3">
-            <div class="div3-1">
-                <hr>
-                <h2>Who am I?</h2>
-                <p class="text_div3">
-                <h4>A Talented Web Designer / Developer Located In Our Lovely Earth</h4>
-                I’m passionate about creating beautiful and functional web experiences, combining design and
-                technology. Always eager to learn and collaborate on exciting projects!</p>
-                <div class="buttonn">
-                    <button class="download"><i class="fas fa-download icono-descargar" aria-label="Descargar"></i>Download My CV</button>
-
+            <div class="hero-actions">
+                <button class="print-cv-btn" onclick="window.print()">
+                    <i class="fas fa-print"></i>
+                    Print Out My CV
+                </button>
+                <div class="contact-info">
+                    <p>Do you have any questions? write to me at <a href="mailto:contact@gmail.com">contact@gmail.com</a></p>
                 </div>
             </div>
-            <div class="div3-1">
-                <hr>
-                <h2>Personal Info</h2>
-                <ul>
-                    <li class="lista"><strong>Birthdate: </strong>09/04/1982 </li>
-                    <li class="lista"><strong>Phone: </strong>+123-456-789-456 </li>
-                    <li class="lista"><strong>Email: </strong>support@gmail.com </li>
-                    <li class="lista"><strong>Skype: </strong>Johanson_Doe </li>
-                    <li class="lista"><strong>Freelance: </strong>Avalable </li>
-                    <li class="lista"><strong>Adresse: </strong>1234 street Road, City Name. IN 567890. </li>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="navigation">
+            <div class="nav-buttons">
+                <button class="nav-btn">
+                    HOME
+                    <i class="fas fa-home"></i>
+                </button>
+                <button class="nav-btn">
+                    ABOUT
+                    <i class="fas fa-user"></i>
+                </button>
+                <button class="nav-btn">
+                    RESUME
+                    <i class="fas fa-file-alt"></i>
+                </button>
+            </div>
+            
+            <img class="profile-image" src="/img/perfil.jpg" alt="Johanson Doe">
+            
+            <div class="nav-buttons">
+                <button class="nav-btn">
+                    PORTFOLIO
+                    <i class="fas fa-briefcase"></i>
+                </button>
+                <button class="nav-btn">
+                    BLOG
+                    <i class="fas fa-blog"></i>
+                </button>
+                <button class="nav-btn">
+                    CONTACT
+                    <i class="fas fa-envelope"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Who Am I Section -->
+            <section class="content-section">
+                <hr class="section-divider">
+                <h2 class="section-title">Who am I?</h2>
+                <h4 class="section-subtitle">A Talented Web Designer / Developer Located In Our Lovely Earth</h4>
+                <p class="section-text">
+                    I'm passionate about creating beautiful and functional web experiences, combining design and
+                    technology. Always eager to learn and collaborate on exciting projects!
+                </p>
+                <a href="#" class="download-btn">
+                    <i class="fas fa-download"></i>
+                    Download My CV
+                </a>
+            </section>
+
+            <!-- Personal Info Section -->
+            <section class="content-section">
+                <hr class="section-divider">
+                <h2 class="section-title">Personal Info</h2>
+                <ul class="info-list">
+                    <li class="info-item"><span class="info-label">Birthdate:</span> 09/04/1982</li>
+                    <li class="info-item"><span class="info-label">Phone:</span> +123-456-789-456</li>
+                    <li class="info-item"><span class="info-label">Email:</span> support@gmail.com</li>
+                    <li class="info-item"><span class="info-label">Skype:</span> Johanson_Doe</li>
+                    <li class="info-item"><span class="info-label">Freelance:</span> Available</li>
+                    <li class="info-item"><span class="info-label">Address:</span> 1234 street Road, City Name. IN 567890.</li>
                 </ul>
-                <div class="iconos">
-                    <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+                
+                <div class="social-links">
+                    <a href="https://facebook.com" target="_blank" class="social-link" aria-label="Facebook">
                         <i class="fab fa-facebook"></i>
                     </a>
-                    <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+                    <a href="https://twitter.com" target="_blank" class="social-link" aria-label="Twitter">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                    <a href="https://instagram.com" target="_blank" class="social-link" aria-label="Instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+                    <a href="https://linkedin.com" target="_blank" class="social-link" aria-label="LinkedIn">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="https://youtube.com" target="_blank" aria-label="YouTube">
+                    <a href="https://youtube.com" target="_blank" class="social-link" aria-label="YouTube">
                         <i class="fab fa-youtube"></i>
                     </a>
-                    <a href="https://tiktok.com" target="_blank" aria-label="TikTok">
+                    <a href="https://tiktok.com" target="_blank" class="social-link" aria-label="TikTok">
                         <i class="fab fa-tiktok"></i>
                     </a>
-                    <a href="https://wa.me/" target="_blank" aria-label="WhatsApp">
+                    <a href="https://wa.me/" target="_blank" class="social-link" aria-label="WhatsApp">
                         <i class="fab fa-whatsapp"></i>
                     </a>
-                    <a href="https://pinterest.com" target="_blank" aria-label="Pinterest">
+                    <a href="https://pinterest.com" target="_blank" class="social-link" aria-label="Pinterest">
                         <i class="fab fa-pinterest"></i>
                     </a>
                 </div>
+            </section>
+
+            <!-- My Expertise Section -->
+            <section class="content-section">
+                <hr class="section-divider">
+                <h2 class="section-title">My Expertise</h2>
+                
+                <div class="expertise-item">
+                    <i class="fas fa-desktop expertise-icon"></i>
+                    <h3 class="expertise-title">Web Design</h3>
+                    <p class="expertise-text">Creative, functional, user-focused solutions.</p>
+                </div>
+                
+                <div class="expertise-item">
+                    <i class="fas fa-globe expertise-icon"></i>
+                    <h3 class="expertise-title">Web Development</h3>
+                    <p class="expertise-text">Building powerful, scalable, and efficient web applications.</p>
+                </div>
+                
+                <div class="expertise-item">
+                    <i class="fas fa-mobile-alt expertise-icon"></i>
+                    <h3 class="expertise-title">Mobile Design</h3>
+                    <p class="expertise-text">Crafting intuitive, engaging mobile experiences.</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Resume Section -->
+        <section class="resume-section">
+            <div class="resume-header">
+                <hr class="section-divider">
+                <h2 class="section-title">My Resume</h2>
             </div>
-            <div class="div3-1">
-                <hr>
-                <h2>My Expertise</h2>
-                <i id="icono_expertise" class="fas fa-desktop computer-icon" aria-label="Computadora"></i>
-                <h3>Web Design</h3>
-                <p class="text_expertise">Creative, functional, user-focused solutions.</p>
-                <i id="icono_expertise" class="fas fa-globe icono" aria-label="Web"></i>
-                <h3>Web Development</h3>
-                <p class="text_expertise">Building powerful, scalable, and efficient web applications.</p>
-                <i id="icono_expertise" class="fas fa-mobile-alt icono" aria-label="Teléfono Móvil"></i>
-                <h3>Mobile Design</h3>
-                <p class="text_expertise">Crafting intuitive, engaging mobile experiences.</p>
-            </div>
-        </div>
-        <div class="resume">
-            <hr style="width: 30px;">
-            <h2>My Resume</h2>
-            <div class="resumefinal">
-                <div class="columna1">
-                <div class="resume-1">
-                    
-                        <div class="resume1_1">
-                            <h3 class="texth3">Expertise </h3> <i id="icono_expertise"
-                                class="fas fa-briefcase icono-portafolio"></i>
+            
+            <div class="resume-grid">
+                <!-- Experience -->
+                <div class="resume-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Expertise</h3>
+                        <i class="fas fa-briefcase card-icon"></i>
+                    </div>
+                    <div class="experience-item">
+                        <h4 class="experience-title">Creative Web Design & UX Optimization</h4>
+                        <div class="experience-period">
+                            <span>Feb. 2015 -</span>
+                            <span class="current-badge">current</span>
                         </div>
-                        <div>
-                            <ul>
-                                <li>
-                                    <h4>Creative Web Design & UX Optimization</h4>
-                                    <p class="descripcion">Feb. 2015 - <button class="current">current</button></p>
-                                    <p class="descripcion">Designed and implemented modern, responsive websites,
-                                        ensuring
-                                        optimal user experience
-                                        and brand consistency. </p>
-                                </li>
-                                <br>
-                                <li>
-                                    <h4>Front-End Development & Performance Enhancement</h4>
-                                    <p class="descripcion">Nov. 2016-2023</p>
-                                    <p class="descripcion">Developed and optimized front-end interfaces using HTML, CSS,
-                                        and
-                                        JavaScript, improving site performance and accessibility. </p>
-                                </li>
-                            </ul>
+                        <p class="experience-description">
+                            Designed and implemented modern, responsive websites, ensuring optimal user experience and brand consistency.
+                        </p>
+                    </div>
+                    <br>
+                    <div class="experience-item">
+                        <h4 class="experience-title">Front-End Development & Performance Enhancement</h4>
+                        <div class="experience-period">Nov. 2016-2023</div>
+                        <p class="experience-description">
+                            Developed and optimized front-end interfaces using HTML, CSS, and JavaScript, improving site performance and accessibility.
+                        </p>
+                    </div>
+                    
+                    <!-- Interests -->
+                    <div class="interests-section">
+                        <hr class="section-divider">
+                        <div class="card-header">
+                            <h3 class="card-title">Interest</h3>
+                            <i class="fas fa-heart card-icon"></i>
+                        </div>
+                        <div class="interests-grid">
+                            <div class="interest-item">
+                                <i class="interest-icon fas fa-music"></i>
+                                <h4 class="interest-name">Music</h4>
+                            </div>
+                            <div class="interest-item">
+                                <i class="interest-icon fas fa-gamepad"></i>
+                                <h4 class="interest-name">Game</h4>
+                            </div>
+                            <div class="interest-item">
+                                <i class="interest-icon fas fa-palette"></i>
+                                <h4 class="interest-name">Art</h4>
+                            </div>
+                            <div class="interest-item">
+                                <i class="interest-icon fas fa-file-audio"></i>
+                                <h4 class="interest-name">Digital</h4>
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <div class="resume-4">
-                            <hr>
-                            <div class="resume1_1">
-                                  <h3 class="texth3">Interest</h3> <i id="icono_expertise"
-                                    class="fas fa-briefcase icono-portafolio"></i>
-                                      </div>                      
-                                <div class="interest">
-                                    <div>
-                                        <i id="iconos" class="fa-solid fa-music"></i>
-                                        <h4>Music</h4>
-                                    </div>
-                                    <div>
-                                        <i id="iconos" class="fas fa-gamepad"></i>
-                                        <h4>Game</h4>
-                                    </div>
-                                    <div>
-                                        <i id="iconos" class="fas fa-palette"></i>
-                                        <h4>Art </h4>
-                                    </div>
-                                    <div>
-                                        <i id="iconos" class="fas fa-file-audio"></i>
-                                        <h4>Digital </h4>
+                </div>
 
-                                    </div>
+                <!-- Education -->
+                <div class="resume-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Education</h3>
+                        <i class="fas fa-graduation-cap card-icon"></i>
+                    </div>
+                    <div class="experience-item">
+                        <h4 class="experience-title">Bachelor's Degree in Web Development</h4>
+                        <p class="experience-description">
+                            Gained foundational knowledge in web technologies, programming languages, and UI/UX design. Developed hands-on experience with HTML, CSS, JavaScript, and database management.
+                        </p>
+                    </div>
+                    <br>
+                    <div class="experience-item">
+                        <h4 class="experience-title">Bachelor's Degree in Web Development</h4>
+                        <p class="experience-description">
+                            Gained foundational knowledge in web technologies, programming languages, and UI/UX design. Developed hands-on experience with HTML, CSS, JavaScript, and database management.
+                        </p>
+                    </div>
+                    <br>
+                    <div class="experience-item">
+                        <h4 class="experience-title">Bachelor's Degree in Web Development</h4>
+                        <p class="experience-description">
+                            Gained foundational knowledge in web technologies, programming languages, and UI/UX design. Developed hands-on experience with HTML, CSS, JavaScript, and database management.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Skills & Languages -->
+                <div class="resume-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Skills</h3>
+                        <i class="fas fa-tools card-icon"></i>
+                    </div>
+                    <ul class="skills-list">
+                        <li class="skill-item">
+                            <h4 class="skill-name">JavaScript</h4>
+                            <div class="skill-tools">
+                                <div class="skill-bar"></div>
+                                <div class="skill-bar"></div>
+                                <div class="skill-bar"></div>
+                                <div class="skill-bar"></div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <h4 class="skill-name">Photoshop</h4>
+                            <div class="skill-tools">
+                                <div class="skill-bar"></div>
+                                <div class="skill-bar"></div>
+                                <div class="skill-bar"></div>
+                                <div class="skill-bar"></div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <h4 class="skill-name">Illustrator</h4>
+                            <div class="skill-tools">
+                                <div class="skill-bar"></div>
+                                <div class="skill-bar"></div>
+                                <div class="skill-bar"></div>
+                                <div class="skill-bar"></div>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <!-- Languages Section -->
+                    <div style="margin-top: 30px;">
+                        <hr class="section-divider">
+                        <div class="card-header">
+                            <h3 class="card-title">Languages</h3>
+                            <i class="fas fa-microphone card-icon"></i>
+                        </div>
+                        <ul class="skills-list">
+                            <li class="skill-item">
+                                <h4 class="skill-name">English</h4>
+                                <div class="skill-tools">
+                                    <div class="skill-bar"></div>
+                                    <div class="skill-bar"></div>
+                                    <div class="skill-bar"></div>
+                                    <div class="skill-bar"></div>
                                 </div>
-                            
-
-
-                        </div>
-                    </div>
-
-                </div>
-                <div>
-                    <div class="resume-2">
-                        <hr>
-                        <div class="resume1_1">
-                            <h3 class="texth3">education </h3><i id="icono_expertise"
-                                class="fas fa-graduation-cap icono-portafolio"></i>
-                        </div>
-                        <div>
-                            <ul>
-                                <li>
-                                    <h4>Bachelor’s Degree in Web Development</h4>
-                                    <p class="descripcion">Gained foundational knowledge in web technologies, programming
-                                        languages, and UI/UX design. Developed hands-on experience with HTML, CSS,
-                                        JavaScript,
-                                        and database management.</p>
-    
-                                </li>
-                                <br>
-                                <li>
-                                    <h4>Bachelor’s Degree in Web Development</h4>
-                                    <p class="descripcion">Gained foundational knowledge in web technologies, programming
-                                        languages, and UI/UX design. Developed hands-on experience with HTML, CSS,
-                                        JavaScript,
-                                        and database management.</p>
-    
-                                </li>
-                                <br>
-                                <li>
-                                    <h4>Bachelor’s Degree in Web Development</h4>
-                                    <p class="descripcion">Gained foundational knowledge in web technologies, programming
-                                        languages, and UI/UX design. Developed hands-on experience with HTML, CSS,
-                                        JavaScript,
-                                        and database management.</p>
-    
-                                </li>
-                                <br>
-                            </ul>
-                        </div>
+                            </li>
+                            <li class="skill-item">
+                                <h4 class="skill-name">French</h4>
+                                <div class="skill-tools">
+                                    <div class="skill-bar"></div>
+                                    <div class="skill-bar"></div>
+                                    <div class="skill-bar"></div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <h4 class="skill-name">Spanish</h4>
+                                <div class="skill-tools">
+                                    <div class="skill-bar"></div>
+                                    <div class="skill-bar"></div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                
-                <div class="columna3">
-                    <div>
-                        <div class="resume-3">
-                            <hr>
-                            <div class="resume1_1">
-                                <h3 class="texth3">skills </h3> <i id="icono_expertise"
-                                    class="fa-solid fa-screwdriver-wrench"></i>
-                            </div>
-                            <div>
-                                <ul class="skills">
-                                    <li>
-                                        <h4>HTML/CSS</h4>
-                                        <div class="tools">
-                                            <p>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-        
-                                            </p>
-                                        </div>
-        
-                                    </li>
-                                    <br>
-                                    <li>
-                                        <h4>JavaScript</h4>
-                                        <div class="tools">
-                                            <p>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-        
-                                            </p>
-                                        </div>
-        
-                                    </li>
-                                    <br>
-                                    <li>
-                                        <h4>Photoshop</h4>
-                                        <div class="tools">
-                                            <p>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-        
-                                            </p>
-                                        </div>
-        
-                                    </li>
-                                    <br>
-                                    <li>
-                                        <h4>Illustrator</h4>
-                                        <div class="tools">
-                                            <p>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-        
-                                            </p>
-                                        </div>
-        
-                                    </li>
-        
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="resume-5">
-                            <hr>
-                            <div class="resume1_1">
-                                <h3 class="texth3">Languajes </h3> <i id="icono_expertise" class="fa-solid fa-microphone"></i>
-                            </div>
-                            <div>
-                                <ul class="languajes">
-                                    <li>
-                                        <h4>English</h4>
-                                        <div class="tools">
-                                            <p>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-        
-                                            </p>
-                                        </div>
-        
-                                    </li>
-                                    <br>
-                                    <li>
-                                        <h4>French</h4>
-                                        <div class="tools">
-                                            <p>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-        
-        
-                                            </p>
-                                        </div>
-        
-                                    </li>
-                                    <br>
-                                    <li>
-                                        <h4>Espanish</h4>
-                                        <div class="tools">
-                                            <p>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-                                            <div>
-                                                <hr class="tools1">
-                                            </div>
-        
-                                            </p>
-                                        </div>
-        
-                                    </li>
-                                </ul>
-                            </div>
-        
-                        </div>
-                    </div>
-                    
-               
             </div>
-                
-            </div>
-        </div>
+        </section>
     </div>
 
+    <script>
+        // Smooth navigation effects
+        document.querySelectorAll('.nav-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Add click effect
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+
+        // Print functionality
+        document.querySelector('.print-cv-btn').addEventListener('click', function() {
+            // Add print animation
+            this.style.transform = 'scale(0.95)';
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing...';
+            
+            setTimeout(() => {
+                this.style.transform = '';
+                this.innerHTML = '<i class="fas fa-print"></i> Print Out My CV';
+                window.print();
+            }, 1000);
+        });
+
+        // Download button functionality
+        document.querySelector('.download-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Add download animation
+            this.style.transform = 'scale(0.95)';
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
+            
+            setTimeout(() => {
+                this.style.transform = '';
+                this.innerHTML = '<i class="fas fa-download"></i> Download My CV';
+                
+                // Here you would typically trigger the actual download
+                console.log('CV download initiated');
+            }, 2000);
+        });
+
+        // Hover effects for content sections
+        document.querySelectorAll('.content-section, .resume-card').forEach(section => {
+            section.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+            });
+            
+            section.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Social links functionality
+        document.querySelectorAll('.social-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Add click animation
+                this.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                    // You can add actual link functionality here
+                    console.log('Social link clicked:', this.getAttribute('href'));
+                }, 150);
+            });
+        });
+
+        // Expertise items hover effects
+        document.querySelectorAll('.expertise-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                const icon = this.querySelector('.expertise-icon');
+                icon.style.transform = 'scale(1.1)';
+                icon.style.color = 'var(--primary-color)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                const icon = this.querySelector('.expertise-icon');
+                icon.style.transform = 'scale(1)';
+                icon.style.color = 'var(--text-light)';
+            });
+        });
+
+        // Interest items hover effects
+        document.querySelectorAll('.interest-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.background = 'rgba(0, 170, 255, 0.1)';
+                this.style.transform = 'translateY(-3px)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.background = 'transparent';
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Profile image click effect
+        document.querySelector('.profile-image').addEventListener('click', function() {
+            this.style.transform = 'translateX(-50%) scale(1.05) rotate(5deg)';
+            setTimeout(() => {
+                this.style.transform = 'translateX(-50%) scale(1)';
+            }, 300);
+        });
+
+        // Smooth loading animation
+        window.addEventListener('load', function() {
+            document.querySelectorAll('.content-section, .resume-card').forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    element.style.transition = 'all 0.6s ease';
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+
+        // Enhanced responsive navigation handling
+        function handleResponsiveNav() {
+            const navigation = document.querySelector('.navigation');
+            const profileImage = document.querySelector('.profile-image');
+            const navButtons = document.querySelectorAll('.nav-buttons');
+            const width = window.innerWidth;
+            
+            if (width <= 768) {
+                navigation.style.flexDirection = 'column';
+                navigation.style.paddingTop = width <= 480 ? '50px' : '80px';
+                navigation.style.gap = '20px';
+                navigation.style.textAlign = 'center';
+                
+                profileImage.style.position = 'static';
+                profileImage.style.transform = 'none';
+                profileImage.style.margin = '0 auto 20px';
+                
+                navButtons.forEach(btnGroup => {
+                    btnGroup.style.justifyContent = 'center';
+                    btnGroup.style.flexWrap = 'wrap';
+                });
+            } else {
+                navigation.style.flexDirection = 'row';
+                navigation.style.paddingTop = '20px';
+                navigation.style.gap = '0';
+                navigation.style.textAlign = 'left';
+                
+                profileImage.style.position = 'absolute';
+                profileImage.style.transform = 'translateX(-50%)';
+                profileImage.style.margin = '0';
+                
+                navButtons.forEach(btnGroup => {
+                    btnGroup.style.justifyContent = 'flex-start';
+                    btnGroup.style.flexWrap = 'nowrap';
+                });
+            }
+        }
+
+        // Enhanced content section handling for mobile
+        function handleContentSections() {
+            const contentSections = document.querySelectorAll('.content-section');
+            const width = window.innerWidth;
+            
+            contentSections.forEach(section => {
+                if (width <= 768) {
+                    section.style.textAlign = 'center';
+                    section.style.alignItems = 'center';
+                    section.style.justifyContent = 'flex-start';
+                } else {
+                    section.style.textAlign = 'left';
+                    section.style.alignItems = 'flex-start';
+                    section.style.justifyContent = 'space-evenly';
+                }
+            });
+        }
+
+        // Enhanced interests grid handling
+        function handleInterestsGrid() {
+            const interestsGrids = document.querySelectorAll('.interests-grid');
+            const width = window.innerWidth;
+            
+            interestsGrids.forEach(grid => {
+                if (width <= 480) {
+                    grid.style.gridTemplateColumns = '1fr 1fr';
+                    grid.style.gap = '10px';
+                } else if (width <= 768) {
+                    grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
+                    grid.style.gap = '15px';
+                } else {
+                    grid.style.gridTemplateColumns = 'repeat(4, 1fr)';
+                    grid.style.gap = '15px';
+                }
+            });
+        }
+
+        // Enhanced social links handling
+        function handleSocialLinks() {
+            const socialLinks = document.querySelector('.social-links');
+            const width = window.innerWidth;
+            
+            if (socialLinks) {
+                if (width <= 350) {
+                    socialLinks.style.gridTemplateColumns = 'repeat(4, 1fr)';
+                    socialLinks.style.maxWidth = '160px';
+                    socialLinks.style.gap = '6px';
+                } else if (width <= 480) {
+                    socialLinks.style.gridTemplateColumns = 'repeat(4, 1fr)';
+                    socialLinks.style.maxWidth = '180px';
+                    socialLinks.style.gap = '6px';
+                } else if (width <= 600) {
+                    socialLinks.style.gridTemplateColumns = 'repeat(4, 1fr)';
+                    socialLinks.style.maxWidth = '200px';
+                    socialLinks.style.gap = '8px';
+                } else if (width <= 768) {
+                    socialLinks.style.gridTemplateColumns = 'repeat(4, 1fr)';
+                    socialLinks.style.maxWidth = '250px';
+                    socialLinks.style.gap = '10px';
+                } else {
+                    socialLinks.style.gridTemplateColumns = 'repeat(8, 1fr)';
+                    socialLinks.style.maxWidth = 'none';
+                    socialLinks.style.gap = '15px';
+                }
+            }
+        }
+
+        // Master responsive function
+        function handleAllResponsive() {
+            handleResponsiveNav();
+            handleContentSections();
+            handleInterestsGrid();
+            handleSocialLinks();
+        }
+
+        // Debounced resize handler for better performance
+        let resizeTimeout;
+        function debounceResize() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(handleAllResponsive, 150);
+        }
+
+        window.addEventListener('resize', debounceResize);
+        handleAllResponsive(); // Check on initial load
+
+        // Enhanced touch support for mobile
+        if ('ontouchstart' in window) {
+            document.querySelectorAll('.nav-btn, .download-btn, .social-link, .interest-item').forEach(element => {
+                element.addEventListener('touchstart', function() {
+                    this.style.transform = 'scale(0.95)';
+                });
+                
+                element.addEventListener('touchend', function() {
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+        }
+
+        // Improved loading animation with stagger effect
+        window.addEventListener('load', function() {
+            const elements = document.querySelectorAll('.content-section, .resume-card, .nav-btn');
+            
+            elements.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    element.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, index * 50);
+            });
+        });
+
+        // Add active state styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .nav-btn.active {
+                background: var(--primary-color) !important;
+                color: white !important;
+                box-shadow: var(--shadow-light);
+            }
+            
+            .nav-btn.active i {
+                color: white !important;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Set default active button
+        document.querySelector('.nav-btn').classList.add('active');
+    </script>
 </body>
 
 </html>
