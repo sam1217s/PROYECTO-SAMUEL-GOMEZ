@@ -1,108 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ejercicio 1</title>
-    
+    <title>Samuel Gómez - Mi Perfil Profesional</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+   
 </head>
-<STYle>
-    body {
-        padding: 20px;
-        background-color: rgba(81, 81, 81, 0.145);
-        display: flex;
-        justify-content: center;
-    }
-    
-    h1 {
-        text-align: center;
-        margin: 0px;
-    }
-    
-    h2 {
-        color: rgb(0, 183, 255)
-    }
-    
-    p {
-        font-size: 20px;
-    }
-    
-    hr {
-        border-color: black;
-        size: 20px;
-    
-    }
-    
-    .principal {
-        background-color: white;
-        padding: 20px;
-        margin: 10px;
-        width: 80%;
-        border-radius: 10px;
-        border: 2px solid rgb(136, 136, 136);
-    }
-    
-    .inf,
-    .list,
-    .cont {
-        margin-top: 20px;
-        padding: 10px;
-        font-size: 20px;
-        border-radius: 5px;
-    }
-    
-    .inf {
-        background-color: rgba(3, 190, 253, 0.104);
-        border: 2px solid rgb(187, 187, 187);
-    }
-    
-    .list {
-        background-color: rgba(249, 133, 1, 0.131);
-        border: 2px solid rgb(253, 136, 3);
-    }
-    
-    .cont {
-        background-color: rgba(3, 255, 179, 0.079);
-        border: 2px solid rgba(2, 186, 2, 0.488);
-    }
-    
-    .mail,
-    .like {
-        color: rgb(2, 173, 2);
-    }
-</STYle>
+
 <body>
-    <div class="principal">
-        <h1>Mi Perfil</h1>
-        <HR>
-        <h2> Sobre Mí</h2>
-        <P>Hola,me llamo Samuel Gomez. Me gusta aprender sobre tecnología y explorar nuevas actividades. Vivo en
-            Villanueva Santander y disfruto pasar tiempo con mis amigos y mi familia.</P>
-        <div class="inf">
-            <h2>Información Personal</h2>
-            <p><strong>edad:</strong> 26</p>
-            <p><strong>profesión:</strong> estudiante</p>
-            <p><strong>intereses:</strong> Programación, Música, Deportes.</p>
-        </div>
-        <div class="list">
-            <h2>Mis Hobbies</h2>
-            <li>Leer libros de ciencia ficcion</li>
-            <li>Jugar fútbol</li>
-            <li>Ver series de televisión</li>
-            <li>Escuchar música</li>
-            <br>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="profile-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1>Samuel Gómez</h1>
+            <p class="subtitle">Estudiante de Tecnología | Villanueva, Santander</p>
         </div>
 
-        <div class="cont">
-            <h2>Contacto</h2>
-            <p>Puedes encontrame en:</p>
-            <p class="like">Linkedin</p>
-            <p class="mail">example@gmail.com</p>
+        <!-- Content Section -->
+        <div class="content">
+            <!-- About Section -->
+            <div class="section about-section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h2>Sobre Mí</h2>
+                </div>
+                <p>Hola, me llamo Samuel Gómez. Me gusta aprender sobre tecnología y explorar nuevas actividades. Vivo en Villanueva, Santander y disfruto pasar tiempo con mis amigos y mi familia.</p>
+                <div class="badge">
+                    <i class="fas fa-heart"></i>
+                    Apasionado por la tecnología
+                </div>
+            </div>
 
+            <hr class="divider">
+
+            <!-- Personal Information Section -->
+            <div class="section info-section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <h2>Información Personal</h2>
+                </div>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Edad</div>
+                        <div class="info-value">26 años</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Profesión</div>
+                        <div class="info-value">Estudiante</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Intereses</div>
+                        <div class="info-value">Programación, Música, Deportes</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hobbies Section -->
+            <div class="section hobbies-section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h2>Mis Hobbies</h2>
+                </div>
+                <ul class="hobbies-list">
+                    <li class="hobby-item">
+                        <div class="hobby-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <span>Leer libros de ciencia ficción</span>
+                    </li>
+                    <li class="hobby-item">
+                        <div class="hobby-icon">
+                            <i class="fas fa-futbol"></i>
+                        </div>
+                        <span>Jugar fútbol</span>
+                    </li>
+                    <li class="hobby-item">
+                        <div class="hobby-icon">
+                            <i class="fas fa-tv"></i>
+                        </div>
+                        <span>Ver series de televisión</span>
+                    </li>
+                    <li class="hobby-item">
+                        <div class="hobby-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <span>Escuchar música</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="section contact-section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-address-book"></i>
+                    </div>
+                    <h2>Contacto</h2>
+                </div>
+                <p>¿Quieres conectar conmigo? Puedes encontrarme en:</p>
+                <div class="contact-links">
+                    <a href="#" class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h3>LinkedIn</h3>
+                            <p>Conecta profesionalmente</p>
+                        </div>
+                    </a>
+                    <a href="mailto:example@gmail.com" class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h3>Email</h3>
+                            <p>example@gmail.com</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
+    <script>
+        // Add smooth animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for animation
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Add click effects to interactive elements
+        document.querySelectorAll('.hobby-item, .contact-item, .info-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+
+        // Profile avatar click effect
+        document.querySelector('.profile-avatar').addEventListener('click', function() {
+            this.style.animation = 'none';
+            setTimeout(() => {
+                this.style.animation = 'slideUp 0.8s ease-out';
+            }, 10);
+        });
+
+        // Dynamic greeting based on time
+        const currentHour = new Date().getHours();
+        let greeting = "Hola";
+        
+        if (currentHour < 12) {
+            greeting = "Buenos días";
+        } else if (currentHour < 18) {
+            greeting = "Buenas tardes";
+        } else {
+            greeting = "Buenas noches";
+        }
+
+        // Add dynamic content
+        const aboutText = document.querySelector('.about-section p');
+        aboutText.innerHTML = `${greeting}, me llamo Samuel Gómez. Me gusta aprender sobre tecnología y explorar nuevas actividades. Vivo en Villanueva, Santander y disfruto pasar tiempo con mis amigos y mi familia.`;
+    </script>
 </body>
 
 </html>
