@@ -1,6 +1,0 @@
-{
-  "name": "multi-project",
-  "scripts": {
-    "build": "echo 'Select specific project to build'"
-  }
-}
