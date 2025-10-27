@@ -6,6 +6,7 @@
     <title>TiendaZapatos - Calzado Premium</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="./js/app.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
         
@@ -364,6 +365,26 @@
                 </div>
                 <button type="submit" class="w-full bg-gray-900 text-white py-3 rounded-lg font-semibold hover:bg-black transition-colors">Registrarse</button>
             </form>
+        </div>
+    </div>
+
+    <!-- Modal de Favoritos -->
+    <div class="hidden fixed inset-0 bg-black/50 z-50 flex justify-center items-center" id="wishlistModal">
+        <div class="bg-white rounded-xl w-full max-w-2xl max-h-[80vh] relative flex flex-col m-4">
+            <div class="bg-red-500 text-white p-6 rounded-t-xl flex justify-between items-center">
+                <h2 class="text-2xl font-semibold flex items-center gap-3">
+                    <i class="fas fa-heart"></i> Mis Favoritos
+                </h2>
+                <button class="text-2xl hover:scale-110 transition-transform" id="closeWishlist">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="flex-1 overflow-y-auto p-6" id="wishlistItems">
+                <div class="text-center py-10 text-gray-500">
+                    <i class="fas fa-heart text-5xl mb-5 text-gray-300"></i>
+                    <p>No tienes productos en favoritos</p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -762,15 +783,8 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Scripts de UI -->
     <script>
-        // Estado de la App
-        const appState = {
-            cart: [],
-            wishlist: [],
-            currentUser: null
-        };
-
         // Elementos del DOM
         const elements = {
             cartCount: document.getElementById('cartCount'),
@@ -785,103 +799,12 @@
             notificationText: document.getElementById('notificationText'),
             authModal: document.getElementById('authModal'),
             searchInput: document.getElementById('searchInput'),
-            mobileSidebar: document.getElementById('mobileSidebar')
+            mobileSidebar: document.getElementById('mobileSidebar'),
+            wishlistModal: document.getElementById('wishlistModal'),
+            wishlistItems: document.getElementById('wishlistItems')
         };
 
-        // Funciones de Utilidad
-        function showNotification(message, type = 'success') {
-            elements.notificationText.textContent = message;
-            elements.notification.className = 'fixed top-24 right-5 text-white px-6 py-4 rounded-lg shadow-lg transform transition-transform duration-300 z-50 flex items-center gap-3';
-            
-            if (type === 'error') {
-                elements.notification.classList.add('bg-red-500');
-            } else if (type === 'warning') {
-                elements.notification.classList.add('bg-yellow-500', 'text-gray-900');
-            } else {
-                elements.notification.classList.add('bg-green-500');
-            }
-            
-            elements.notification.classList.remove('translate-x-96');
-            elements.notification.classList.add('translate-x-0');
-            
-            setTimeout(() => {
-                elements.notification.classList.remove('translate-x-0');
-                elements.notification.classList.add('translate-x-96');
-            }, 3000);
-        }
-
-        function updateCounts() {
-            const cartCount = appState.cart.reduce((sum, item) => sum + item.quantity, 0);
-            const wishlistCount = appState.wishlist.length;
-            
-            elements.cartCount.textContent = cartCount;
-            elements.mobileCartCount.textContent = `(${cartCount})`;
-            elements.wishlistCount.textContent = wishlistCount;
-            elements.mobileWishlistCount.textContent = `(${wishlistCount})`;
-        }
-
-        function formatPrice(price) {
-            return `${price.toLocaleString('es-CO')}`;
-        }
-
-        function updateCart() {
-            updateCounts();
-            
-            if (appState.cart.length === 0) {
-                elements.cartItems.innerHTML = `
-                    <div class="text-center py-10 text-gray-500">
-                        <i class="fas fa-shopping-bag text-5xl mb-5 text-gray-300 status-icon"></i>
-                        <p>Tu carrito está vacío</p>
-                    </div>
-                `;
-                elements.cartFooter.classList.add('hidden');
-            } else {
-                elements.cartItems.innerHTML = appState.cart.map(item => `
-                    <div class="flex gap-4 py-4 border-b">
-                        <img src="${item.image || './img/nike270.png'}" alt="${item.name}" class="w-20 h-20 object-cover rounded-lg bg-gray-200 p-2">
-                        <div class="flex-1">
-                            <div class="font-semibold mb-1">${item.name}</div>
-                            <div class="text-gray-600 text-sm">${formatPrice(item.price)}</div>
-                            <div class="flex items-center gap-3 mt-3">
-                                <button class="bg-gray-100 w-8 h-8 rounded-full hover:bg-gray-200 transition-colors" onclick="updateQuantity(${item.id}, -1)">-</button>
-                                <span>${item.quantity}</span>
-                                <button class="bg-gray-100 w-8 h-8 rounded-full hover:bg-gray-200 transition-colors" onclick="updateQuantity(${item.id}, 1)">+</button>
-                            </div>
-                        </div>
-                        <button class="text-red-500 text-sm" onclick="removeFromCart(${item.id})">
-                            <i class="fas fa-trash btn-icon"></i>
-                        </button>
-                    </div>
-                `).join('');
-                
-                const total = appState.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                elements.cartTotal.textContent = formatPrice(total);
-                elements.cartFooter.classList.remove('hidden');
-            }
-        }
-
-        function removeFromCart(productId) {
-            appState.cart = appState.cart.filter(item => item.id !== productId);
-            updateCart();
-            showNotification('Artículo removido del carrito', 'warning');
-        }
-
-        window.removeFromCart = removeFromCart;
-
-        function updateQuantity(productId, change) {
-            const item = appState.cart.find(item => item.id === productId);
-            if (!item) return;
-            
-            item.quantity += change;
-            
-            if (item.quantity <= 0) {
-                removeFromCart(productId);
-            } else {
-                updateCart();
-            }
-        }
-
-        window.updateQuantity = updateQuantity;
+        // Las funciones de cart, wishlist y notificaciones están en app.js
 
         // Loader
         window.addEventListener('load', () => {
@@ -968,42 +891,80 @@
         // Auth forms
         document.getElementById('loginForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            appState.currentUser = { email: e.target.querySelector('input[type="email"]').value };
+            if (typeof appState !== 'undefined') {
+                appState.currentUser = { email: e.target.querySelector('input[type="email"]').value };
+            }
             elements.authModal.classList.add('hidden');
             elements.authModal.classList.remove('flex');
-            showNotification('¡Bienvenido de vuelta!');
+            if (typeof showNotification === 'function') {
+                showNotification('¡Bienvenido de vuelta!');
+            }
         });
 
         document.getElementById('registerForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            appState.currentUser = { email: e.target.querySelector('input[type="email"]').value };
+            if (typeof appState !== 'undefined') {
+                appState.currentUser = { email: e.target.querySelector('input[type="email"]').value };
+            }
             elements.authModal.classList.add('hidden');
             elements.authModal.classList.remove('flex');
-            showNotification('¡Cuenta creada exitosamente!');
+            if (typeof showNotification === 'function') {
+                showNotification('¡Cuenta creada exitosamente!');
+            }
         });
 
-        // Wishlist button
+        // Wishlist modal
         document.getElementById('wishlistBtn').addEventListener('click', () => {
-            if (!appState.currentUser) {
-                showNotification('Por favor inicia sesión para ver favoritos', 'warning');
-                elements.authModal.classList.remove('hidden');
-                elements.authModal.classList.add('flex');
-            } else {
-                showNotification('Abriendo favoritos...');
-            }
+            elements.wishlistModal.classList.remove('hidden');
+            elements.wishlistModal.classList.add('flex');
+            updateWishlistModal();
         });
 
         document.getElementById('mobileWishlistBtn').addEventListener('click', () => {
-            if (!appState.currentUser) {
-                showNotification('Por favor inicia sesión para ver favoritos', 'warning');
-                elements.authModal.classList.remove('hidden');
-                elements.authModal.classList.add('flex');
-            } else {
-                showNotification('Abriendo favoritos...');
-            }
+            elements.wishlistModal.classList.remove('hidden');
+            elements.wishlistModal.classList.add('flex');
             elements.mobileSidebar.classList.add('-right-full');
             elements.mobileSidebar.classList.remove('right-0');
+            updateWishlistModal();
         });
+
+        document.getElementById('closeWishlist').addEventListener('click', () => {
+            elements.wishlistModal.classList.add('hidden');
+            elements.wishlistModal.classList.remove('flex');
+        });
+
+                 // Función para actualizar el modal de favoritos
+         function updateWishlistModal() {
+             if (typeof appState === 'undefined' || !appState.wishlist || appState.wishlist.length === 0) {
+                 elements.wishlistItems.innerHTML = `
+                     <div class="text-center py-10 text-gray-500">
+                         <i class="fas fa-heart text-5xl mb-5 text-gray-300"></i>
+                         <p>No tienes productos en favoritos</p>
+                         <p class="text-sm mt-2 text-gray-400">Agrega productos a favoritos desde las secciones de productos</p>
+                     </div>
+                 `;
+                 return;
+             }
+
+             // Mostrar los productos en favoritos
+             elements.wishlistItems.innerHTML = appState.wishlist.map(product => `
+                 <div class="flex gap-4 py-4 border-b border-gray-200 hover:bg-gray-50 transition-colors">
+                     <img src="${product.image}" alt="${product.name}" class="w-24 h-24 object-cover rounded-lg bg-gray-200 p-2">
+                     <div class="flex-1">
+                         <div class="font-semibold mb-1 text-gray-900">${product.name}</div>
+                         <div class="text-gray-600 text-sm mb-3">${formatPrice(product.price)}</div>
+                         <button onclick="addToCart(${JSON.stringify(product).replace(/"/g, '&quot;')}); elements.wishlistModal.classList.add('hidden'); elements.wishlistModal.classList.remove('flex');" 
+                                 class="bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-800 transition-colors">
+                             <i class="fas fa-cart-plus mr-2"></i>Agregar al Carrito
+                         </button>
+                     </div>
+                     <button onclick="toggleWishlist(${JSON.stringify(product).replace(/"/g, '&quot;')}); updateWishlistModal();" 
+                             class="text-red-500 text-xl hover:text-red-700 transition-colors self-start">
+                         <i class="fas fa-times"></i>
+                     </button>
+                 </div>
+             `).join('');
+         }
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1070,7 +1031,9 @@
         document.getElementById('searchBtn').addEventListener('click', () => {
             const searchTerm = elements.searchInput.value;
             if (searchTerm) {
-                showNotification(`Buscando "${searchTerm}"...`);
+                if (typeof showNotification === 'function') {
+                    showNotification(`Buscando "${searchTerm}"...`);
+                }
                 // Aquí podrías redirigir a una página de resultados
                 // window.location.href = `search.html?q=${encodeURIComponent(searchTerm)}`;
             }
@@ -1101,10 +1064,16 @@
             observer.observe(el);
         });
 
-        // Initialize
+        // Initialize UI
         document.addEventListener('DOMContentLoaded', () => {
-            updateCounts();
-            showNotification('¡Bienvenido a TiendaZapatos!');
+            // Las funciones de updateCounts y showNotification vienen de app.js
+            // Esperamos a que app.js esté cargado
+            if (typeof updateCounts === 'function') {
+                updateCounts();
+            }
+            if (typeof showNotification === 'function') {
+                showNotification('¡Bienvenido a TiendaZapatos!');
+            }
         });
     </script>
 </body>

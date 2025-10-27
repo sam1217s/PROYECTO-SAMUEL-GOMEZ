@@ -19,12 +19,30 @@
             100% { transform: translateY(0); opacity: 1; }
         }
         
+        @keyframes bounce {
+            0%, 100% { 
+                transform: translateY(0);
+            }
+            50% { 
+                transform: translateY(-20px);
+            }
+        }
+        
         .animate-flash {
             animation: flash 2s ease-in-out infinite;
         }
         
         .animate-price-drop {
             animation: price-drop 0.8s ease-out forwards;
+        }
+        
+        .product-image-container {
+            overflow: hidden;
+        }
+        
+        .animate-bounce-custom {
+            display: inline-block;
+            animation: bounce 2s ease-in-out infinite;
         }
         
         @keyframes spin {
@@ -287,6 +305,90 @@
             </nav>
         </div>
     </header>
+
+    <!-- Sidebar Móvil -->
+    <div class="fixed top-0 -right-full w-4/5 max-w-sm h-screen bg-white z-50 transition-all duration-300 overflow-y-auto" id="mobileSidebar">
+        <div class="bg-gray-900 text-white p-5 flex justify-between items-center">
+            <h2 class="text-xl font-semibold">Menú</h2>
+            <button class="text-2xl" id="closeSidebar">
+                <i class="fas fa-times header-icon"></i>
+            </button>
+        </div>
+        <div class="p-5">
+            <ul class="space-y-4">
+                <li><a href="index.html" class="block py-3 text-black font-medium">Inicio</a></li>
+                <li><a href="men.html" class="block py-3 text-gray-700 font-medium hover:text-black transition-colors">Hombres</a></li>
+                <li><a href="women.html" class="block py-3 text-gray-700 font-medium hover:text-black transition-colors">Mujeres</a></li>
+                <li><a href="kids.html" class="block py-3 text-gray-700 font-medium hover:text-black transition-colors">Niños</a></li>
+                <li><a href="sale.html" class="block py-3 text-black font-medium">Ofertas</a></li>
+                <li class="border-t pt-4"><a href="#" id="mobileAccountBtn" class="block py-3 text-gray-700 font-medium hover:text-black transition-colors">Mi Cuenta</a></li>
+                <li><a href="#" id="mobileWishlistBtn" class="block py-3 text-gray-700 font-medium hover:text-black transition-colors">Favoritos <span id="mobileWishlistCount">(0)</span></a></li>
+                <li><a href="#" id="mobileCartBtn" class="block py-3 text-gray-700 font-medium hover:text-black transition-colors">Carrito <span id="mobileCartCount">(0)</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Sidebar del Carrito -->
+    <div class="fixed top-0 -right-96 w-96 h-screen bg-white shadow-2xl z-50 transition-all duration-300 flex flex-col" id="cartSidebar">
+        <div class="bg-gray-900 text-white p-5 flex justify-between items-center">
+            <h2 class="text-xl font-semibold">Carrito de Compras</h2>
+            <button class="text-2xl" id="closeCart">
+                <i class="fas fa-times header-icon"></i>
+            </button>
+        </div>
+        <div class="flex-1 overflow-y-auto p-5" id="cartItems">
+            <div class="text-center py-10 text-gray-500">
+                <i class="fas fa-shopping-bag text-5xl mb-5 text-gray-300 status-icon"></i>
+                <p>Tu carrito está vacío</p>
+            </div>
+        </div>
+        <div class="p-5 border-t hidden" id="cartFooter">
+            <div class="flex justify-between items-center mb-5 text-lg font-semibold">
+                <span>Total:</span>
+                <span id="cartTotal">$0</span>
+            </div>
+            <button class="w-full bg-gray-900 text-white py-4 rounded-lg font-semibold hover:bg-black transition-colors">Proceder al Pago</button>
+        </div>
+    </div>
+
+    <!-- Modal de Autenticación -->
+    <div class="hidden fixed inset-0 bg-black/50 z-50 flex justify-center items-center" id="authModal">
+        <div class="bg-white p-10 rounded-xl w-full max-w-md relative">
+            <button class="absolute top-5 right-5 text-2xl text-gray-600" id="authClose">
+                <i class="fas fa-times header-icon"></i>
+            </button>
+            <div class="flex gap-5 mb-8 border-b">
+                <button class="pb-3 px-1 text-lg font-semibold text-gray-900 border-b-2 border-gray-900 transition-colors auth-tab" data-tab="login">Iniciar Sesión</button>
+                <button class="pb-3 px-1 text-lg font-semibold text-gray-600 hover:text-gray-900 transition-colors auth-tab" data-tab="register">Registrarse</button>
+            </div>
+            <form class="space-y-5 auth-form" id="loginForm">
+                <div>
+                    <label class="block mb-2 font-medium text-gray-700">Email</label>
+                    <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-900 transition-colors">
+                </div>
+                <div>
+                    <label class="block mb-2 font-medium text-gray-700">Contraseña</label>
+                    <input type="password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-900 transition-colors">
+                </div>
+                <button type="submit" class="w-full bg-gray-900 text-white py-3 rounded-lg font-semibold hover:bg-black transition-colors">Iniciar Sesión</button>
+            </form>
+            <form class="space-y-5 hidden auth-form" id="registerForm">
+                <div>
+                    <label class="block mb-2 font-medium text-gray-700">Nombre Completo</label>
+                    <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-900 transition-colors">
+                </div>
+                <div>
+                    <label class="block mb-2 font-medium text-gray-700">Email</label>
+                    <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-900 transition-colors">
+                </div>
+                <div>
+                    <label class="block mb-2 font-medium text-gray-700">Contraseña</label>
+                    <input type="password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-900 transition-colors">
+                </div>
+                <button type="submit" class="w-full bg-gray-900 text-white py-3 rounded-lg font-semibold hover:bg-black transition-colors">Registrarse</button>
+            </form>
+        </div>
+    </div>
 
     <!-- Sección Hero con tema de ofertas -->
     <div class="relative h-[70vh] min-h-[400px] flex flex-col justify-center items-center text-white mt-20 sm:mt-24 mb-5 overflow-visible clip-ellipse bg-cover bg-center" style="background-image: linear-gradient(135deg, rgba(239, 68, 68, 0.9), rgba(220, 38, 38, 0.9)), url('https://images.unsplash.com/photo-1607522370275-f14206abe5d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')">
@@ -601,7 +703,12 @@
         const elements = {
             products: document.getElementById('products'),
             cartCount: document.getElementById('cartCount'),
+            mobileCartCount: document.getElementById('mobileCartCount'),
             wishlistCount: document.getElementById('wishlistCount'),
+            mobileWishlistCount: document.getElementById('mobileWishlistCount'),
+            cartItems: document.getElementById('cartItems'),
+            cartTotal: document.getElementById('cartTotal'),
+            cartFooter: document.getElementById('cartFooter'),
             notification: document.getElementById('notification'),
             notificationText: document.getElementById('notificationText'),
             resultsCount: document.getElementById('resultsCount')
@@ -637,30 +744,41 @@
             const cartCount = appState.cart.reduce((sum, item) => sum + item.quantity, 0);
             const wishlistCount = appState.wishlist.length;
             
-            elements.cartCount.textContent = cartCount;
-            elements.wishlistCount.textContent = wishlistCount;
+            if (elements.cartCount) elements.cartCount.textContent = cartCount;
+            if (elements.mobileCartCount) elements.mobileCartCount.textContent = `(${cartCount})`;
+            if (elements.wishlistCount) elements.wishlistCount.textContent = wishlistCount;
+            if (elements.mobileWishlistCount) elements.mobileWishlistCount.textContent = `(${wishlistCount})`;
         }
 
-        // Contador de tiempo
+        // Contador de tiempo - SIMPLIFICADO Y FUNCIONAL
         function startCountdown() {
-            const countdownDate = new Date().getTime() + (24 * 60 * 60 * 1000); // 24 horas desde ahora
-            
-            const timer = setInterval(() => {
-                const now = new Date().getTime();
-                const distance = countdownDate - now;
+            setInterval(function() {
+                const now = new Date();
+                const targetTime = new Date();
+                targetTime.setHours(23, 59, 59, 999);
                 
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                if (targetTime <= now) {
+                    targetTime.setDate(targetTime.getDate() + 1);
+                }
+                
+                const distance = targetTime - now;
+                
+                if (distance <= 0) {
+                    document.getElementById('countdown').innerHTML = '<div class="text-center text-red-500 font-bold text-2xl">¡OFERTA TERMINADA!</div>';
+                    return;
+                }
+                
+                const hours = Math.floor(distance / (1000 * 60 * 60));
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
                 
-                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+                const hoursEl = document.getElementById('hours');
+                const minutesEl = document.getElementById('minutes');
+                const secondsEl = document.getElementById('seconds');
                 
-                if (distance < 0) {
-                    clearInterval(timer);
-                    document.getElementById('countdown').innerHTML = '<div class="text-center text-red-500 font-bold">¡OFERTA TERMINADA!</div>';
-                }
+                if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+                if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+                if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
             }, 1000);
         }
 
@@ -669,28 +787,25 @@
             elements.resultsCount.textContent = `(${appState.products.length} artículos)`;
             
             elements.products.innerHTML = appState.products.map(product => `
-                <div class="product-card bg-white rounded-xl overflow-hidden shadow-md hover:-translate-y-1 hover:shadow-xl transition-all cursor-pointer relative group border-2 border-red-200">
+                <div class="product-card bg-white rounded-xl overflow-hidden shadow-md hover:-translate-y-1 hover:shadow-xl transition-all cursor-pointer relative group border-2 border-red-200 flex flex-col h-full">
                     <span class="absolute top-3 left-3 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-semibold z-10 animate-flash">-${product.discount}%</span>
                     <button class="absolute top-3 right-3 bg-white w-8 h-8 sm:w-9 sm:h-9 rounded-full shadow-md z-10 transition-all hover:scale-110 product-icon ${appState.wishlist.includes(product.id) ? 'text-red-500' : ''}" onclick="toggleWishlist(${product.id})">
                         <i class="fas fa-heart text-sm"></i>
                     </button>
-                    <div class="h-48 sm:h-64 lg:h-72 flex justify-center items-center p-3 sm:p-5 relative ${product.bgColor}" onclick="viewProduct(${product.id})">
-                        <img src="${product.image}" alt="${product.name}" class="max-w-full max-h-full rotate-y-180 transition-transform group-hover:rotate-y-180-scale">
+                    <div class="h-40 sm:h-52 lg:h-60 flex justify-center items-center p-3 sm:p-5 relative ${product.bgColor} overflow-hidden" onclick="viewProduct(${product.id})">
+                        <div class="product-image-container">
+                            <img src="${product.image}" alt="${product.name}" class="max-w-full max-h-full animate-bounce-custom">
+                        </div>
                         <div class="absolute top-2 right-2 text-2xl animate-flash">🔥</div>
                     </div>
-                    <div class="-mt-8 sm:-mt-10 text-right mr-3 sm:mr-5 relative">
-                        <button onclick="addToCart(${product.id})" class="bg-red-500 border border-red-500 text-white w-10 h-10 sm:w-12 sm:h-12 rounded-full shadow-lg transition-all hover:bg-red-600 hover:scale-110 product-icon-lg">
-                            <i class="fas fa-shopping-cart text-sm"></i>
-                        </button>
-                    </div>
-                    <div class="p-3 sm:p-5">
-                        <h3 class="text-base sm:text-lg font-semibold mb-2 text-gray-800 leading-tight">${product.name}</h3>
+                    <div class="p-3 sm:p-5 flex flex-col flex-grow">
+                        <h3 class="text-base sm:text-lg font-semibold mb-2 text-gray-800 leading-tight min-h-[3rem]">${product.name}</h3>
                         <div class="flex items-center gap-2 mb-2">
                             <span class="text-yellow-400 text-sm rating-stars">${'★'.repeat(Math.floor(product.rating))}${'☆'.repeat(5 - Math.floor(product.rating))}</span>
                             <span class="text-gray-600 text-xs sm:text-sm">(${product.reviews})</span>
                         </div>
-                        <p class="text-gray-600 text-xs sm:text-sm mb-3">${product.description}</p>
-                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+                        <p class="text-gray-600 text-xs sm:text-sm mb-3 min-h-[2rem]">${product.description}</p>
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 mb-3 min-h-[3.5rem]">
                             <div class="flex items-center gap-2">
                                 <span class="line-through text-gray-400 text-sm">${formatPrice(product.originalPrice)}</span>
                                 <p class="text-lg sm:text-xl font-bold text-red-600 animate-price-drop">${formatPrice(product.price)}</p>
@@ -699,6 +814,9 @@
                                 <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-bold">AHORRA ${formatPrice(product.originalPrice - product.price)}</span>
                             </div>
                         </div>
+                        <button onclick="addToCart(${product.id})" class="w-full bg-red-500 text-white py-2 px-4 rounded-lg font-semibold hover:bg-red-600 transition-colors text-sm sm:text-base mt-auto">
+                            <i class="fas fa-shopping-cart mr-2"></i>Agregar al Carrito
+                        </button>
                     </div>
                 </div>
             `).join('');
@@ -721,10 +839,70 @@
             }
             
             updateCounts();
+            updateCartDisplay();
             showNotification(`¡${product.name} agregado al carrito! 🛒 Ahorraste ${formatPrice(product.originalPrice - product.price)}`);
         }
 
+        function updateCartDisplay() {
+            if (!elements.cartItems) return;
+            
+            if (appState.cart.length === 0) {
+                elements.cartItems.innerHTML = `
+                    <div class="text-center py-10 text-gray-500">
+                        <i class="fas fa-shopping-bag text-5xl mb-5 text-gray-300"></i>
+                        <p>Tu carrito está vacío</p>
+                    </div>
+                `;
+                if (elements.cartFooter) elements.cartFooter.classList.add('hidden');
+            } else {
+                elements.cartItems.innerHTML = appState.cart.map(item => `
+                    <div class="flex gap-4 py-4 border-b">
+                        <img src="${item.image}" alt="${item.name}" class="w-20 h-20 object-cover rounded-lg bg-gray-200 p-2">
+                        <div class="flex-1">
+                            <div class="font-semibold mb-1">${item.name}</div>
+                            <div class="text-gray-600 text-sm">${formatPrice(item.price)}</div>
+                            <div class="flex items-center gap-3 mt-3">
+                                <button class="bg-gray-100 w-8 h-8 rounded-full hover:bg-gray-200 transition-colors" onclick="updateQuantity(${item.id}, -1)">-</button>
+                                <span class="font-semibold">${item.quantity}</span>
+                                <button class="bg-gray-100 w-8 h-8 rounded-full hover:bg-gray-200 transition-colors" onclick="updateQuantity(${item.id}, 1)">+</button>
+                            </div>
+                        </div>
+                        <button class="text-red-500 text-lg hover:text-red-700 transition-colors" onclick="removeFromCart(${item.id})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `).join('');
+                
+                const total = appState.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                if (elements.cartTotal) elements.cartTotal.textContent = formatPrice(total);
+                if (elements.cartFooter) elements.cartFooter.classList.remove('hidden');
+            }
+        }
+
+        function removeFromCart(productId) {
+            appState.cart = appState.cart.filter(item => item.id !== productId);
+            updateCounts();
+            updateCartDisplay();
+            showNotification('Artículo removido del carrito', 'warning');
+        }
+
+        function updateQuantity(productId, change) {
+            const item = appState.cart.find(item => item.id === productId);
+            if (!item) return;
+            
+            item.quantity += change;
+            
+            if (item.quantity <= 0) {
+                removeFromCart(productId);
+            } else {
+                updateCounts();
+                updateCartDisplay();
+            }
+        }
+
         window.addToCart = addToCart;
+        window.removeFromCart = removeFromCart;
+        window.updateQuantity = updateQuantity;
 
         function toggleWishlist(productId) {
             const index = appState.wishlist.indexOf(productId);
@@ -753,12 +931,58 @@
         document.addEventListener('DOMContentLoaded', () => {
             renderProducts();
             updateCounts();
+            updateCartDisplay();
             startCountdown();
             
             // Botón Comprar Ofertas
             document.getElementById('shopNowBtn').addEventListener('click', () => {
                 document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
             });
+
+            // Cart sidebar
+            if (document.getElementById('cartBtn')) {
+                document.getElementById('cartBtn').addEventListener('click', () => {
+                    const cartSidebar = document.getElementById('cartSidebar');
+                    cartSidebar.classList.remove('-right-96');
+                    cartSidebar.classList.add('right-0');
+                });
+            }
+
+            if (document.getElementById('mobileCartBtn')) {
+                document.getElementById('mobileCartBtn').addEventListener('click', () => {
+                    const cartSidebar = document.getElementById('cartSidebar');
+                    const mobileSidebar = document.getElementById('mobileSidebar');
+                    cartSidebar.classList.remove('-right-96');
+                    cartSidebar.classList.add('right-0');
+                    mobileSidebar.classList.add('-right-full');
+                    mobileSidebar.classList.remove('right-0');
+                });
+            }
+
+            if (document.getElementById('closeCart')) {
+                document.getElementById('closeCart').addEventListener('click', () => {
+                    const cartSidebar = document.getElementById('cartSidebar');
+                    cartSidebar.classList.add('-right-96');
+                    cartSidebar.classList.remove('right-0');
+                });
+            }
+
+            // Mobile menu
+            if (document.getElementById('mobileMenuToggle')) {
+                document.getElementById('mobileMenuToggle').addEventListener('click', () => {
+                    const mobileSidebar = document.getElementById('mobileSidebar');
+                    mobileSidebar.classList.remove('-right-full');
+                    mobileSidebar.classList.add('right-0');
+                });
+            }
+
+            if (document.getElementById('closeSidebar')) {
+                document.getElementById('closeSidebar').addEventListener('click', () => {
+                    const mobileSidebar = document.getElementById('mobileSidebar');
+                    mobileSidebar.classList.add('-right-full');
+                    mobileSidebar.classList.remove('right-0');
+                });
+            }
         });
     </script>
 </body>

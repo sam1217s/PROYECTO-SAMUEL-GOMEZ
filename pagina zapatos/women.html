@@ -265,6 +265,90 @@
         </div>
     </header>
 
+    <!-- Sidebar Móvil -->
+    <div class="fixed top-0 -right-full w-4/5 max-w-sm h-screen bg-white z-50 transition-all duration-300 overflow-y-auto" id="mobileSidebar">
+        <div class="bg-gray-900 text-white p-5 flex justify-between items-center">
+            <h2 class="text-xl font-semibold">Menú</h2>
+            <button class="text-2xl" id="closeSidebar">
+                <i class="fas fa-times header-icon"></i>
+            </button>
+        </div>
+        <div class="p-5">
+            <ul class="space-y-4">
+                <li><a href="index.html" class="block py-3 text-black font-medium">Inicio</a></li>
+                <li><a href="men.html" class="block py-3 text-gray-700 font-medium hover:text-black transition-colors">Hombres</a></li>
+                <li><a href="women.html" class="block py-3 text-black font-medium">Mujeres</a></li>
+                <li><a href="kids.html" class="block py-3 text-gray-700 font-medium hover:text-black transition-colors">Niños</a></li>
+                <li><a href="sale.html" class="block py-3 text-gray-700 font-medium hover:text-black transition-colors">Ofertas</a></li>
+                <li class="border-t pt-4"><a href="#" id="mobileAccountBtn" class="block py-3 text-gray-700 font-medium hover:text-black transition-colors">Mi Cuenta</a></li>
+                <li><a href="#" id="mobileWishlistBtn" class="block py-3 text-gray-700 font-medium hover:text-black transition-colors">Favoritos <span id="mobileWishlistCount">(0)</span></a></li>
+                <li><a href="#" id="mobileCartBtn" class="block py-3 text-gray-700 font-medium hover:text-black transition-colors">Carrito <span id="mobileCartCount">(0)</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Sidebar del Carrito -->
+    <div class="fixed top-0 -right-96 w-96 h-screen bg-white shadow-2xl z-50 transition-all duration-300 flex flex-col" id="cartSidebar">
+        <div class="bg-gray-900 text-white p-5 flex justify-between items-center">
+            <h2 class="text-xl font-semibold">Carrito de Compras</h2>
+            <button class="text-2xl" id="closeCart">
+                <i class="fas fa-times header-icon"></i>
+            </button>
+        </div>
+        <div class="flex-1 overflow-y-auto p-5" id="cartItems">
+            <div class="text-center py-10 text-gray-500">
+                <i class="fas fa-shopping-bag text-5xl mb-5 text-gray-300 status-icon"></i>
+                <p>Tu carrito está vacío</p>
+            </div>
+        </div>
+        <div class="p-5 border-t hidden" id="cartFooter">
+            <div class="flex justify-between items-center mb-5 text-lg font-semibold">
+                <span>Total:</span>
+                <span id="cartTotal">$0</span>
+            </div>
+            <button class="w-full bg-gray-900 text-white py-4 rounded-lg font-semibold hover:bg-black transition-colors">Proceder al Pago</button>
+        </div>
+    </div>
+
+    <!-- Modal de Autenticación -->
+    <div class="hidden fixed inset-0 bg-black/50 z-50 flex justify-center items-center" id="authModal">
+        <div class="bg-white p-10 rounded-xl w-full max-w-md relative">
+            <button class="absolute top-5 right-5 text-2xl text-gray-600" id="authClose">
+                <i class="fas fa-times header-icon"></i>
+            </button>
+            <div class="flex gap-5 mb-8 border-b">
+                <button class="pb-3 px-1 text-lg font-semibold text-gray-900 border-b-2 border-gray-900 transition-colors auth-tab" data-tab="login">Iniciar Sesión</button>
+                <button class="pb-3 px-1 text-lg font-semibold text-gray-600 hover:text-gray-900 transition-colors auth-tab" data-tab="register">Registrarse</button>
+            </div>
+            <form class="space-y-5 auth-form" id="loginForm">
+                <div>
+                    <label class="block mb-2 font-medium text-gray-700">Email</label>
+                    <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-900 transition-colors">
+                </div>
+                <div>
+                    <label class="block mb-2 font-medium text-gray-700">Contraseña</label>
+                    <input type="password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-900 transition-colors">
+                </div>
+                <button type="submit" class="w-full bg-gray-900 text-white py-3 rounded-lg font-semibold hover:bg-black transition-colors">Iniciar Sesión</button>
+            </form>
+            <form class="space-y-5 hidden auth-form" id="registerForm">
+                <div>
+                    <label class="block mb-2 font-medium text-gray-700">Nombre Completo</label>
+                    <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-900 transition-colors">
+                </div>
+                <div>
+                    <label class="block mb-2 font-medium text-gray-700">Email</label>
+                    <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-900 transition-colors">
+                </div>
+                <div>
+                    <label class="block mb-2 font-medium text-gray-700">Contraseña</label>
+                    <input type="password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-900 transition-colors">
+                </div>
+                <button type="submit" class="w-full bg-gray-900 text-white py-3 rounded-lg font-semibold hover:bg-black transition-colors">Registrarse</button>
+            </form>
+        </div>
+    </div>
+
     <!-- Sección Hero con gradiente rosado -->
     <div class="relative h-[70vh] min-h-[400px] flex flex-col justify-center items-center text-white mt-16 sm:mt-20 mb-5 overflow-visible clip-ellipse bg-cover bg-center" style="background-image: linear-gradient(135deg, rgba(236, 72, 153, 0.8), rgba(219, 39, 119, 0.8)), url('https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')">
         <h1 class="hero-title text-3xl sm:text-5xl md:text-6xl text-center mb-3 sm:mb-5 font-bold text-shadow-custom px-4">Zapatos Elegantes para Mujeres</h1>
@@ -301,120 +385,113 @@
             <span class="text-red-500 cursor-pointer text-sm font-medium ml-auto" id="clearFilters">Limpiar Todo</span>
         </div>
 
-        <!-- Sección de Productos -->
-        <div class="flex flex-col lg:flex-row gap-5 items-start">
-            <!-- Toggle de Filtro Móvil -->
-            <button class="lg:hidden flex items-center gap-3 px-5 py-3 bg-gray-100 mb-5 rounded-lg hover:bg-gray-200 transition-colors w-full" id="hamburgerMenu">
-                <i class="fas fa-filter btn-icon"></i>
-                <span>Filtrar y Categorías</span>
-            </button>
-
-            <div class="hidden fixed inset-0 bg-black/50 z-30" id="overlay"></div>
-
-            <!-- Sidebar de Categorías -->
-            <div class="hidden lg:block w-full lg:w-72 bg-white p-6 shadow-md rounded-lg h-fit" id="categoriesMenu">
-                <!-- Categorías -->
-                <div class="mb-6">
-                    <div class="flex justify-between items-center mb-3">
-                        <h2 class="text-base font-semibold text-gray-800">Categorías</h2>
-                        <i class="fas fa-chevron-down text-gray-600 text-sm btn-icon"></i>
+        <!-- Barra de Filtros Horizontal -->
+        <div class="bg-white p-4 shadow-md rounded-lg mb-5">
+            <div class="flex flex-col lg:flex-row gap-4 items-start lg:items-center">
+                <!-- Toggle de Filtro Móvil Mejorado -->
+                <button class="lg:hidden flex items-center justify-between w-full px-5 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors shadow-md" id="hamburgerMenu">
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-filter text-lg"></i>
+                        <span class="font-semibold">Filtrar Productos</span>
                     </div>
-                    <select name="categories" id="categories-select" class="w-full p-3 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
-                        <option value="all">Todas las Categorías</option>
-                        <option value="lifestyle">Estilo de Vida (367)</option>
-                        <option value="running">Running (76)</option>
-                        <option value="basketball">Baloncesto (65)</option>
-                        <option value="football">Fútbol Americano (21)</option>
-                        <option value="soccer">Fútbol (12)</option>
-                        <option value="training">Entrenamiento y Gimnasio (54)</option>
-                    </select>
-                </div>
+                    <i class="fas fa-chevron-down transition-transform" id="filterIcon"></i>
+                </button>
 
-                <!-- Precio -->
-                <div class="mb-6">
-                    <div class="flex justify-between items-center mb-3">
-                        <h2 class="text-base font-semibold text-gray-800">Rango de Precio</h2>
-                        <i class="fas fa-chevron-down text-gray-600 text-sm btn-icon"></i>
+                <!-- Filtros Desktop - Una fila -->
+                <div class="hidden lg:flex lg:flex-wrap lg:items-center lg:gap-4 w-full">
+                                     <!-- Categorías -->
+                    <div class="flex flex-col gap-1 flex-1 min-w-[140px]">
+                        <label class="text-xs font-semibold text-gray-700 uppercase tracking-wide">Categorías</label>
+                        <select name="categories" id="categories-select" class="w-full p-2 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
+                            <option value="all">Todas las Categorías</option>
+                            <option value="lifestyle">Estilo de Vida</option>
+                            <option value="running">Running</option>
+                            <option value="basketball">Baloncesto</option>
+                            <option value="training">Entrenamiento</option>
+                        </select>
                     </div>
-                    <select name="price" id="price-select" class="w-full p-3 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
-                        <option value="all">Todos los Precios</option>
-                        <option value="0-100000">Menos de $100.000</option>
-                        <option value="100000-200000">$100.000 - $200.000</option>
-                        <option value="200000-300000">$200.000 - $300.000</option>
-                        <option value="300000-400000">$300.000 - $400.000</option>
-                        <option value="400000-600000">$400.000 - $600.000</option>
-                        <option value="600000-999999">Más de $600.000</option>
-                    </select>
-                </div>
 
-                <!-- Colores -->
-                <div class="mb-6">
-                    <div class="flex justify-between items-center mb-3">
-                        <h2 class="text-base font-semibold text-gray-800">Colores</h2>
-                        <i class="fas fa-chevron-down text-gray-600 text-sm btn-icon"></i>
+                    <!-- Precio -->
+                    <div class="flex flex-col gap-1 flex-1 min-w-[140px]">
+                        <label class="text-xs font-semibold text-gray-700 uppercase tracking-wide">Rango de Precio</label>
+                        <select name="price" id="price-select" class="w-full p-2 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
+                            <option value="all">Todos los Precios</option>
+                            <option value="0-100000">Menos de $100.000</option>
+                            <option value="100000-200000">$100.000 - $200.000</option>
+                            <option value="200000-300000">$200.000 - $300.000</option>
+                            <option value="300000-400000">$300.000 - $400.000</option>
+                            <option value="400000-600000">$400.000 - $600.000</option>
+                            <option value="600000-999999">Más de $600.000</option>
+                        </select>
                     </div>
-                    <select name="colors" id="colors-select" class="w-full p-3 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
-                        <option value="all">Todos los Colores</option>
-                        <option value="black">Negro</option>
-                        <option value="white">Blanco</option>
-                        <option value="gray">Gris</option>
-                        <option value="blue">Azul</option>
-                        <option value="red">Rojo</option>
-                        <option value="green">Verde</option>
-                        <option value="yellow">Amarillo</option>
-                        <option value="orange">Naranja</option>
-                        <option value="purple">Morado</option>
-                        <option value="pink">Rosa</option>
-                        <option value="brown">Café</option>
-                        <option value="multi">Multicolor</option>
-                    </select>
-                </div>
 
-                <!-- Talla -->
-                <div class="mb-6">
-                    <div class="flex justify-between items-center mb-3">
-                        <h2 class="text-base font-semibold text-gray-800">Talla</h2>
-                        <i class="fas fa-chevron-down text-gray-600 text-sm btn-icon"></i>
+                    <!-- Colores -->
+                    <div class="flex flex-col gap-1 flex-1 min-w-[140px]">
+                        <label class="text-xs font-semibold text-gray-700 uppercase tracking-wide">Colores</label>
+                        <select name="colors" id="colors-select" class="w-full p-2 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
+                            <option value="all">Todos los Colores</option>
+                            <option value="black">Negro</option>
+                            <option value="white">Blanco</option>
+                            <option value="gray">Gris</option>
+                            <option value="blue">Azul</option>
+                            <option value="red">Rojo</option>
+                            <option value="green">Verde</option>
+                            <option value="yellow">Amarillo</option>
+                            <option value="orange">Naranja</option>
+                            <option value="purple">Morado</option>
+                            <option value="pink">Rosa</option>
+                            <option value="brown">Café</option>
+                            <option value="multi">Multicolor</option>
+                        </select>
                     </div>
-                    <select name="sizes" id="size-select" class="w-full p-3 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
-                        <option value="all">Todas las Tallas</option>
-                        <option value="7">7</option>
-                        <option value="7.5">7.5</option>
-                        <option value="8">8</option>
-                        <option value="8.5">8.5</option>
-                        <option value="9">9</option>
-                        <option value="9.5">9.5</option>
-                        <option value="10">10</option>
-                        <option value="10.5">10.5</option>
-                        <option value="11">11</option>
-                        <option value="11.5">11.5</option>
-                        <option value="12">12</option>
-                        <option value="12.5">12.5</option>
-                        <option value="13">13</option>
-                    </select>
-                </div>
 
-                <!-- Marca -->
-                <div class="mb-6">
-                    <div class="flex justify-between items-center mb-3">
-                        <h2 class="text-base font-semibold text-gray-800">Marca</h2>
-                        <i class="fas fa-chevron-down text-gray-600 text-sm btn-icon"></i>
+                    <!-- Talla -->
+                    <div class="flex flex-col gap-1 flex-1 min-w-[120px]">
+                        <label class="text-xs font-semibold text-gray-700 uppercase tracking-wide">Talla</label>
+                        <select name="sizes" id="size-select" class="w-full p-2 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
+                            <option value="all">Todas las Tallas</option>
+                            <option value="5">5</option>
+                            <option value="5.5">5.5</option>
+                            <option value="6">6</option>
+                            <option value="6.5">6.5</option>
+                            <option value="7">7</option>
+                            <option value="7.5">7.5</option>
+                            <option value="8">8</option>
+                            <option value="8.5">8.5</option>
+                            <option value="9">9</option>
+                        </select>
                     </div>
-                    <select name="brand" id="brand-select" class="w-full p-3 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
-                        <option value="all">Todas las Marcas</option>
-                        <option value="nike">Nike</option>
-                        <option value="adidas">Adidas</option>
-                        <option value="puma">Puma</option>
-                        <option value="reebok">Reebok</option>
-                        <option value="new-balance">New Balance</option>
-                        <option value="under-armour">Under Armour</option>
-                    </select>
-                </div>
 
-                <button class="w-full bg-gray-900 text-white py-3 rounded-full text-sm font-semibold mt-5 hover:bg-black hover:-translate-y-0.5 transition-all uppercase tracking-wider" id="buscarBoton">Aplicar Filtros</button>
+                    <!-- Marca -->
+                    <div class="flex flex-col gap-1 flex-1 min-w-[140px]">
+                        <label class="text-xs font-semibold text-gray-700 uppercase tracking-wide">Marca</label>
+                        <select name="brand" id="brand-select" class="w-full p-2 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
+                            <option value="all">Todas las Marcas</option>
+                            <option value="nike">Nike</option>
+                            <option value="adidas">Adidas</option>
+                            <option value="puma">Puma</option>
+                            <option value="reebok">Reebok</option>
+                            <option value="new-balance">New Balance</option>
+                            <option value="under-armour">Under Armour</option>
+                        </select>
+                    </div>
+
+                    <!-- Botón Aplicar -->
+                    <div class="flex flex-col gap-1">
+                        <label class="text-xs font-semibold text-gray-700 uppercase tracking-wide opacity-0">Aplicar</label>
+                        <button class="bg-gray-900 text-white px-6 py-2 rounded-md text-sm font-semibold hover:bg-black transition-colors whitespace-nowrap" id="buscarBoton">
+                            Aplicar Filtros
+                        </button>
+                    </div>
+                </div>
             </div>
+        </div>
 
-            <div class="flex-1 w-full min-w-0">
+        <div class="hidden fixed inset-0 bg-black/50 z-30" id="overlay"></div>
+
+        <!-- Sección de Productos -->
+        <div class="w-full">
+            <div class="w-full">
                 <div class="hidden text-center py-10" id="loadingSpinner">
                     <div class="inline-block w-10 h-10 border-3 border-gray-200 border-t-gray-900 rounded-full animate-spin-custom loading-spinner"></div>
                     <p class="mt-4 text-gray-600">Cargando productos...</p>
@@ -429,7 +506,6 @@
                 </div>
             </div>
         </div>
-    </div>
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white pt-16 mt-20">
@@ -759,10 +835,10 @@
             const cartCount = appState.cart.reduce((sum, item) => sum + item.quantity, 0);
             const wishlistCount = appState.wishlist.length;
             
-            elements.cartCount.textContent = cartCount;
-            elements.mobileCartCount.textContent = `(${cartCount})`;
-            elements.wishlistCount.textContent = wishlistCount;
-            elements.mobileWishlistCount.textContent = `(${wishlistCount})`;
+            if (elements.cartCount) elements.cartCount.textContent = cartCount;
+            if (elements.mobileCartCount) elements.mobileCartCount.textContent = `(${cartCount})`;
+            if (elements.wishlistCount) elements.wishlistCount.textContent = wishlistCount;
+            if (elements.mobileWishlistCount) elements.mobileWishlistCount.textContent = `(${wishlistCount})`;
         }
 
         function formatPrice(price) {
@@ -939,11 +1015,6 @@
                     <div class="h-48 sm:h-64 lg:h-72 flex justify-center items-center p-3 sm:p-5 relative ${product.bgColor}" onclick="viewProduct(${product.id})">
                         <img src="${product.image}" alt="${product.name}" class="max-w-full max-h-full rotate-y-180 transition-transform group-hover:rotate-y-180-scale">
                     </div>
-                    <div class="-mt-8 sm:-mt-10 text-right mr-3 sm:mr-5 relative">
-                        <button onclick="addToCart(${product.id})" class="bg-white border border-gray-300 w-10 h-10 sm:w-12 sm:h-12 rounded-full shadow-lg transition-all hover:bg-gray-900 hover:text-white hover:scale-110 product-icon-lg">
-                            <i class="fas fa-shopping-cart text-sm"></i>
-                        </button>
-                    </div>
                     <div class="p-3 sm:p-5">
                         <h3 class="text-base sm:text-lg font-semibold mb-2 text-gray-800 leading-tight">${product.name}</h3>
                         <div class="flex items-center gap-2 mb-2">
@@ -951,12 +1022,15 @@
                             <span class="text-gray-600 text-xs sm:text-sm">(${product.reviews})</span>
                         </div>
                         <p class="text-gray-600 text-xs sm:text-sm mb-3">${product.description}</p>
-                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 mb-3">
                             <div class="flex items-center gap-2">
                                 ${product.originalPrice ? `<span class="line-through text-gray-400 text-sm">${formatPrice(product.originalPrice)}</span>` : ''}
                                 <p class="text-lg sm:text-xl font-semibold text-gray-900">${formatPrice(product.price)}</p>
                             </div>
                         </div>
+                        <button onclick="addToCart(${product.id})" class="w-full bg-gray-900 text-white py-2 px-4 rounded-lg font-semibold hover:bg-black transition-colors text-sm sm:text-base">
+                            <i class="fas fa-shopping-cart mr-2"></i>Agregar al Carrito
+                        </button>
                     </div>
                 </div>
             `).join('');
@@ -1010,6 +1084,8 @@
         function updateCart() {
             updateCounts();
             
+            if (!elements.cartItems) return;
+            
             if (appState.cart.length === 0) {
                 elements.cartItems.innerHTML = `
                     <div class="text-center py-10 text-gray-500">
@@ -1017,7 +1093,7 @@
                         <p>Tu carrito está vacío</p>
                     </div>
                 `;
-                elements.cartFooter.classList.add('hidden');
+                if (elements.cartFooter) elements.cartFooter.classList.add('hidden');
             } else {
                 elements.cartItems.innerHTML = appState.cart.map(item => `
                     <div class="flex gap-4 py-4 border-b">
@@ -1038,20 +1114,13 @@
                 `).join('');
                 
                 const total = appState.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                elements.cartTotal.textContent = formatPrice(total);
-                elements.cartFooter.classList.remove('hidden');
+                if (elements.cartTotal) elements.cartTotal.textContent = formatPrice(total);
+                if (elements.cartFooter) elements.cartFooter.classList.remove('hidden');
             }
         }
 
         // Funciones de Lista de Deseos
         function toggleWishlist(productId) {
-            if (!appState.currentUser) {
-                showNotification('Por favor inicia sesión para agregar artículos a favoritos', 'warning');
-                elements.authModal.classList.remove('hidden');
-                elements.authModal.classList.add('flex');
-                return;
-            }
-            
             const index = appState.wishlist.indexOf(productId);
             if (index > -1) {
                 appState.wishlist.splice(index, 1);
@@ -1080,6 +1149,7 @@
             console.log('Iniciando aplicación...');
             renderProducts();
             updateCounts();
+            updateCart();
             
             // Forzar la visibilidad de los productos en móvil
             setTimeout(() => {

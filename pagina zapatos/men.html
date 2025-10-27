@@ -230,6 +230,50 @@
                 padding-right: 0.75rem !important;
             }
         }
+
+        /* Estilos para filtros móviles estilo MercadoLibre/Temu */
+        .filter-chip {
+            cursor: pointer;
+        }
+
+        .filter-chip:hover {
+            border-color: #000;
+            transform: translateY(-2px);
+        }
+
+        .filter-chip.active {
+            background-color: #000;
+            color: #fff;
+            border-color: #000;
+        }
+
+        /* Animación del panel móvil */
+        #mobileFiltersPanel.show {
+            transform: translateY(0) !important;
+        }
+
+        #mobileFiltersPanel #overlay {
+            opacity: 1;
+        }
+
+        /* Smooth scrolling en el panel */
+        #mobileFiltersPanel {
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        #mobileFiltersPanel::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #mobileFiltersPanel::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        #mobileFiltersPanel::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 3px;
+        }
     </style>
 </head>
 
@@ -435,42 +479,36 @@
             <span class="text-red-500 cursor-pointer text-sm font-medium ml-auto" id="clearFilters">Limpiar Todo</span>
         </div>
 
-        <!-- Sección de Productos -->
-        <div class="flex flex-col lg:flex-row gap-5 items-start">
-            <!-- Toggle de Filtro Móvil -->
-            <button class="lg:hidden flex items-center gap-3 px-5 py-3 bg-gray-100 mb-5 rounded-lg hover:bg-gray-200 transition-colors w-full" id="hamburgerMenu">
-                <i class="fas fa-filter btn-icon"></i>
-                <span>Filtrar y Categorías</span>
+                 <!-- Barra de Filtros Horizontal -->
+         <div class="bg-white p-4 shadow-md rounded-lg mb-5">
+             <div class="flex flex-col lg:flex-row gap-4 items-start lg:items-center">
+                 <!-- Toggle de Filtro Móvil Mejorado -->
+                 <button class="lg:hidden flex items-center justify-between w-full px-5 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors shadow-md" id="hamburgerMenu">
+                     <div class="flex items-center gap-3">
+                         <i class="fas fa-filter text-lg"></i>
+                         <span class="font-semibold">Filtrar Productos</span>
+                     </div>
+                     <i class="fas fa-chevron-down transition-transform" id="filterIcon"></i>
             </button>
 
-            <div class="hidden fixed inset-0 bg-black/50 z-30" id="overlay"></div>
-
-            <!-- Sidebar de Categorías -->
-            <div class="hidden lg:block w-full lg:w-72 bg-white p-6 shadow-md rounded-lg h-fit" id="categoriesMenu">
+                 <!-- Filtros Desktop - Una fila -->
+                 <div class="hidden lg:flex lg:flex-wrap lg:items-center lg:gap-4 w-full">
                 <!-- Categorías -->
-                <div class="mb-6">
-                    <div class="flex justify-between items-center mb-3">
-                        <h2 class="text-base font-semibold text-gray-800">Categorías</h2>
-                        <i class="fas fa-chevron-down text-gray-600 text-sm btn-icon"></i>
-                    </div>
-                    <select name="categories" id="categories-select" class="w-full p-3 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
+                     <div class="flex flex-col gap-1 flex-1 min-w-[140px]">
+                         <label class="text-xs font-semibold text-gray-700 uppercase tracking-wide">Categorías</label>
+                         <select name="categories" id="categories-select" class="w-full p-2 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
                         <option value="all">Todas las Categorías</option>
-                        <option value="lifestyle">Estilo de Vida (367)</option>
-                        <option value="running">Running (76)</option>
-                        <option value="basketball">Baloncesto (65)</option>
-                        <option value="football">Fútbol Americano (21)</option>
-                        <option value="soccer">Fútbol (12)</option>
-                        <option value="training">Entrenamiento y Gimnasio (54)</option>
+                             <option value="lifestyle">Estilo de Vida</option>
+                             <option value="running">Running</option>
+                             <option value="basketball">Baloncesto</option>
+                             <option value="training">Entrenamiento</option>
                     </select>
                 </div>
 
                 <!-- Precio -->
-                <div class="mb-6">
-                    <div class="flex justify-between items-center mb-3">
-                        <h2 class="text-base font-semibold text-gray-800">Rango de Precio</h2>
-                        <i class="fas fa-chevron-down text-gray-600 text-sm btn-icon"></i>
-                    </div>
-                    <select name="price" id="price-select" class="w-full p-3 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
+                     <div class="flex flex-col gap-1 flex-1 min-w-[140px]">
+                         <label class="text-xs font-semibold text-gray-700 uppercase tracking-wide">Rango de Precio</label>
+                         <select name="price" id="price-select" class="w-full p-2 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
                         <option value="all">Todos los Precios</option>
                         <option value="0-100000">Menos de $100.000</option>
                         <option value="100000-200000">$100.000 - $200.000</option>
@@ -482,12 +520,9 @@
                 </div>
 
                 <!-- Colores -->
-                <div class="mb-6">
-                    <div class="flex justify-between items-center mb-3">
-                        <h2 class="text-base font-semibold text-gray-800">Colores</h2>
-                        <i class="fas fa-chevron-down text-gray-600 text-sm btn-icon"></i>
-                    </div>
-                    <select name="colors" id="colors-select" class="w-full p-3 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
+                     <div class="flex flex-col gap-1 flex-1 min-w-[140px]">
+                         <label class="text-xs font-semibold text-gray-700 uppercase tracking-wide">Colores</label>
+                         <select name="colors" id="colors-select" class="w-full p-2 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
                         <option value="all">Todos los Colores</option>
                         <option value="black">Negro</option>
                         <option value="white">Blanco</option>
@@ -505,12 +540,9 @@
                 </div>
 
                 <!-- Talla -->
-                <div class="mb-6">
-                    <div class="flex justify-between items-center mb-3">
-                        <h2 class="text-base font-semibold text-gray-800">Talla</h2>
-                        <i class="fas fa-chevron-down text-gray-600 text-sm btn-icon"></i>
-                    </div>
-                    <select name="sizes" id="size-select" class="w-full p-3 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
+                     <div class="flex flex-col gap-1 flex-1 min-w-[120px]">
+                         <label class="text-xs font-semibold text-gray-700 uppercase tracking-wide">Talla</label>
+                         <select name="sizes" id="size-select" class="w-full p-2 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
                         <option value="all">Todas las Tallas</option>
                         <option value="7">7</option>
                         <option value="7.5">7.5</option>
@@ -529,12 +561,9 @@
                 </div>
 
                 <!-- Marca -->
-                <div class="mb-6">
-                    <div class="flex justify-between items-center mb-3">
-                        <h2 class="text-base font-semibold text-gray-800">Marca</h2>
-                        <i class="fas fa-chevron-down text-gray-600 text-sm btn-icon"></i>
-                    </div>
-                    <select name="brand" id="brand-select" class="w-full p-3 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
+                     <div class="flex flex-col gap-1 flex-1 min-w-[140px]">
+                         <label class="text-xs font-semibold text-gray-700 uppercase tracking-wide">Marca</label>
+                         <select name="brand" id="brand-select" class="w-full p-2 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
                         <option value="all">Todas las Marcas</option>
                         <option value="nike">Nike</option>
                         <option value="adidas">Adidas</option>
@@ -545,10 +574,181 @@
                     </select>
                 </div>
 
-                <button class="w-full bg-gray-900 text-white py-3 rounded-full text-sm font-semibold mt-5 hover:bg-black hover:-translate-y-0.5 transition-all uppercase tracking-wider" id="buscarBoton">Aplicar Filtros</button>
+                     <!-- Botón Aplicar -->
+                     <div class="flex flex-col gap-1">
+                         <label class="text-xs font-semibold text-gray-700 uppercase tracking-wide opacity-0">Aplicar</label>
+                         <button class="bg-gray-900 text-white px-6 py-2 rounded-md text-sm font-semibold hover:bg-black transition-colors whitespace-nowrap" id="buscarBoton">
+                             Aplicar Filtros
+                         </button>
+                     </div>
+                 </div>
+             </div>
             </div>
 
-            <div class="flex-1 w-full min-w-0">
+         <div class="hidden fixed inset-0 bg-black/50 z-30" id="overlay"></div>
+
+         <!-- Sección de Productos -->
+         <div class="w-full">
+             <!-- Sidebar de Categorías Mejorado (oculto por defecto, solo para móvil cuando se activa el menú) -->
+             <div class="hidden fixed inset-y-0 left-0 w-4/5 max-w-sm bg-white z-40 overflow-y-auto shadow-2xl" id="categoriesMenu">
+                                 <div class="p-6">
+                     <div class="flex justify-between items-center mb-6">
+                         <h2 class="text-lg font-bold text-gray-900">Filtros</h2>
+                         <button class="text-gray-600 hover:text-gray-900" onclick="closeMobileCategoriesMenu()">
+                             <i class="fas fa-times text-xl"></i>
+                         </button>
+                     </div>
+                     <!-- Contenido para el menú móvil de categorías (igual que antes) -->
+                 </div>
+             </div>
+
+             <script>
+                 function closeMobileCategoriesMenu() {
+                     document.getElementById('categoriesMenu').classList.add('hidden');
+                     document.getElementById('overlay').classList.add('hidden');
+                     document.body.style.overflow = '';
+                 }
+             </script>
+
+            <!-- Panel de Filtros Móvil Deslizable (estilo MercadoLibre/Temu) -->
+            <div class="hidden fixed bottom-0 left-0 right-0 bg-white z-50 rounded-t-3xl shadow-2xl transform translate-y-full transition-transform duration-300" id="mobileFiltersPanel">
+                <div class="p-6 max-h-[80vh] overflow-y-auto">
+                    <!-- Header del Panel -->
+                    <div class="flex justify-between items-center mb-6 sticky top-0 bg-white pb-4 border-b">
+                        <h2 class="text-xl font-bold text-gray-900">Filtrar Productos</h2>
+                        <button class="text-gray-600 hover:text-gray-900 transition-colors" id="closeMobileFilters">
+                            <i class="fas fa-times text-2xl"></i>
+                        </button>
+                    </div>
+
+                    <!-- Filtros con Chips Visibles -->
+                    <div class="space-y-6">
+                        <!-- Categorías con Chips -->
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                                <i class="fas fa-th-large text-gray-600"></i>
+                                Categorías
+                            </h3>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="filter-chip category-filter px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium transition-all" data-value="all">
+                                    Todas
+                                </button>
+                                <button class="filter-chip category-filter px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium transition-all" data-value="lifestyle">
+                                    Estilo de Vida
+                                </button>
+                                <button class="filter-chip category-filter px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium transition-all" data-value="running">
+                                    Running
+                                </button>
+                                <button class="filter-chip category-filter px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium transition-all" data-value="basketball">
+                                    Baloncesto
+                                </button>
+                                <button class="filter-chip category-filter px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium transition-all" data-value="training">
+                                    Entrenamiento
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Precio con Chips -->
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                                <i class="fas fa-dollar-sign text-gray-600"></i>
+                                Rango de Precio
+                            </h3>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="filter-chip price-filter px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium transition-all" data-value="all">
+                                    Todos
+                                </button>
+                                <button class="filter-chip price-filter px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium transition-all" data-value="0-100000">
+                                    Menos de $100k
+                                </button>
+                                <button class="filter-chip price-filter px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium transition-all" data-value="100000-200000">
+                                    $100k - $200k
+                                </button>
+                                <button class="filter-chip price-filter px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium transition-all" data-value="200000-300000">
+                                    $200k - $300k
+                                </button>
+                                <button class="filter-chip price-filter px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium transition-all" data-value="300000-400000">
+                                    $300k - $400k
+                                </button>
+                                <button class="filter-chip price-filter px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium transition-all" data-value="400000-600000">
+                                    $400k - $600k
+                                </button>
+                                <button class="filter-chip price-filter px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium transition-all" data-value="600000-999999">
+                                    Más de $600k
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Colores con Chips -->
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                                <i class="fas fa-palette text-gray-600"></i>
+                                Colores
+                            </h3>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="filter-chip color-filter px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium transition-all" data-value="all">
+                                    Todos
+                                </button>
+                                <button class="filter-chip color-filter px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium transition-all" data-value="black">
+                                    Negro
+                                </button>
+                                <button class="filter-chip color-filter px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium transition-all" data-value="white">
+                                    Blanco
+                                </button>
+                                <button class="filter-chip color-filter px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium transition-all" data-value="blue">
+                                    Azul
+                                </button>
+                                <button class="filter-chip color-filter px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium transition-all" data-value="red">
+                                    Rojo
+                                </button>
+                                <button class="filter-chip color-filter px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium transition-all" data-value="green">
+                                    Verde
+                                </button>
+                                <button class="filter-chip color-filter px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium transition-all" data-value="gray">
+                                    Gris
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Marcas con Chips -->
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                                <i class="fas fa-tag text-gray-600"></i>
+                                Marcas
+                            </h3>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="filter-chip brand-filter px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium transition-all" data-value="all">
+                                    Todas
+                                </button>
+                                <button class="filter-chip brand-filter px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium transition-all" data-value="nike">
+                                    Nike
+                                </button>
+                                <button class="filter-chip brand-filter px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium transition-all" data-value="adidas">
+                                    Adidas
+                                </button>
+                                <button class="filter-chip brand-filter px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium transition-all" data-value="puma">
+                                    Puma
+                                </button>
+                                <button class="filter-chip brand-filter px-4 py-2 rounded-full border-2 border-gray-300 text-sm font-medium transition-all" data-value="new-balance">
+                                    New Balance
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botones de Acción -->
+                    <div class="sticky bottom-0 bg-white pt-6 mt-6 border-t flex gap-3">
+                        <button class="flex-1 bg-gray-200 text-gray-900 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors" id="clearMobileFilters">
+                            Limpiar
+                        </button>
+                        <button class="flex-1 bg-gray-900 text-white py-3 rounded-lg font-semibold hover:bg-black transition-colors" id="applyMobileFilters">
+                            Aplicar Filtros
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+                         <div class="w-full">
                 <div class="hidden text-center py-10" id="loadingSpinner">
                     <div class="inline-block w-10 h-10 border-3 border-gray-200 border-t-gray-900 rounded-full animate-spin-custom loading-spinner"></div>
                     <p class="mt-4 text-gray-600">Cargando productos...</p>
@@ -696,7 +896,7 @@
                 category: "lifestyle",
                 price: 450000,
                 originalPrice: 550000,
-                color: "green",
+                color: "multi",
                 sizes: [7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11],
                 brand: "nike",
                 image: "./img/nike270.png",
@@ -711,7 +911,7 @@
                 name: "Nike Air Max",
                 category: "running",
                 price: 425000,
-                color: "orange",
+                color: "blue",
                 sizes: [7, 8, 8.5, 9, 9.5, 10, 11],
                 brand: "nike",
                 image: "./img/nikeairmax.png",
@@ -741,7 +941,7 @@
                 category: "basketball",
                 price: 625000,
                 originalPrice: 750000,
-                color: "blue",
+                color: "black",
                 sizes: [8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 13],
                 brand: "nike",
                 image: "./img/nikebasketball.png",
@@ -800,7 +1000,7 @@
                 category: "lifestyle",
                 price: 375000,
                 originalPrice: 450000,
-                color: "green",
+                color: "white",
                 sizes: [7, 8, 8.5, 9, 9.5, 10, 10.5, 11],
                 brand: "nike",
                 image: "./img/nikesbmalo.png",
@@ -815,7 +1015,7 @@
                 name: "Nike Air VaporMax 2023",
                 category: "lifestyle",
                 price: 350000,
-                color: "orange",
+                color: "gray",
                 sizes: [7.5, 8, 8.5, 9, 9.5, 10, 11],
                 brand: "nike",
                 image: "./img/nikevapormax.png",
@@ -922,10 +1122,10 @@
             const cartCount = appState.cart.reduce((sum, item) => sum + item.quantity, 0);
             const wishlistCount = appState.wishlist.length;
             
-            elements.cartCount.textContent = cartCount;
-            elements.mobileCartCount.textContent = `(${cartCount})`;
-            elements.wishlistCount.textContent = wishlistCount;
-            elements.mobileWishlistCount.textContent = `(${wishlistCount})`;
+            if (elements.cartCount) elements.cartCount.textContent = cartCount;
+            if (elements.mobileCartCount) elements.mobileCartCount.textContent = `(${cartCount})`;
+            if (elements.wishlistCount) elements.wishlistCount.textContent = wishlistCount;
+            if (elements.mobileWishlistCount) elements.mobileWishlistCount.textContent = `(${wishlistCount})`;
         }
 
         function formatPrice(price) {
@@ -1102,11 +1302,6 @@
                     <div class="h-48 sm:h-64 lg:h-72 flex justify-center items-center p-3 sm:p-5 relative ${product.bgColor}" onclick="viewProduct(${product.id})">
                         <img src="${product.image}" alt="${product.name}" class="max-w-full max-h-full rotate-y-180 transition-transform group-hover:rotate-y-180-scale">
                     </div>
-                    <div class="-mt-8 sm:-mt-10 text-right mr-3 sm:mr-5 relative">
-                        <button onclick="addToCart(${product.id})" class="bg-white border border-gray-300 w-10 h-10 sm:w-12 sm:h-12 rounded-full shadow-lg transition-all hover:bg-gray-900 hover:text-white hover:scale-110 product-icon-lg">
-                            <i class="fas fa-shopping-cart text-sm"></i>
-                        </button>
-                    </div>
                     <div class="p-3 sm:p-5">
                         <h3 class="text-base sm:text-lg font-semibold mb-2 text-gray-800 leading-tight">${product.name}</h3>
                         <div class="flex items-center gap-2 mb-2">
@@ -1114,12 +1309,15 @@
                             <span class="text-gray-600 text-xs sm:text-sm">(${product.reviews})</span>
                         </div>
                         <p class="text-gray-600 text-xs sm:text-sm mb-3">${product.description}</p>
-                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 mb-3">
                             <div class="flex items-center gap-2">
                                 ${product.originalPrice ? `<span class="line-through text-gray-400 text-sm">${formatPrice(product.originalPrice)}</span>` : ''}
                                 <p class="text-lg sm:text-xl font-semibold text-gray-900">${formatPrice(product.price)}</p>
                             </div>
                         </div>
+                        <button onclick="addToCart(${product.id})" class="w-full bg-gray-900 text-white py-2 px-4 rounded-lg font-semibold hover:bg-black transition-colors text-sm sm:text-base">
+                            <i class="fas fa-shopping-cart mr-2"></i>Agregar al Carrito
+                        </button>
                     </div>
                 </div>
             `).join('');
@@ -1173,6 +1371,8 @@
         function updateCart() {
             updateCounts();
             
+            if (!elements.cartItems) return;
+            
             if (appState.cart.length === 0) {
                 elements.cartItems.innerHTML = `
                     <div class="text-center py-10 text-gray-500">
@@ -1180,7 +1380,7 @@
                         <p>Tu carrito está vacío</p>
                     </div>
                 `;
-                elements.cartFooter.classList.add('hidden');
+                if (elements.cartFooter) elements.cartFooter.classList.add('hidden');
             } else {
                 elements.cartItems.innerHTML = appState.cart.map(item => `
                     <div class="flex gap-4 py-4 border-b">
@@ -1201,20 +1401,13 @@
                 `).join('');
                 
                 const total = appState.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                elements.cartTotal.textContent = formatPrice(total);
-                elements.cartFooter.classList.remove('hidden');
+                if (elements.cartTotal) elements.cartTotal.textContent = formatPrice(total);
+                if (elements.cartFooter) elements.cartFooter.classList.remove('hidden');
             }
         }
 
         // Funciones de Lista de Deseos
         function toggleWishlist(productId) {
-            if (!appState.currentUser) {
-                showNotification('Por favor inicia sesión para agregar artículos a favoritos', 'warning');
-                elements.authModal.classList.remove('hidden');
-                elements.authModal.classList.add('flex');
-                return;
-            }
-            
             const index = appState.wishlist.indexOf(productId);
             if (index > -1) {
                 appState.wishlist.splice(index, 1);
@@ -1243,6 +1436,7 @@
             console.log('Iniciando aplicación...');
             renderProducts();
             updateCounts();
+            updateCart();
             
             // Forzar la visibilidad de los productos en móvil
             setTimeout(() => {
@@ -1250,24 +1444,91 @@
                 console.log('Productos visibles:', appState.products.length);
             }, 100);
             
-            // Menú móvil
+            // Panel de Filtros Móvil (estilo MercadoLibre/Temu)
             const hamburgerMenu = document.getElementById('hamburgerMenu');
+            const mobileFiltersPanel = document.getElementById('mobileFiltersPanel');
+            const closeMobileFilters = document.getElementById('closeMobileFilters');
+            const overlay = document.getElementById('overlay');
+            const applyMobileFilters = document.getElementById('applyMobileFilters');
+            const clearMobileFilters = document.getElementById('clearMobileFilters');
+            const filterChips = document.querySelectorAll('.filter-chip');
+
+                         // Abrir panel de filtros móvil
+            hamburgerMenu?.addEventListener('click', () => {
+                 if (window.innerWidth < 1024) {
+                     mobileFiltersPanel.classList.remove('hidden');
+                     mobileFiltersPanel.classList.add('show');
+                     overlay.classList.remove('hidden');
+                     document.body.style.overflow = 'hidden';
+                 }
+             });
+
+            // Cerrar panel de filtros móvil
+            function closeFiltersPanel() {
+                mobileFiltersPanel.classList.remove('show');
+                overlay.classList.add('hidden');
+                document.body.style.overflow = '';
+                setTimeout(() => {
+                    mobileFiltersPanel.classList.add('hidden');
+                }, 300);
+            }
+
+            closeMobileFilters?.addEventListener('click', closeFiltersPanel);
+            
+                         overlay.addEventListener('click', () => {
+                 closeFiltersPanel();
+             });
+
+            // Manejar clicks en chips de filtros
+            filterChips.forEach(chip => {
+                chip.addEventListener('click', function() {
+                    const category = this.classList.contains('category-filter') ? 'category' :
+                                   this.classList.contains('price-filter') ? 'price' :
+                                   this.classList.contains('color-filter') ? 'color' :
+                                   this.classList.contains('brand-filter') ? 'brand' : null;
+                    
+                    if (!category) return;
+
+                    // Remover active de otros chips del mismo grupo
+                    document.querySelectorAll(`.${category}-filter`).forEach(c => {
+                        c.classList.remove('active');
+                    });
+                    
+                    // Marcar este chip como activo
+                    this.classList.add('active');
+                });
+            });
+
+            // Aplicar filtros móviles
+            applyMobileFilters?.addEventListener('click', () => {
+                const activeCategory = document.querySelector('.category-filter.active')?.dataset.value || 'all';
+                const activePrice = document.querySelector('.price-filter.active')?.dataset.value || 'all';
+                const activeColor = document.querySelector('.color-filter.active')?.dataset.value || 'all';
+                const activeBrand = document.querySelector('.brand-filter.active')?.dataset.value || 'all';
+
+                appState.filters.category = activeCategory;
+                appState.filters.price = activePrice;
+                appState.filters.color = activeColor;
+                appState.filters.brand = activeBrand;
+
+                applyFilters();
+                closeFiltersPanel();
+                showNotification('Filtros aplicados', 'success');
+            });
+
+            // Limpiar filtros móviles
+            clearMobileFilters?.addEventListener('click', () => {
+                document.querySelectorAll('.filter-chip').forEach(chip => {
+                    chip.classList.remove('active');
+                });
+                document.querySelectorAll('[data-value="all"]').forEach(chip => {
+                    chip.classList.add('active');
+                });
+            });
+
+            // Menú móvil lateral
             const mobileMenuToggle = document.getElementById('mobileMenuToggle');
             const closeSidebar = document.getElementById('closeSidebar');
-            
-            hamburgerMenu?.addEventListener('click', () => {
-                elements.categoriesMenu.classList.remove('hidden');
-                elements.categoriesMenu.classList.add('fixed', 'top-0', 'left-0', 'w-4/5', 'max-w-sm', 'h-screen', 'z-40', 'overflow-y-auto');
-                elements.categoriesMenu.style.display = 'block';
-                elements.overlay.classList.remove('hidden');
-            });
-            
-            elements.overlay.addEventListener('click', () => {
-                elements.categoriesMenu.classList.add('hidden');
-                elements.categoriesMenu.classList.remove('fixed', 'top-0', 'left-0', 'w-4/5', 'max-w-sm', 'h-screen', 'z-40', 'overflow-y-auto');
-                elements.categoriesMenu.style.display = '';
-                elements.overlay.classList.add('hidden');
-            });
             
             mobileMenuToggle.addEventListener('click', () => {
                 elements.mobileSidebar.classList.remove('-right-full');
@@ -1376,11 +1637,6 @@
             document.getElementById('buscarBoton').addEventListener('click', (e) => {
                 e.preventDefault();
                 applyFilters();
-                // Cerrar menú móvil
-                elements.categoriesMenu.classList.add('hidden');
-                elements.categoriesMenu.classList.remove('fixed', 'top-0', 'left-0', 'w-4/5', 'max-w-sm', 'h-screen', 'z-40', 'overflow-y-auto');
-                elements.categoriesMenu.style.display = '';
-                elements.overlay.classList.add('hidden');
             });
             
             // Opciones de ordenamiento

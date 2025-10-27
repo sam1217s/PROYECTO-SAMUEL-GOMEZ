@@ -283,6 +283,90 @@
         </div>
     </header>
 
+    <!-- Sidebar Móvil -->
+    <div class="fixed top-0 -right-full w-4/5 max-w-sm h-screen bg-white z-50 transition-all duration-300 overflow-y-auto" id="mobileSidebar">
+        <div class="bg-gray-900 text-white p-5 flex justify-between items-center">
+            <h2 class="text-xl font-semibold">Menú</h2>
+            <button class="text-2xl" id="closeSidebar">
+                <i class="fas fa-times header-icon"></i>
+            </button>
+        </div>
+        <div class="p-5">
+            <ul class="space-y-4">
+                <li><a href="index.html" class="block py-3 text-black font-medium">Inicio</a></li>
+                <li><a href="men.html" class="block py-3 text-gray-700 font-medium hover:text-black transition-colors">Hombres</a></li>
+                <li><a href="women.html" class="block py-3 text-gray-700 font-medium hover:text-black transition-colors">Mujeres</a></li>
+                <li><a href="kids.html" class="block py-3 text-black font-medium">Niños</a></li>
+                <li><a href="sale.html" class="block py-3 text-gray-700 font-medium hover:text-black transition-colors">Ofertas</a></li>
+                <li class="border-t pt-4"><a href="#" id="mobileAccountBtn" class="block py-3 text-gray-700 font-medium hover:text-black transition-colors">Mi Cuenta</a></li>
+                <li><a href="#" id="mobileWishlistBtn" class="block py-3 text-gray-700 font-medium hover:text-black transition-colors">Favoritos <span id="mobileWishlistCount">(0)</span></a></li>
+                <li><a href="#" id="mobileCartBtn" class="block py-3 text-gray-700 font-medium hover:text-black transition-colors">Carrito <span id="mobileCartCount">(0)</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Sidebar del Carrito -->
+    <div class="fixed top-0 -right-96 w-96 h-screen bg-white shadow-2xl z-50 transition-all duration-300 flex flex-col" id="cartSidebar">
+        <div class="bg-gray-900 text-white p-5 flex justify-between items-center">
+            <h2 class="text-xl font-semibold">Carrito de Compras</h2>
+            <button class="text-2xl" id="closeCart">
+                <i class="fas fa-times header-icon"></i>
+            </button>
+        </div>
+        <div class="flex-1 overflow-y-auto p-5" id="cartItems">
+            <div class="text-center py-10 text-gray-500">
+                <i class="fas fa-shopping-bag text-5xl mb-5 text-gray-300 status-icon"></i>
+                <p>Tu carrito está vacío</p>
+            </div>
+        </div>
+        <div class="p-5 border-t hidden" id="cartFooter">
+            <div class="flex justify-between items-center mb-5 text-lg font-semibold">
+                <span>Total:</span>
+                <span id="cartTotal">$0</span>
+            </div>
+            <button class="w-full bg-gray-900 text-white py-4 rounded-lg font-semibold hover:bg-black transition-colors">Proceder al Pago</button>
+        </div>
+    </div>
+
+    <!-- Modal de Autenticación -->
+    <div class="hidden fixed inset-0 bg-black/50 z-50 flex justify-center items-center" id="authModal">
+        <div class="bg-white p-10 rounded-xl w-full max-w-md relative">
+            <button class="absolute top-5 right-5 text-2xl text-gray-600" id="authClose">
+                <i class="fas fa-times header-icon"></i>
+            </button>
+            <div class="flex gap-5 mb-8 border-b">
+                <button class="pb-3 px-1 text-lg font-semibold text-gray-900 border-b-2 border-gray-900 transition-colors auth-tab" data-tab="login">Iniciar Sesión</button>
+                <button class="pb-3 px-1 text-lg font-semibold text-gray-600 hover:text-gray-900 transition-colors auth-tab" data-tab="register">Registrarse</button>
+            </div>
+            <form class="space-y-5 auth-form" id="loginForm">
+                <div>
+                    <label class="block mb-2 font-medium text-gray-700">Email</label>
+                    <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-900 transition-colors">
+                </div>
+                <div>
+                    <label class="block mb-2 font-medium text-gray-700">Contraseña</label>
+                    <input type="password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-900 transition-colors">
+                </div>
+                <button type="submit" class="w-full bg-gray-900 text-white py-3 rounded-lg font-semibold hover:bg-black transition-colors">Iniciar Sesión</button>
+            </form>
+            <form class="space-y-5 hidden auth-form" id="registerForm">
+                <div>
+                    <label class="block mb-2 font-medium text-gray-700">Nombre Completo</label>
+                    <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-900 transition-colors">
+                </div>
+                <div>
+                    <label class="block mb-2 font-medium text-gray-700">Email</label>
+                    <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-900 transition-colors">
+                </div>
+                <div>
+                    <label class="block mb-2 font-medium text-gray-700">Contraseña</label>
+                    <input type="password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-900 transition-colors">
+                </div>
+                <button type="submit" class="w-full bg-gray-900 text-white py-3 rounded-lg font-semibold hover:bg-black transition-colors">Registrarse</button>
+            </form>
+        </div>
+    </div>
+
     <!-- Sección Hero con tema infantil -->
     <div class="relative h-[70vh] min-h-[400px] flex flex-col justify-center items-center text-white mt-16 sm:mt-20 mb-5 overflow-visible clip-ellipse bg-cover bg-center" style="background-image: linear-gradient(135deg, rgba(34, 197, 94, 0.8), rgba(59, 130, 246, 0.8)), url('https://images.unsplash.com/photo-1514467187334-4ca824dfd2a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')">
         <div class="absolute top-10 left-10 text-6xl animate-bounce-fun">🌟</div>
@@ -302,6 +386,97 @@
         <div class="flex flex-col lg:flex-row lg:justify-between items-start lg:items-center p-4 lg:p-5 bg-white shadow-md mb-4 gap-4 rounded-lg">
             <div class="w-full lg:w-auto">
                 <h2 class="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-900">Zapatos y Tenis para Niños <span class="text-gray-600 text-sm ml-2" id="resultsCount">(0 artículos)</span></h2>
+            </div>
+        </div>
+
+        <!-- Barra de Filtros Horizontal -->
+        <div class="bg-white p-4 shadow-md rounded-lg mb-5">
+            <div class="flex flex-col lg:flex-row gap-4 items-start lg:items-center">
+                <!-- Filtros Desktop - Una fila -->
+                <div class="hidden lg:flex lg:flex-wrap lg:items-center lg:gap-4 w-full">
+                    <!-- Categorías -->
+                    <div class="flex flex-col gap-1 flex-1 min-w-[140px]">
+                        <label class="text-xs font-semibold text-gray-700 uppercase tracking-wide">Categorías</label>
+                        <select name="categories" id="categories-select" class="w-full p-2 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
+                            <option value="all">Todas las Categorías</option>
+                            <option value="lifestyle">Estilo de Vida</option>
+                            <option value="running">Running</option>
+                            <option value="basketball">Baloncesto</option>
+                            <option value="training">Entrenamiento</option>
+                        </select>
+                    </div>
+
+                    <!-- Precio -->
+                    <div class="flex flex-col gap-1 flex-1 min-w-[140px]">
+                        <label class="text-xs font-semibold text-gray-700 uppercase tracking-wide">Rango de Precio</label>
+                        <select name="price" id="price-select" class="w-full p-2 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
+                            <option value="all">Todos los Precios</option>
+                            <option value="0-100000">Menos de $100.000</option>
+                            <option value="100000-200000">$100.000 - $200.000</option>
+                            <option value="200000-300000">$200.000 - $300.000</option>
+                            <option value="300000-400000">$300.000 - $400.000</option>
+                            <option value="400000-600000">$400.000 - $600.000</option>
+                            <option value="600000-999999">Más de $600.000</option>
+                        </select>
+                    </div>
+
+                    <!-- Colores -->
+                    <div class="flex flex-col gap-1 flex-1 min-w-[140px]">
+                        <label class="text-xs font-semibold text-gray-700 uppercase tracking-wide">Colores</label>
+                        <select name="colors" id="colors-select" class="w-full p-2 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
+                            <option value="all">Todos los Colores</option>
+                            <option value="black">Negro</option>
+                            <option value="white">Blanco</option>
+                            <option value="gray">Gris</option>
+                            <option value="blue">Azul</option>
+                            <option value="red">Rojo</option>
+                            <option value="green">Verde</option>
+                            <option value="yellow">Amarillo</option>
+                            <option value="orange">Naranja</option>
+                            <option value="purple">Morado</option>
+                            <option value="pink">Rosa</option>
+                            <option value="brown">Café</option>
+                            <option value="multi">Multicolor</option>
+                        </select>
+                    </div>
+
+                    <!-- Talla -->
+                    <div class="flex flex-col gap-1 flex-1 min-w-[120px]">
+                        <label class="text-xs font-semibold text-gray-700 uppercase tracking-wide">Talla</label>
+                        <select name="sizes" id="size-select" class="w-full p-2 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
+                            <option value="all">Todas las Tallas</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                        </select>
+                    </div>
+
+                    <!-- Marca -->
+                    <div class="flex flex-col gap-1 flex-1 min-w-[140px]">
+                        <label class="text-xs font-semibold text-gray-700 uppercase tracking-wide">Marca</label>
+                        <select name="brand" id="brand-select" class="w-full p-2 border border-gray-300 rounded-md text-sm bg-gray-50 cursor-pointer hover:border-gray-900 focus:border-gray-900 focus:outline-none transition-colors">
+                            <option value="all">Todas las Marcas</option>
+                            <option value="nike">Nike</option>
+                            <option value="adidas">Adidas</option>
+                            <option value="puma">Puma</option>
+                            <option value="reebok">Reebok</option>
+                            <option value="new-balance">New Balance</option>
+                            <option value="under-armour">Under Armour</option>
+                        </select>
+                    </div>
+
+                    <!-- Botón Aplicar -->
+                    <div class="flex flex-col gap-1">
+                        <label class="text-xs font-semibold text-gray-700 uppercase tracking-wide opacity-0">Aplicar</label>
+                        <button class="bg-gray-900 text-white px-6 py-2 rounded-md text-sm font-semibold hover:bg-black transition-colors whitespace-nowrap" id="buscarBoton">
+                            Aplicar Filtros
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -546,6 +721,15 @@
             cart: [],
             wishlist: [],
             currentUser: null,
+            filters: {
+                category: 'all',
+                price: 'all',
+                color: 'all',
+                size: 'all',
+                brand: 'all',
+                search: '',
+                sort: 'newest'
+            },
             products: [...productDatabase]
         };
 
@@ -553,7 +737,12 @@
         const elements = {
             products: document.getElementById('products'),
             cartCount: document.getElementById('cartCount'),
+            mobileCartCount: document.getElementById('mobileCartCount'),
             wishlistCount: document.getElementById('wishlistCount'),
+            mobileWishlistCount: document.getElementById('mobileWishlistCount'),
+            cartItems: document.getElementById('cartItems'),
+            cartTotal: document.getElementById('cartTotal'),
+            cartFooter: document.getElementById('cartFooter'),
             notification: document.getElementById('notification'),
             notificationText: document.getElementById('notificationText'),
             resultsCount: document.getElementById('resultsCount')
@@ -585,12 +774,70 @@
             return `$${price.toLocaleString('es-CO')}`;
         }
 
+        // Funciones de Filtro
+        function applyFilters() {
+            let filtered = [...productDatabase];
+            
+            // Aplicar todos los filtros
+            if (appState.filters.category !== 'all') {
+                filtered = filtered.filter(p => p.category === appState.filters.category);
+            }
+            
+            if (appState.filters.price !== 'all') {
+                const [min, max] = appState.filters.price.split('-').map(Number);
+                filtered = filtered.filter(p => p.price >= min && p.price <= max);
+            }
+            
+            if (appState.filters.color !== 'all') {
+                filtered = filtered.filter(p => p.color === appState.filters.color);
+            }
+            
+            if (appState.filters.size !== 'all') {
+                const size = parseFloat(appState.filters.size);
+                filtered = filtered.filter(p => p.sizes.includes(size));
+            }
+            
+            if (appState.filters.brand !== 'all') {
+                filtered = filtered.filter(p => p.brand === appState.filters.brand);
+            }
+            
+            if (appState.filters.search) {
+                const search = appState.filters.search.toLowerCase();
+                filtered = filtered.filter(p => 
+                    p.name.toLowerCase().includes(search) ||
+                    p.description.toLowerCase().includes(search) ||
+                    p.brand.toLowerCase().includes(search)
+                );
+            }
+            
+            // Ordenar
+            switch (appState.filters.sort) {
+                case 'price-asc':
+                    filtered.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-desc':
+                    filtered.sort((a, b) => b.price - a.price);
+                    break;
+                case 'bestsellers':
+                    filtered.sort((a, b) => b.reviews - a.reviews);
+                    break;
+                case 'newest':
+                default:
+                    filtered.sort((a, b) => b.id - a.id);
+            }
+            
+            appState.products = filtered;
+            renderProducts();
+        }
+
         function updateCounts() {
             const cartCount = appState.cart.reduce((sum, item) => sum + item.quantity, 0);
             const wishlistCount = appState.wishlist.length;
             
-            elements.cartCount.textContent = cartCount;
-            elements.wishlistCount.textContent = wishlistCount;
+            if (elements.cartCount) elements.cartCount.textContent = cartCount;
+            if (elements.mobileCartCount) elements.mobileCartCount.textContent = `(${cartCount})`;
+            if (elements.wishlistCount) elements.wishlistCount.textContent = wishlistCount;
+            if (elements.mobileWishlistCount) elements.mobileWishlistCount.textContent = `(${wishlistCount})`;
         }
 
         // Renderizado de Productos
@@ -607,11 +854,6 @@
                         <img src="${product.image}" alt="${product.name}" class="max-w-full max-h-full rotate-y-180 transition-transform group-hover:rotate-y-180-scale">
                         <div class="absolute top-2 right-2 text-2xl animate-bounce-fun">✨</div>
                     </div>
-                    <div class="-mt-8 sm:-mt-10 text-right mr-3 sm:mr-5 relative">
-                        <button onclick="addToCart(${product.id})" class="bg-white border border-gray-300 w-10 h-10 sm:w-12 sm:h-12 rounded-full shadow-lg transition-all hover:bg-gray-900 hover:text-white hover:scale-110 product-icon-lg">
-                            <i class="fas fa-shopping-cart text-sm"></i>
-                        </button>
-                    </div>
                     <div class="p-3 sm:p-5">
                         <h3 class="text-base sm:text-lg font-semibold mb-2 text-gray-800 leading-tight">${product.name}</h3>
                         <div class="flex items-center gap-2 mb-2">
@@ -619,12 +861,15 @@
                             <span class="text-gray-600 text-xs sm:text-sm">(${product.reviews})</span>
                         </div>
                         <p class="text-gray-600 text-xs sm:text-sm mb-3">${product.description}</p>
-                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 mb-3">
                             <div class="flex items-center gap-2">
                                 ${product.originalPrice ? `<span class="line-through text-gray-400 text-sm">${formatPrice(product.originalPrice)}</span>` : ''}
                                 <p class="text-lg sm:text-xl font-semibold text-gray-900">${formatPrice(product.price)}</p>
                             </div>
                         </div>
+                        <button onclick="addToCart(${product.id})" class="w-full bg-gray-900 text-white py-2 px-4 rounded-lg font-semibold hover:bg-black transition-colors text-sm sm:text-base">
+                            <i class="fas fa-shopping-cart mr-2"></i>Agregar al Carrito
+                        </button>
                     </div>
                 </div>
             `).join('');
@@ -647,10 +892,70 @@
             }
             
             updateCounts();
+            updateCart();
             showNotification(`¡${product.name} agregado al carrito! 🎉`);
         }
 
+        function updateCart() {
+            if (!elements.cartItems) return;
+            
+            if (appState.cart.length === 0) {
+                elements.cartItems.innerHTML = `
+                    <div class="text-center py-10 text-gray-500">
+                        <i class="fas fa-shopping-bag text-5xl mb-5 text-gray-300"></i>
+                        <p>Tu carrito está vacío</p>
+                    </div>
+                `;
+                if (elements.cartFooter) elements.cartFooter.classList.add('hidden');
+            } else {
+                elements.cartItems.innerHTML = appState.cart.map(item => `
+                    <div class="flex gap-4 py-4 border-b">
+                        <img src="${item.image}" alt="${item.name}" class="w-20 h-20 object-cover rounded-lg bg-gray-200 p-2">
+                        <div class="flex-1">
+                            <div class="font-semibold mb-1">${item.name}</div>
+                            <div class="text-gray-600 text-sm">${formatPrice(item.price)}</div>
+                            <div class="flex items-center gap-3 mt-3">
+                                <button class="bg-gray-100 w-8 h-8 rounded-full hover:bg-gray-200 transition-colors" onclick="updateQuantity(${item.id}, -1)">-</button>
+                                <span class="font-semibold">${item.quantity}</span>
+                                <button class="bg-gray-100 w-8 h-8 rounded-full hover:bg-gray-200 transition-colors" onclick="updateQuantity(${item.id}, 1)">+</button>
+                            </div>
+                        </div>
+                        <button class="text-red-500 text-lg hover:text-red-700 transition-colors" onclick="removeFromCart(${item.id})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `).join('');
+                
+                const total = appState.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                if (elements.cartTotal) elements.cartTotal.textContent = formatPrice(total);
+                if (elements.cartFooter) elements.cartFooter.classList.remove('hidden');
+            }
+        }
+
+        function removeFromCart(productId) {
+            appState.cart = appState.cart.filter(item => item.id !== productId);
+            updateCounts();
+            updateCart();
+            showNotification('Artículo removido del carrito', 'warning');
+        }
+
+        function updateQuantity(productId, change) {
+            const item = appState.cart.find(item => item.id === productId);
+            if (!item) return;
+            
+            item.quantity += change;
+            
+            if (item.quantity <= 0) {
+                removeFromCart(productId);
+            } else {
+                updateCounts();
+                updateCart();
+            }
+        }
+
         window.addToCart = addToCart;
+        window.removeFromCart = removeFromCart;
+        window.updateQuantity = updateQuantity;
 
         function toggleWishlist(productId) {
             const index = appState.wishlist.indexOf(productId);
@@ -679,11 +984,126 @@
         document.addEventListener('DOMContentLoaded', () => {
             renderProducts();
             updateCounts();
+            updateCart();
             
             // Botón Explorar Ahora
             document.getElementById('shopNowBtn').addEventListener('click', () => {
                 document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
             });
+
+            // Cart sidebar
+            if (document.getElementById('cartBtn')) {
+                document.getElementById('cartBtn').addEventListener('click', () => {
+                    const cartSidebar = document.getElementById('cartSidebar');
+                    cartSidebar.classList.remove('-right-96');
+                    cartSidebar.classList.add('right-0');
+                });
+            }
+
+            if (document.getElementById('mobileCartBtn')) {
+                document.getElementById('mobileCartBtn').addEventListener('click', () => {
+                    const cartSidebar = document.getElementById('cartSidebar');
+                    const mobileSidebar = document.getElementById('mobileSidebar');
+                    cartSidebar.classList.remove('-right-96');
+                    cartSidebar.classList.add('right-0');
+                    mobileSidebar.classList.add('-right-full');
+                    mobileSidebar.classList.remove('right-0');
+                });
+            }
+
+            if (document.getElementById('closeCart')) {
+                document.getElementById('closeCart').addEventListener('click', () => {
+                    const cartSidebar = document.getElementById('cartSidebar');
+                    cartSidebar.classList.add('-right-96');
+                    cartSidebar.classList.remove('right-0');
+                });
+            }
+
+            // Mobile menu
+            if (document.getElementById('mobileMenuToggle')) {
+                document.getElementById('mobileMenuToggle').addEventListener('click', () => {
+                    const mobileSidebar = document.getElementById('mobileSidebar');
+                    mobileSidebar.classList.remove('-right-full');
+                    mobileSidebar.classList.add('right-0');
+                });
+            }
+
+            if (document.getElementById('closeSidebar')) {
+                document.getElementById('closeSidebar').addEventListener('click', () => {
+                    const mobileSidebar = document.getElementById('mobileSidebar');
+                    mobileSidebar.classList.add('-right-full');
+                    mobileSidebar.classList.remove('right-0');
+                });
+            }
+
+            // Filtros
+            if (document.getElementById('categories-select')) {
+                document.getElementById('categories-select').addEventListener('change', (e) => {
+                    appState.filters.category = e.target.value;
+                    applyFilters();
+                });
+            }
+
+            if (document.getElementById('price-select')) {
+                document.getElementById('price-select').addEventListener('change', (e) => {
+                    appState.filters.price = e.target.value;
+                    applyFilters();
+                });
+            }
+
+            if (document.getElementById('colors-select')) {
+                document.getElementById('colors-select').addEventListener('change', (e) => {
+                    appState.filters.color = e.target.value;
+                    applyFilters();
+                });
+            }
+
+            if (document.getElementById('size-select')) {
+                document.getElementById('size-select').addEventListener('change', (e) => {
+                    appState.filters.size = e.target.value;
+                    applyFilters();
+                });
+            }
+
+            if (document.getElementById('brand-select')) {
+                document.getElementById('brand-select').addEventListener('change', (e) => {
+                    appState.filters.brand = e.target.value;
+                    applyFilters();
+                });
+            }
+
+            if (document.getElementById('buscarBoton')) {
+                document.getElementById('buscarBoton').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    applyFilters();
+                });
+            }
+
+            // Opciones de ordenamiento
+            document.querySelectorAll('#sortOptions button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('#sortOptions button').forEach(b => {
+                        b.classList.remove('bg-gray-900', 'text-white');
+                        b.classList.add('bg-white', 'text-gray-700', 'border', 'border-gray-300');
+                    });
+                    btn.classList.add('bg-gray-900', 'text-white');
+                    btn.classList.remove('bg-white', 'text-gray-700', 'border', 'border-gray-300');
+                    appState.filters.sort = btn.dataset.sort;
+                    applyFilters();
+                });
+            });
+
+            // Búsqueda
+            if (document.getElementById('searchInput')) {
+                let searchTimeout;
+                document.getElementById('searchInput').addEventListener('input', (e) => {
+                    clearTimeout(searchTimeout);
+                    searchTimeout = setTimeout(() => {
+                        appState.filters.search = e.target.value;
+                        applyFilters();
+                    }, 500);
+                });
+            }
         });
     </script>
 </body>
