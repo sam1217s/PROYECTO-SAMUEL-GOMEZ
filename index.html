@@ -192,9 +192,125 @@
                         </ul>
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer d-flex justify-content-between">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <a id="modalLink" href="#" class="btn btn-primary" target="_blank">Ver Proyecto</a>
+                    <div>
+                        <a id="modalGithubFrontend" href="#" target="_blank" class="btn btn-dark me-2" style="display: none;">
+                            <i class="fab fa-github me-1"></i> GitHub Frontend
+                        </a>
+                        <a id="modalGithubBackend" href="#" target="_blank" class="btn btn-dark me-2" style="display: none;">
+                            <i class="fab fa-github me-1"></i> GitHub Backend
+                        </a>
+                        <button id="modalLinkBtn" class="btn btn-primary">Ver Proyecto</button>
+                        <a id="modalLink" href="#" target="_blank" style="display: none;"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Credenciales -->
+    <div class="modal fade" id="credencialesModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title"><i class="fas fa-key me-2"></i>Credenciales de Acceso</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Importante:</strong> Estas credenciales son necesarias para acceder al sistema.
+                    </div>
+                    <div class="credentials-box" id="credentialsBox">
+                        <!-- Credenciales simples -->
+                        <div id="simpleCreds" style="display: none;">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold"><i class="fas fa-user me-2"></i>Usuario/Email:</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="credentialsUsername" readonly value="">
+                                    <button class="btn btn-outline-secondary" type="button" onclick="copiarCredencial('Username')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold"><i class="fas fa-lock me-2"></i>Contraseña:</label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="credentialsPassword" readonly value="">
+                                    <button class="btn btn-outline-secondary" type="button" onclick="togglePassword()">
+                                        <i class="fas fa-eye" id="toggleIcon"></i>
+                                    </button>
+                                    <button class="btn btn-outline-secondary" type="button" onclick="copiarCredencial('Password')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Credenciales múltiples (Admin/Empleado) -->
+                        <div id="multipleCreds" style="display: none;">
+                            <!-- Admin -->
+                            <div class="card mb-3 border-primary">
+                                <div class="card-header bg-primary text-white">
+                                    <i class="fas fa-user-shield me-2"></i>Administrador
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold"><i class="fas fa-user me-2"></i>Usuario:</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="adminUsername" readonly value="">
+                                            <button class="btn btn-outline-secondary" type="button" onclick="copiarCredencial('AdminUsername')">
+                                                <i class="fas fa-copy"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="mb-0">
+                                        <label class="form-label fw-bold"><i class="fas fa-lock me-2"></i>Contraseña:</label>
+                                        <div class="input-group">
+                                            <input type="password" class="form-control" id="adminPassword" readonly value="">
+                                            <button class="btn btn-outline-secondary" type="button" onclick="copiarCredencial('AdminPassword')">
+                                                <i class="fas fa-copy"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Empleado -->
+                            <div class="card border-success">
+                                <div class="card-header bg-success text-white">
+                                    <i class="fas fa-user me-2"></i>Empleado
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold"><i class="fas fa-user me-2"></i>Usuario:</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="empleadoUsername" readonly value="">
+                                            <button class="btn btn-outline-secondary" type="button" onclick="copiarCredencial('EmpleadoUsername')">
+                                                <i class="fas fa-copy"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="mb-0">
+                                        <label class="form-label fw-bold"><i class="fas fa-lock me-2"></i>Contraseña:</label>
+                                        <div class="input-group">
+                                            <input type="password" class="form-control" id="empleadoPassword" readonly value="">
+                                            <button class="btn btn-outline-secondary" type="button" onclick="copiarCredencial('EmpleadoPassword')">
+                                                <i class="fas fa-copy"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="btnIrAlProyecto">
+                        <i class="fas fa-arrow-right me-2"></i>Ir al Proyecto
+                    </button>
                 </div>
             </div>
         </div>
@@ -208,6 +324,43 @@
         const proyectos = [
             {
                 id: 1,
+                titulo: "📊 Flux Panel - Sistema de Facturación - RETO FACTUS ",
+                descripcion: "Sistema backend API REST para gestión de facturación electrónica integrada con Factus.",
+                fecha: "2025-12-10",
+                imagen: "./img/halltec.jpg",
+                descripcionModal: "Sistema backend robusto para la gestión de facturación electrónica que se integra perfectamente con la API de Factus. Permite gestionar clientes, productos y facturas de manera eficiente, cumpliendo con los estándares colombianos de facturación electrónica. Incluye integración OAuth2 con Factus, gestión automática de tokens JWT, CRUD completo para clientes y productos, creación y seguimiento de facturas, validación robusta de datos y manejo de errores centralizado. Credenciales de acceso: Usuario: sandbox@factus.com.co | Contraseña: sandbox2024%",
+                objetivo: "Desarrollar un sistema completo de facturación electrónica que demuestre habilidades en backend API REST, integración con APIs externas (Factus), manejo de autenticación OAuth2, gestión de base de datos MongoDB y creación de APIs documentadas.",
+                tecnologias: ["Backend: Node.js + Express", "Base de datos: MongoDB", "API: Factus Integration", "OAuth2: Autenticación segura", "Frontend: Vue.js + Vite"],
+                resultados: ["API REST completa y documentada", "Integración exitosa con Factus API", "Sistema OAuth2 funcional", "CRUD completo para clientes y productos", "Gestión de facturas electrónicas", "Validación robusta de datos", "Deployment en Render", "Credenciales: sandbox@factus.com.co / sandbox2024%"],
+                link: "https://reto-factus-api-samdev.onrender.com",
+                githubFrontend: "https://github.com/sam1217s/Reto_Factus_Fr",
+                githubBackend: "https://github.com/sam1217s/reto_factus_bk",
+                credenciales: {
+                    usuario: "sandbox@factus.com.co",
+                    contrasena: "sandbox2024%"
+                }
+            },
+            {
+                id: 2,
+                titulo: "💚 WellnessApp - Monitoreo de Bienestar Laboral",
+                descripcion: "Sistema web PWA para monitoreo del bienestar físico y mental de trabajadores con gamificación.",
+                fecha: "2025-12-05",
+                imagen: "./img/wellness.jpg",
+                descripcionModal: "WellnessApp es una aplicación web progresiva diseñada para el monitoreo del bienestar físico y mental de los trabajadores durante la jornada laboral. Incluye dashboard con métricas en tiempo real, sistema de monitoreo de actividad con gráficos interactivos, panel de recompensas con gamificación, panel de administración para gestión de empleados, alertas inteligentes, y sistema de reportes. Diseñado con principios de minimalismo y accesibilidad.",
+                objetivo: "Desarrollar una aplicación PWA que demuestre habilidades en Vue 3, gestión de estado con Pinia, diseño responsive, integración de gráficos, y creación de un sistema de gamificación completo para promover hábitos saludables.",
+                tecnologias: ["Frontend: Vue 3 + Composition API", "Estado: Pinia", "Navegación: Vue Router", "Build: Vite", "PWA: Progressive Web App", "Gráficos: Canvas API"],
+                resultados: ["Aplicación PWA completamente funcional", "Dashboard con métricas en tiempo real", "Sistema de gamificación con puntos y niveles", "Gráficos interactivos de actividad", "Panel de administración completo", "Responsive design mobile-first", "Persistencia en localStorage"],
+                link: "https://wellness-app-rq74.onrender.com",
+                githubFrontend: "https://github.com/sam1217s/WellnessApp",
+                credenciales: {
+                    adminUsuario: "admin@wellness.com",
+                    adminContrasena: "admin123",
+                    empleadoUsuario: "empleado@wellness.com",
+                    empleadoContrasena: "emp123"
+                }
+            },
+            {
+                id: 3,
                 titulo: "🔐 Auth App - Sistema de Autenticación",
                 descripcion: "Sistema de autenticación completo con backend y frontend integrados.",
                 fecha: "2025-11-15",
@@ -219,7 +372,7 @@
                 link: "https://auth-app-equipo3.onrender.com"
             },
             {
-                id: 2,
+                id: 4,
                 titulo: "🎤 Debate IA - Edición Genética",
                 descripcion: "Aplicación web interactiva que simula un debate entre dos expertos sobre edición genética con CRISPR.",
                 fecha: "2025-10-26",
@@ -231,7 +384,7 @@
                 link: "https://debate-ias.onrender.com/"
             },
             {
-                id: 3,
+                id: 5,
                 titulo: "ADMINISTRADOR DE CITAS VETERINARIAS",
                 descripcion: "Sistema de gestión de citas para clínica veterinaria.",
                 fecha: "2025-07-11",
@@ -243,7 +396,7 @@
                 link: "./citas_pets/index.html"
             },
             {
-                id: 4,
+                id: 6,
                 titulo: "CRUD",
                 descripcion: "Registro Mediante Formulario.",
                 fecha: "2025-06-25",
@@ -256,7 +409,7 @@
             }
             ,
             {
-                id: 5,
+                id: 7,
                 titulo: "POKE API",
                 descripcion: "Poke Card battle simulation.",
                 fecha: "2025-06-10",
@@ -269,7 +422,7 @@
             },
 
             {
-                id: 6,
+                id: 8,
                 titulo: "PAGINA ZAPATOS",
                 descripcion: "E-commerce completo de calzado con funcionalidades avanzadas.",
                 fecha: "2025-05-28",
@@ -281,7 +434,7 @@
                 link: "./pagina zapatos/index.html"
             },
             {
-                id: 7,
+                id: 9,
                 titulo: "PAGINA JOHANSON",
                 descripcion: "Página web para Johanson.",
                 fecha: "2025-05-15",
@@ -293,7 +446,7 @@
                 link: "./pagina_johanson/index.html"
             },
             {
-                id: 8,
+                id: 10,
                 titulo: "VIDEO DESPLEGAR RENDER",
                 descripcion: "Video demostrativo de un proyecto.",
                 fecha: "2025-05-02",
@@ -305,7 +458,7 @@
                 link: "https://youtu.be/msJDXHGS7AU"
             },
             {
-                id: 9,
+                id: 11,
                 titulo: "MI PERFIL",
                 descripcion: "Página de perfil profesional.",
                 fecha: "2025-04-20",
@@ -317,7 +470,7 @@
                 link: "./MI PERFIL/index.html"
             },
             {
-                id: 10,
+                id: 12,
                 titulo: "BANDAS DE ROCK",
                 descripcion: "Página web sobre bandas de rock favoritas.",
                 fecha: "2025-04-09",
@@ -329,7 +482,7 @@
                 link: "./bandas de rock/index.html"
             },
             {
-                id: 11,
+                id: 13,
                 titulo: "¿QUIEN SOY?",
                 descripcion: "Proyecto personal que muestra información sobre mí.",
                 fecha: "2025-03-20",
@@ -341,7 +494,7 @@
                 link: "./QUIEN SOY/index.html"
             },
             {
-                id: 12,
+                id: 14,
                 titulo: "TALONARIO",
                 descripcion: "Proyecto de rifa para gestionar sorteos y participantes.",
                 fecha: "2025-07-12",
@@ -353,7 +506,7 @@
                 link: "https://talonario-dh5u.onrender.com/"
             },
             {
-                id: 13,
+                id: 15,
                 titulo: "El Refugio Real del Caribe",
                 descripcion: "Convento del siglo XVIII convertido en un lujoso hotel colonial frente al mar.",
                 fecha: "2025-08-05",
@@ -403,7 +556,9 @@
                                 data-objetivo="${proyecto.objetivo}"
                                 data-tecnologias='${JSON.stringify(proyecto.tecnologias)}'
                                 data-resultados='${JSON.stringify(proyecto.resultados)}'
-                                data-link="${proyecto.link}">
+                                data-link="${proyecto.link}"
+                                ${proyecto.githubFrontend ? `data-github-frontend="${proyecto.githubFrontend}"` : ''}
+                                ${proyecto.githubBackend ? `data-github-backend="${proyecto.githubBackend}"` : ''}>
                                 <i class="fas fa-info-circle me-1"></i> Descripción
                             </button>
                             <a href="${proyecto.link}" target="_blank" class="btn btn-primary">VER PROYECTO</a>
@@ -503,13 +658,154 @@
                         resultadosList.appendChild(li);
                     });
 
-                    // Actualizar enlace
+                    // Actualizar enlace principal
                     document.getElementById('modalLink').href = button.getAttribute('data-link');
+                    
+                    // Actualizar enlaces de GitHub
+                    const githubFrontend = button.getAttribute('data-github-frontend');
+                    const githubBackend = button.getAttribute('data-github-backend');
+                    
+                    const githubFrontendBtn = document.getElementById('modalGithubFrontend');
+                    const githubBackendBtn = document.getElementById('modalGithubBackend');
+                    
+                    if (githubFrontend) {
+                        githubFrontendBtn.href = githubFrontend;
+                        githubFrontendBtn.style.display = 'inline-block';
+                    } else {
+                        githubFrontendBtn.style.display = 'none';
+                    }
+                    
+                    if (githubBackend) {
+                        githubBackendBtn.href = githubBackend;
+                        githubBackendBtn.style.display = 'inline-block';
+                    } else {
+                        githubBackendBtn.style.display = 'none';
+                    }
                 });
             }
 
+            // Evento click en "Ver Proyecto"
+            document.getElementById('modalLinkBtn').addEventListener('click', function() {
+                const link = document.getElementById('modalLink').href;
+                const titulo = document.getElementById('modalProjectName').textContent;
+                
+                // Buscar el proyecto actual
+                const proyectoActual = proyectos.find(p => p.titulo === titulo);
+                
+                // Verificar si el proyecto tiene credenciales
+                if (proyectoActual && proyectoActual.credenciales) {
+                    // Guardar credenciales
+                    credencialesActuales = proyectoActual.credenciales;
+                    
+                    // Mostrar modal de credenciales
+                    const credencialesModal = new bootstrap.Modal(document.getElementById('credencialesModal'));
+                    credencialesModal.show();
+                    
+                    // Cerrar modal de proyecto
+                    bootstrap.Modal.getInstance(document.getElementById('proyectoModal')).hide();
+                } else {
+                    // Redirigir directamente si no tiene credenciales
+                    window.open(link, '_blank');
+                }
+            });
+
+            // Evento click en "Ir al Proyecto" del modal de credenciales
+            document.getElementById('btnIrAlProyecto').addEventListener('click', function() {
+                const link = document.getElementById('modalLink').href;
+                window.open(link, '_blank');
+            });
+
             // Mostrar sección "about" por defecto
             document.querySelector('#about').style.display = 'block';
+        });
+
+        // Función para copiar credenciales
+        function copiarCredencial(tipo) {
+            let input;
+            
+            switch(tipo) {
+                case 'Username':
+                    input = document.getElementById('credentialsUsername');
+                    break;
+                case 'Password':
+                    input = document.getElementById('credentialsPassword');
+                    break;
+                case 'AdminUsername':
+                    input = document.getElementById('adminUsername');
+                    break;
+                case 'AdminPassword':
+                    input = document.getElementById('adminPassword');
+                    break;
+                case 'EmpleadoUsername':
+                    input = document.getElementById('empleadoUsername');
+                    break;
+                case 'EmpleadoPassword':
+                    input = document.getElementById('empleadoPassword');
+                    break;
+                default:
+                    return;
+            }
+            
+            if (!input) return;
+            
+            input.select();
+            input.setSelectionRange(0, 99999); // Para móviles
+            
+            navigator.clipboard.writeText(input.value).then(function() {
+                // Mostrar notificación
+                const btn = event.target.closest('button');
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i>';
+                btn.classList.add('btn-success');
+                btn.classList.remove('btn-outline-secondary');
+                
+                setTimeout(function() {
+                    btn.innerHTML = originalHTML;
+                    btn.classList.remove('btn-success');
+                    btn.classList.add('btn-outline-secondary');
+                }, 1000);
+            });
+        }
+
+        // Función para mostrar/ocultar contraseña
+        function togglePassword() {
+            const passwordInput = document.getElementById('credentialsPassword');
+            const toggleIcon = document.getElementById('toggleIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+
+        // Variable para almacenar credenciales
+        let credencialesActuales = {};
+
+        // Configurar credenciales cuando se abre el modal
+        document.getElementById('credencialesModal').addEventListener('show.bs.modal', function() {
+            // Ocultar ambas secciones
+            document.getElementById('simpleCreds').style.display = 'none';
+            document.getElementById('multipleCreds').style.display = 'none';
+            
+            // Determinar qué tipo de credenciales mostrar
+            if (credencialesActuales.adminUsuario) {
+                // Credenciales múltiples (Admin/Empleado)
+                document.getElementById('multipleCreds').style.display = 'block';
+                document.getElementById('adminUsername').value = credencialesActuales.adminUsuario;
+                document.getElementById('adminPassword').value = credencialesActuales.adminContrasena;
+                document.getElementById('empleadoUsername').value = credencialesActuales.empleadoUsuario;
+                document.getElementById('empleadoPassword').value = credencialesActuales.empleadoContrasena;
+            } else if (credencialesActuales.usuario) {
+                // Credenciales simples
+                document.getElementById('simpleCreds').style.display = 'block';
+                document.getElementById('credentialsUsername').value = credencialesActuales.usuario;
+                document.getElementById('credentialsPassword').value = credencialesActuales.contrasena;
+            }
         });
     </script>
 </body>
