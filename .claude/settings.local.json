@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"const html = require\\(''fs''\\).readFileSync\\(''index.html'', ''utf8''\\); const match = html.match\\(/const proyectos = \\(\\\\[[\\\\s\\\\S]*?\\\\]\\);/\\); if\\(match\\) { try { eval\\(''const p = '' + match[1]\\); console.log\\(''OK - Total proyectos:'', eval\\(match[1]\\).length\\); } catch\\(e\\) { console.log\\(''ERROR:'', e.message\\); } } else { console.log\\(''No match found''\\); }\")",
+      "Bash(move:*)",
+      "Bash(cmd /c move:*)",
+      "Bash(cmd /c copy:*)",
+      "Bash(powershell:*)"
+    ]
+  }
+}

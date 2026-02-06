@@ -7,6 +7,10 @@
     <title>Portafolio - Samuel Gómez</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts: Inter + Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./styles.css">
@@ -98,22 +102,22 @@
                               <!-- Habilidades -->
                               <div class="cv-section">
                                   <h3 class="cv-section-title">Habilidades</h3>
-                                  <ul class="cv-skills-list">
-                                      <li>Python</li>
-                                      <li>JavaScript</li>
-                                      <li>FastAPI</li>
-                                      <li>Node.js</li>
-                                      <li>Quasar</li>
-                                      <li>Bootstrap</li>
-                                      <li>Materialize</li>
-                                      <li>MySQL</li>
-                                      <li>PostgreSQL</li>
-                                      <li>MongoDB</li>
-                                      <li>Git</li>
-                                      <li>GitHub</li>
-                                      <li>Postman</li>
-                                      <li>VS Code</li>
-                                  </ul>
+                                  <div class="cv-skills-tags">
+                                      <span class="cv-skill-tag">Python</span>
+                                      <span class="cv-skill-tag">JavaScript</span>
+                                      <span class="cv-skill-tag">FastAPI</span>
+                                      <span class="cv-skill-tag">Node.js</span>
+                                      <span class="cv-skill-tag">Quasar</span>
+                                      <span class="cv-skill-tag">Bootstrap</span>
+                                      <span class="cv-skill-tag">Materialize</span>
+                                      <span class="cv-skill-tag">MySQL</span>
+                                      <span class="cv-skill-tag">PostgreSQL</span>
+                                      <span class="cv-skill-tag">MongoDB</span>
+                                      <span class="cv-skill-tag">Git</span>
+                                      <span class="cv-skill-tag">GitHub</span>
+                                      <span class="cv-skill-tag">Postman</span>
+                                      <span class="cv-skill-tag">VS Code</span>
+                                  </div>
                               </div>
                           </div>
 
@@ -205,7 +209,7 @@
             </section>
 
             <!-- Sección Contacto -->
-            <section id="contact" class="py-5 px-md-4" style="display: none; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh;">
+            <section id="contact" class="py-5 px-md-4" style="display: none; background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #1a56db 100%); min-height: 100vh;">
                 <div class="container-fluid">
                     <div class="row justify-content-center mb-5">
                         <div class="col-12 text-center">
@@ -292,45 +296,54 @@
 
     <!-- Modal Proyectos -->
     <div class="modal fade" id="proyectoModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-dark text-white">
-                    <h5 class="modal-title">Detalles del Proyecto</h5>
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content modal-proyecto">
+                <div class="modal-header modal-proyecto-header">
+                    <h4 class="modal-title mb-0" id="modalProjectName">[Nombre del proyecto]</h4>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body modal-proyecto-body">
                     <div class="project-details">
-                        <h4 class="detail-title">Nombre del Proyecto:</h4>
-                        <p id="modalProjectName" class="detail-content">[Nombre del proyecto]</p>
+                        <div class="detail-section">
+                            <h5 class="detail-title"><i class="fas fa-file-alt me-2"></i>Descripci&oacute;n General</h5>
+                            <p id="modalDescripcion" class="detail-content">[Descripci&oacute;n del proyecto]</p>
+                        </div>
 
-                        <h4 class="detail-title">Descripción General:</h4>
-                        <p id="modalDescripcion" class="detail-content">[Descripción del proyecto]</p>
+                        <div class="detail-section">
+                            <h5 class="detail-title"><i class="fas fa-bullseye me-2"></i>Objetivo</h5>
+                            <p id="modalObjetivo" class="detail-content">[Objetivo del proyecto]</p>
+                        </div>
 
-                        <h4 class="detail-title">Objetivo:</h4>
-                        <p id="modalObjetivo" class="detail-content">[Objetivo del proyecto]</p>
+                        <div class="detail-section">
+                            <h5 class="detail-title"><i class="fas fa-code me-2"></i>Tecnolog&iacute;as</h5>
+                            <div id="modalTecnologias" class="detail-tags">
+                                <!-- Tecnolog&iacute;as se cargar&aacute;n aqu&iacute; -->
+                            </div>
+                        </div>
 
-                        <h4 class="detail-title">Tecnologías:</h4>
-                        <ul id="modalTecnologias" class="detail-content">
-                            <!-- Tecnologías se cargarán aquí -->
-                        </ul>
-
-                        <h4 class="detail-title">Resultados:</h4>
-                        <ul id="modalResultados" class="detail-content">
-                            <!-- Resultados se cargarán aquí -->
-                        </ul>
+                        <div class="detail-section">
+                            <h5 class="detail-title"><i class="fas fa-check-circle me-2"></i>Resultados</h5>
+                            <ul id="modalResultados" class="detail-results">
+                                <!-- Resultados se cargar&aacute;n aqu&iacute; -->
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div class="modal-footer d-flex justify-content-between">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <div>
-                        <a id="modalGithubFrontend" href="#" target="_blank" class="btn btn-dark me-2" style="display: none;">
-                            <i class="fab fa-github me-1"></i> GitHub Frontend
+                <div class="modal-footer modal-proyecto-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-1"></i> Cerrar
+                    </button>
+                    <div class="d-flex gap-2 flex-wrap">
+                        <a id="modalGithubFrontend" href="#" target="_blank" class="btn btn-dark" style="display: none;">
+                            <i class="fab fa-github me-1"></i> Frontend
                         </a>
-                        <a id="modalGithubBackend" href="#" target="_blank" class="btn btn-dark me-2" style="display: none;">
-                            <i class="fab fa-github me-1"></i> GitHub Backend
+                        <a id="modalGithubBackend" href="#" target="_blank" class="btn btn-dark" style="display: none;">
+                            <i class="fab fa-github me-1"></i> Backend
                         </a>
-                        <button id="modalLinkBtn" class="btn btn-primary">Ver Proyecto</button>
+                        <button id="modalLinkBtn" class="btn btn-primary">
+                            <i class="fas fa-external-link-alt me-1"></i> Ver Proyecto
+                        </button>
                         <a id="modalLink" href="#" target="_blank" style="display: none;"></a>
                     </div>
                 </div>
@@ -524,19 +537,19 @@
                 resultados: ["Sistema CRUD completamente funcional", "Filtrado y búsqueda avanzada", "Validación de formularios robusta", "Interfaz de usuario responsive"],
                 link: "./citas_pets/index.html"
             },
-            {
-                id: 6,
-                titulo: "CRUD",
-                descripcion: "Registro Mediante Formulario.",
-                fecha: "2025-06-25",
-                imagen: "./img/formulario.jpg",
-                descripcionModal: "Este proyecto consiste en un sistema CRUD (Create, Read, Update, Delete) completo que permite gestionar registros mediante un formulario.",
-                objetivo: "Implementar un sistema de gestión de registros completo que demuestre el manejo de operaciones básicas de persistencia de datos en el frontend.",
-                tecnologias: ["Lenguaje: JavaScript", "Almacenamiento: localStorage", "Framework: Bootstrap 5", "Control de versiones: Git/GitHub"],
-                resultados: ["Operaciones CRUD completamente funcionales", "Validación de formularios", "Persistencia de datos en el navegador"],
-                link: "./crud/index.html"
-            }
-            ,
+            // {
+            //     id: 6,
+            //     titulo: "CRUD",
+            //     descripcion: "Registro Mediante Formulario.",
+            //     fecha: "2025-06-25",
+            //     imagen: "./img/formulario.jpg",
+            //     descripcionModal: "Este proyecto consiste en un sistema CRUD (Create, Read, Update, Delete) completo que permite gestionar registros mediante un formulario.",
+            //     objetivo: "Implementar un sistema de gestión de registros completo que demuestre el manejo de operaciones básicas de persistencia de datos en el frontend.",
+            //     tecnologias: ["Lenguaje: JavaScript", "Almacenamiento: localStorage", "Framework: Bootstrap 5", "Control de versiones: Git/GitHub"],
+            //     resultados: ["Operaciones CRUD completamente funcionales", "Validación de formularios", "Persistencia de datos en el navegador"],
+            //     link: "./crud/index.html"
+            // }
+            // ,
             {
                 id: 7,
                 titulo: "POKE API",
@@ -562,18 +575,18 @@
                 resultados: ["Sistema de e-commerce completamente funcional", "Carrito de compras con persistencia en localStorage", "Sistema de favoritos integrado", "Filtros avanzados por múltiples criterios", "Búsqueda de productos en tiempo real", "Modal de autenticación funcional", "Diseño responsive para móviles, tablets y desktop", "Notificaciones toast para feedback al usuario", "Efectos visuales modernos (animaciones, transiciones)", "Catálogo organizado por categorías (Hombres, Mujeres, Niños, Ofertas)"],
                 link: "./pagina zapatos/index.html"
             },
-            {
-                id: 9,
-                titulo: "PAGINA JOHANSON",
-                descripcion: "Página web para Johanson.",
-                fecha: "2025-05-15",
-                imagen: "./img/johanson.avif",
-                descripcionModal: "Este proyecto consiste en el desarrollo de un sitio web corporativo para Johanson, mostrando sus servicios, productos e información de contacto.",
-                objetivo: "Crear una presencia online profesional para Johanson que comunique efectivamente sus servicios y valore su marca.",
-                tecnologias: ["Lenguaje: HTML, CSS, JavaScript", "Framework: Bootstrap 5", "Base de datos: No aplica"],
-                resultados: ["Sitio web corporativo completo", "Diseño alineado con identidad de marca", "Formulario de contacto funcional"],
-                link: "./pagina_johanson/index.html"
-            },
+            // {
+            //     id: 9,
+            //     titulo: "PAGINA JOHANSON",
+            //     descripcion: "Página web para Johanson.",
+            //     fecha: "2025-05-15",
+            //     imagen: "./img/johanson.avif",
+            //     descripcionModal: "Este proyecto consiste en el desarrollo de un sitio web corporativo para Johanson, mostrando sus servicios, productos e información de contacto.",
+            //     objetivo: "Crear una presencia online profesional para Johanson que comunique efectivamente sus servicios y valore su marca.",
+            //     tecnologias: ["Lenguaje: HTML, CSS, JavaScript", "Framework: Bootstrap 5", "Base de datos: No aplica"],
+            //     resultados: ["Sitio web corporativo completo", "Diseño alineado con identidad de marca", "Formulario de contacto funcional"],
+            //     link: "./pagina_johanson/index.html"
+            // },
             {
                 id: 10,
                 titulo: "VIDEO DESPLEGAR RENDER",
@@ -586,30 +599,30 @@
                 resultados: ["Video tutorial completo y detallado", "Explicación clara de cada paso", "Cobertura de problemas comunes y soluciones"],
                 link: "https://youtu.be/msJDXHGS7AU"
             },
-            {
-                id: 11,
-                titulo: "MI PERFIL",
-                descripcion: "Página de perfil profesional.",
-                fecha: "2025-04-20",
-                imagen: "./img/miperfil.webp",
-                descripcionModal: "Este proyecto consiste en una página de perfil profesional avanzada que muestra mis habilidades, experiencia y proyectos.",
-                objetivo: "Desarrollar un perfil profesional online completo que destaque mis habilidades técnicas y experiencia laboral.",
-                tecnologias: ["Lenguaje: HTML, CSS, JavaScript", "Framework: Bootstrap 5", "Base de datos: No aplica"],
-                resultados: ["Perfil profesional completo y responsive", "Diseño moderno y atractivo", "Optimización para SEO básico"],
-                link: "./MI PERFIL/index.html"
-            },
-            {
-                id: 12,
-                titulo: "BANDAS DE ROCK",
-                descripcion: "Página web sobre bandas de rock favoritas.",
-                fecha: "2025-04-09",
-                imagen: "./img/rock.jpg",
-                descripcionModal: "Este proyecto consiste en el desarrollo de una aplicación web enfocada en mostrar información sobre bandas de rock famosas.",
-                objetivo: "Crear un catálogo interactivo de bandas de rock que permita a los usuarios descubrir información sobre sus artistas favoritos.",
-                tecnologias: ["Lenguaje: HTML, CSS, JavaScript", "Framework: Bootstrap 5", "Base de datos: No aplica (estático)"],
-                resultados: ["Sitio web completamente funcional con información detallada", "Diseño responsivo para móviles y desktop", "Galería de imágenes de bandas"],
-                link: "./bandas de rock/index.html"
-            },
+            // {
+            //     id: 11,
+            //     titulo: "MI PERFIL",
+            //     descripcion: "Página de perfil profesional.",
+            //     fecha: "2025-04-20",
+            //     imagen: "./img/miperfil.webp",
+            //     descripcionModal: "Este proyecto consiste en una página de perfil profesional avanzada que muestra mis habilidades, experiencia y proyectos.",
+            //     objetivo: "Desarrollar un perfil profesional online completo que destaque mis habilidades técnicas y experiencia laboral.",
+            //     tecnologias: ["Lenguaje: HTML, CSS, JavaScript", "Framework: Bootstrap 5", "Base de datos: No aplica"],
+            //     resultados: ["Perfil profesional completo y responsive", "Diseño moderno y atractivo", "Optimización para SEO básico"],
+            //     link: "./MI PERFIL/index.html"
+            // },
+            // {
+            //     id: 12,
+            //     titulo: "BANDAS DE ROCK",
+            //     descripcion: "Página web sobre bandas de rock favoritas.",
+            //     fecha: "2025-04-09",
+            //     imagen: "./img/rock.jpg",
+            //     descripcionModal: "Este proyecto consiste en el desarrollo de una aplicación web enfocada en mostrar información sobre bandas de rock famosas.",
+            //     objetivo: "Crear un catálogo interactivo de bandas de rock que permita a los usuarios descubrir información sobre sus artistas favoritos.",
+            //     tecnologias: ["Lenguaje: HTML, CSS, JavaScript", "Framework: Bootstrap 5", "Base de datos: No aplica (estático)"],
+            //     resultados: ["Sitio web completamente funcional con información detallada", "Diseño responsivo para móviles y desktop", "Galería de imágenes de bandas"],
+            //     link: "./bandas de rock/index.html"
+            // },
             {
                 id: 13,
                 titulo: "¿QUIEN SOY?",
@@ -649,6 +662,43 @@
                     "Ubicación estratégica dentro de la ciudad amurallada"
                 ],
                 link: "https://hotel-quasar.onrender.com/"
+            },
+            {
+                id: 16,
+                titulo: "🎓 Sistema de Gestión Estudiantil - ITAP",
+                descripcion: "Sistema web de gestión estudiantil para el Instituto Técnico Aquileo Parra con control de acceso por roles.",
+                fecha: "2026-01-15",
+                imagen: "./img/logo_instituto.jpg",
+                descripcionModal: "Sistema web de gestión estudiantil desarrollado para el Instituto Técnico Aquileo Parra (Barichara, Colombia). Permite administrar estudiantes, profesores, actividades extracurriculares y catálogos institucionales con control de acceso basado en roles (Administrador, Coordinador, Profesor, Estudiante). Incluye CRUD completo de estudiantes con 20+ campos, filtrado avanzado por 17+ criterios, operaciones masivas, promoción de grado, exportación a Excel, dashboards con KPIs y gráficos interactivos, auto-logout por inactividad y reglas de seguridad Firestore por rol.",
+                objetivo: "Desarrollar un sistema integral de gestión estudiantil que digitalice los procesos administrativos del instituto, permitiendo la administración eficiente de estudiantes, profesores y actividades extracurriculares con seguridad basada en roles.",
+                tecnologias: ["Frontend: Vue 3 (Composition API) + Quasar 2", "Estado: Pinia 2", "Routing: Vue Router 4", "Backend: Firebase (Authentication + Firestore)", "Gráficos: ApexCharts", "Exportación: ExcelJS", "Build: Vite + Quasar CLI", "Estilos: SCSS, modo oscuro"],
+                resultados: ["CRUD completo de estudiantes con 20+ campos", "Filtrado avanzado por 17+ criterios", "Gestión de profesores con generación automática de credenciales", "Actividades extracurriculares (Talleres, Apuestas Pedagógicas, Proyectos Lúdicos)", "Dashboards administrativo y de profesor con KPIs", "Operaciones masivas y promoción de grado por lotes", "Exportación a Excel", "Autenticación con login polimórfico y auto-logout por inactividad", "4 roles con permisos diferenciados"],
+                link: "https://itapbarichara.com/"
+            },
+            {
+                id: 17,
+                titulo: "🎵 BandApp - Banda Marcial Barichara",
+                descripcion: "Sistema de gestión administrativa y estudiantil para la Banda Marcial Barichara con app web y móvil.",
+                fecha: "2026-01-25",
+                imagen: "./img/banda_marcial.png",
+                descripcionModal: "Sistema de gestión administrativa y estudiantil para la Banda Marcial Barichara. Aplicación web y móvil que permite administrar estudiantes, eventos, finanzas, documentos y repertorio musical. Incluye autenticación por roles (Admin, Gerente, Estudiante), gestión de perfiles con documentos, salud e instrumentos, control de deudas con creación masiva y abonos, facturación con filtros, calendario de eventos con cuenta regresiva, repertorio musical con enlaces a partituras, importación/exportación Excel y timeout de sesión por inactividad.",
+                objetivo: "Desarrollar una aplicación web y móvil completa que digitalice la gestión administrativa de la Banda Marcial Barichara, facilitando el control de estudiantes, finanzas, eventos y repertorio musical.",
+                tecnologias: ["Frontend: Vue 3 (Composition API) + Quasar Framework", "Build: Vite 7", "Backend/DB: Firebase (Firestore + Authentication)", "Móvil: Capacitor 8 (Android)", "Estilos: SASS + Material Design Icons"],
+                resultados: ["Autenticación por roles (Admin, Gerente, Estudiante)", "Gestión de estudiantes con perfiles, documentos e instrumentos", "Control de deudas con creación masiva y abonos", "Sistema de facturación con filtros por año y tipo", "Calendario de eventos con cuenta regresiva", "Repertorio musical con enlaces a partituras", "Importación/Exportación Excel", "App móvil Android con Capacitor", "Timeout de sesión por inactividad"],
+                link: "https://www.bandamarcialbarichara.com",
+                githubFrontend: "https://github.com/sam1217s/banda_web"
+            },
+            {
+                id: 18,
+                titulo: "🏋️ Fortress - E-commerce Ropa Deportiva",
+                descripcion: "Plataforma e-commerce full-stack de ropa deportiva con tienda pública, carrito y panel de administración.",
+                fecha: "2026-02-05",
+                imagen: "./img/logo-fortress.png",
+                descripcionModal: "Plataforma e-commerce full-stack especializada en ropa deportiva. Incluye tienda pública con catálogo de productos, carrito de compras, checkout vía WhatsApp y panel de administración completo. El backend usa Node.js + Express con MongoDB, autenticación JWT, Cloudinary para imágenes y Helmet + Rate Limit para seguridad. El frontend usa Vue 3 + Quasar con Pinia para estado global. Soporta pagos con ePayco, WhatsApp y efectivo. Desplegado en Vercel con Serverless Functions.",
+                objetivo: "Desarrollar una plataforma e-commerce completa y profesional que demuestre habilidades full-stack, incluyendo backend con API REST, autenticación JWT, gestión de imágenes en la nube, integración de pagos y frontend moderno con Vue 3.",
+                tecnologias: ["Backend: Node.js 20.x + Express.js 4.18", "Base de datos: MongoDB + Mongoose 8", "Autenticación: JWT + bcrypt", "Imágenes: Cloudinary CDN", "Email: Nodemailer", "Seguridad: Helmet + Rate Limit", "Frontend: Vue 3 + Quasar 2.14 + Pinia", "Build: Vite 5", "Deploy: Vercel (Serverless Functions)", "Pagos: ePayco + WhatsApp + Efectivo"],
+                resultados: ["Catálogo de productos con filtros por categoría y precio", "Búsqueda de texto en productos", "Carrito de compras persistente con localStorage", "Checkout vía WhatsApp con mensaje pre-generado", "Verificación de stock en tiempo real por talla y color", "Panel admin con CRUD de productos e imágenes en Cloudinary", "Gestión de inventario por variantes (talla/color)", "Gestión de órdenes y estados", "API REST completa con 25+ endpoints", "Seguridad: JWT, bcrypt, rate limiting, Helmet, CORS"],
+                link: "https://fortressbga.com/"
             }
 
         ];
@@ -772,9 +822,10 @@
                     const tecnologiasList = document.getElementById('modalTecnologias');
                     tecnologiasList.innerHTML = '';
                     tecnologias.forEach(tech => {
-                        const li = document.createElement('li');
-                        li.textContent = tech;
-                        tecnologiasList.appendChild(li);
+                        const span = document.createElement('span');
+                        span.className = 'badge-tech';
+                        span.textContent = tech;
+                        tecnologiasList.appendChild(span);
                     });
 
                     // Actualizar resultados
